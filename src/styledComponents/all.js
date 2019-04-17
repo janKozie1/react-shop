@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { NavLink } from 'react-router-dom'
 
+import {colorVar} from './cssVariables'
+
 export let GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto');  
     html{
@@ -17,6 +19,12 @@ export let GlobalStyle = createGlobalStyle`
         }    
     }
 `
+export let Svg = styled.svg`
+    fill:${colorVar.primaryColor};
+    width:${props => props.medium ? '32px':'16px'};
+    height:${props => props.medium ? '32px':'16px'};
+`
+
 export let Main = styled.main`
     margin-top:64px;
 `
@@ -38,21 +46,25 @@ export let Ul = styled.ul`
     padding:0;
     display:flex;
     list-style-type:none;
-
     
 `
+export let Li = styled.li`
+    border-right:1px solid ${colorVar.dividerColor};
+    display:flex;
+`
 export let StyledNavLink = styled(NavLink)`
-    background:black;
-    padding:5px 15px;
-    border-radius:15px;
-    background:white;
     text-decoration:none;
-    color:#FF9800;
     margin:0 2rem;
     position:relative;
-    border:1.5px solid #FF9800;
     text-transform:capitalize;
-    
+    overflow:hidden;
+    align-items:center;
+    justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:${colorVar.text};
+    flex-direction:column;   
    
 `
 

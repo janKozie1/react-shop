@@ -1,16 +1,33 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
 import * as S from '../../styledComponents/all.js'
+import Logo from '../Logo'
+
 const NavBar = () => {
+    let links = [
+        {
+            path:'/',
+            text:'home'       
+        },
+        {
+            path:'/user',
+            text:'user'       
+        },
+        {
+            path:'/cart',
+            text:'cart'       
+        },
+        {
+            path:'/about',
+            text:'about'       
+        },
+    ]
     return (
         <S.Nav>
             <S.Logo>LOGO</S.Logo>
-          
             <S.Ul> 
-                <li> <S.StyledNavLink exact to='/'>home</S.StyledNavLink></li>
-                <li><S.StyledNavLink exact to='/about'>about</S.StyledNavLink></li>
-                <li><S.StyledNavLink exact to='/about'>about</S.StyledNavLink></li>
-                <li><S.StyledNavLink exact to='/about'>about</S.StyledNavLink></li>
+                {links.map((e,index)=>{
+                    return <S.Li><S.StyledNavLink exact to={e.path}><Logo name={e.text} medium />{e.text}</S.StyledNavLink></S.Li>
+                })}
             </S.Ul>
 
         </S.Nav>
@@ -18,20 +35,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-{/*            <Router>
-                <div className='app'>
-                    <NavLink activeStyle={{ color: 'skyblue' }} exact to='/'>home</NavLink>
-                    <NavLink activeStyle={{ color: 'red' }} exact to='/about'>About</NavLink>
-                    <Route path='/' exact render={() => {
-                        return <h1>Welcome home!</h1>
-                    }}>
-                    </Route>
-
-                    <Route path='/about' exact render={() => {
-                        return <h1>Welcome in about!</h1>
-                    }}>
-                    </Route>
-                    <Route path='/user/:username' component={User} />
-                </div>
-            </Router> */}
