@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from '../../styledComponents/all.js'
-import Logo from '../Logo'
-
+import * as S from './styledComponents'
+import Logo from '../Logo/Logo'
+import NavIcon from './NavIcon'
 const NavBar = () => {
     let links = [
         {
@@ -24,9 +24,11 @@ const NavBar = () => {
     return (
         <S.Nav>
             <S.Logo>LOGO</S.Logo>
+            <div style={{flex:1}}/>
             <S.Ul> 
                 {links.map((e,index)=>{
-                    return <S.Li><S.StyledNavLink exact to={e.path}><Logo name={e.text} medium />{e.text}</S.StyledNavLink></S.Li>
+                    return <NavIcon key={index} path={e.path} text={e.text}/>
+                   
                 })}
             </S.Ul>
 

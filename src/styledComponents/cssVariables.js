@@ -8,3 +8,7 @@ export let colorVar = {
     secondaryText:'#757575',
     dividerColor:'#BDBDBD'
 }
+
+export let marginVar = {
+    sideMargin:'10rem',
+}
