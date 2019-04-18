@@ -3,7 +3,7 @@ import * as S from './styledComponents'
 const Slider = () => {
     return (
         <S.Slider>
-            as
+           
         </S.Slider>
     );
 };

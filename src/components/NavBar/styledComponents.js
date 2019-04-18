@@ -1,29 +1,42 @@
 import styled from 'styled-components'
-import {colorVar} from '../../styledComponents/cssVariables'
-import {marginVar} from '../../styledComponents/cssVariables'
+import {colorVar} from '../cssVariables'
+import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
+
+
+
 export let Nav = styled.nav`
     width:100%;
-    height:64px;
+    height:${sizes.navHeight};
+    display:grid;
+    grid-template-columns: ${sizes.sideMargin} 1fr  ${sizes.sideMargin};
     padding:0;
     margin:0;
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    position:fixed;
-    left:0;
-    top:0;
     background:white;
     z-index:300;
     border-bottom: 1px solid ${colorVar.dividerColor};
-
 `
+
+export let Container = styled.div`
+    grid-column:2/3;
+    height:64px;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    @media (max-width:${sizes.firstBreakpoint}){
+        justify-content:center;
+    }
+`
+
 export let Ul = styled.ul`
     margin:0;
     padding:0;
     display:flex;
+    
     list-style-type:none;
-    margin-right:${marginVar.sideMargin};
+    @media (max-width:${sizes.firstBreakpoint}){
+        display:none;
+    }
 `
 
 export let Li = styled.li`
@@ -41,7 +54,7 @@ export let Li = styled.li`
 `
 export let StyledNavLink = styled(NavLink)`
     text-transform:uppercase;
-    font-size:0.8rem;
+    font-size:0.7rem;
     font-weight:bolder;  
     text-decoration:none;
     color:${colorVar.text};
@@ -61,5 +74,13 @@ export let StyledNavLink = styled(NavLink)`
 
 export let Logo = styled.div`
     font-size:1.5rem;
-    margin-left:${marginVar.sideMargin};
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    >span{
+        padding-left:1rem;
+        color:${colorVar.primaryColor}
+    }
 `
