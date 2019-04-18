@@ -5,5 +5,5 @@ export let Home = styled.div`
     display:grid;
     grid-row-gap:1rem;
     grid-template-rows:250px 1fr;
-    padding-top:50px;
+    
 `

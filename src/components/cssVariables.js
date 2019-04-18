@@ -11,7 +11,11 @@ export let colorVar = {
 
 export let sizes = {
     sideMargin:'10%',
-    headerHeight:'96px',
-    navHeight:'64px',
-    firstBreakpoint:'760px'
+    headerHeight:'105px',
+    navHeight:'65px',
+    categoryHeight:'40px',
+    firstBreakpoint:{
+        upper:'760px',
+        lower:'761px'
+    }
 }

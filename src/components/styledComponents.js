@@ -50,6 +50,5 @@ export let Header = styled.header`
     z-index:300;
     display:flex;
     flex-direction:column;
-    
 `
 

@@ -7,16 +7,18 @@ export let CategoryList = styled.menu`
     grid-template-columns:${sizes.sideMargin} 1fr ${sizes.sideMargin};
     margin:0;
     padding:0;
-
+    height:${sizes.categoryHeight};
+    box-sizing:border-box;
     border-bottom:1px solid ${colorVar.dividerColor};
     background-color:rgba(0,0,0,0.11);
-    @media (max-width:${sizes.firstBreakpoint}){
+    @media (max-width:${sizes.firstBreakpoint.upper}){
         display:none;
     }
     >ul{
         padding:0;
         grid-column:2/3;
         margin:0;
+        height:100%;
         list-style-type:none;
         flex-direction:row;
         height:100%;
@@ -24,6 +26,7 @@ export let CategoryList = styled.menu`
         grid-template-columns:repeat(7,1fr);
         >li{
             flex:1;
+            height:100%
             display:flex;
             padding:10px 25px;
             text-align:center;

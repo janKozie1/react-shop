@@ -14,6 +14,7 @@ export let Nav = styled.nav`
     margin:0;
     background:white;
     z-index:300;
+    box-sizing:border-box;
     border-bottom: 1px solid ${colorVar.dividerColor};
 `
 
@@ -23,7 +24,8 @@ export let Container = styled.div`
     width:100%;
     display:flex;
     justify-content:space-between;
-    @media (max-width:${sizes.firstBreakpoint}){
+    align-items:center;
+    @media (max-width:${sizes.firstBreakpoint.upper}){
         justify-content:center;
     }
 `
@@ -34,7 +36,7 @@ export let Ul = styled.ul`
     display:flex;
     
     list-style-type:none;
-    @media (max-width:${sizes.firstBreakpoint}){
+    @media (max-width:${sizes.firstBreakpoint.upper}){
         display:none;
     }
 `
@@ -44,7 +46,7 @@ export let Li = styled.li`
     display:flex;
     >a{
         width:100%;
-        margin:auto 0;
+        margin: 0;
         padding:0 25px;
     }
     &:last-child{
@@ -82,5 +84,8 @@ export let Logo = styled.div`
     >span{
         padding-left:1rem;
         color:${colorVar.primaryColor}
+    }
+    @media(max-width:${sizes.firstBreakpoint.upper}){
+        margin-right:auto;
     }
 `

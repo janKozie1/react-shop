@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './styledComponents'
 import NavIcon from './NavIcon'
+import ToggleButton from './ToggleButton/ToggleButon'
 const NavBar = () => {
     let links = [
         {
@@ -23,6 +24,7 @@ const NavBar = () => {
     return (
         <S.Nav>
             <S.Container>
+                <ToggleButton />
                 <S.Logo>PLANT <span>IT</span></S.Logo>
                 <S.Ul> 
                     {links.map((e,index)=>{
