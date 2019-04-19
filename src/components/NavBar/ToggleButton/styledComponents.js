@@ -27,7 +27,20 @@ const closeBottom = keyframes`
         transform:rotate(-45deg);
     }
 `
-
+const closeMiddle = keyframes`
+    0%{
+        visibility:visible;
+    }
+    50%{
+        visibility:visible;
+    }
+    50.001%{
+        visibility:hidden;
+    }
+    100%{
+        visibility:hidden;
+    }
+`
 const openBottom = keyframes`
     0%{
         transform:rotate(-45deg);
@@ -53,6 +66,21 @@ const openTop = keyframes`
         transform:translateY(-400%);
     }
 `
+const openMiddle = keyframes`
+    0%{
+        visibility:hidden;
+    }
+    50%{
+        visibility:hidden;
+    }
+    50.001%{
+        visibility:visible;
+    }
+    100%{
+        visibility:visible;
+    }
+`
+
 export let Button = styled.button`
     height:21px;
     border:none;
@@ -68,24 +96,26 @@ export let Button = styled.button`
     left:0;
     position:relative;
     margin-right:auto;
-    visibility:hidden;
     -webkit-tap-highlight-color: transparent;
-    ${props => props.isToggled && css`
-        visibility:hidden;
-        transition:visibility ${animDurat/2}s;
-        
-    `}
-    ${props => (!props.isToggled) && css`
-        visibility:visible;
-        transition:visibility 2s;
-        
-    `}
     @media (min-width:${sizes.firstBreakpoint.lower}){
         display:none;
     }
     &:active{
         outline:none;
     }
+    
+`
+export let Bar = styled.div`
+    width:100%;
+    height:2px;
+    padding:0;
+    background:${colorVar.text};  
+    position:relative; 
+    animation:${openMiddle} ${animDurat}s ease;
+    ${props => props.isToggled && css`
+        animation:${closeMiddle} ${animDurat}s ease;
+        visibility:hidden;
+    `}
     &:after,&:before{
         content:'';
         left:0;
@@ -93,7 +123,6 @@ export let Button = styled.button`
         height:2px;
         position:absolute;
         visibility: visible;
-        
         background: ${colorVar.text};
     }
     &:before{
@@ -115,10 +144,4 @@ export let Button = styled.button`
             transform:rotate(-45deg);
         `}
     }
-`
-export let Bar = styled.div`
-    width:100%;
-    height:2px;
-    padding:0;
-    background:${colorVar.text};   
 `

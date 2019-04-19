@@ -43,7 +43,7 @@ export let Header = styled.header`
     left:0;
     top:0;
     width:100%;
-    height:${sizes.headerHeight};
+  
     padding:0;
     margin:0;
     background:white;

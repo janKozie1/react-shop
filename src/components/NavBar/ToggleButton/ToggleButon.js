@@ -1,12 +1,19 @@
 import React,{useState} from 'react';
 
-import * as S from './styledComponents.js'
+import * as S from './styledComponents'
+
+import NavContext from "../../nav-context";
 const ToggleButon = () => {
-    let [isToggled,setIsToggled]=useState(false)
     return (
-        <S.Button isToggled={isToggled} onClick={()=>setIsToggled(!isToggled)}>
-            <S.Bar />
-        </S.Button>
+        <NavContext.Consumer>
+            {({isToggled,setToggle})=>(
+                <S.Button  onClick={()=>setToggle(!isToggled)}>
+                    <S.Bar isToggled={isToggled}  />   
+                </S.Button>
+            )}
+            
+        </NavContext.Consumer>
+        
     );
 };
 
