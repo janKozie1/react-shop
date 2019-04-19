@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styledComponents'
-const Logo = ({name}) => {
+const Logo = ({name, size}) => {
 
     let paths = {
         about:{
@@ -17,7 +17,7 @@ const Logo = ({name}) => {
         }
     }
     return (
-        <S.Svg xmlns="http://www.w3.org/2000/svg" medium viewBox="0 0 48 48">
+        <S.Svg xmlns="http://www.w3.org/2000/svg" size={size} viewBox="0 0 48 48">
             <path d={paths[name].path}/>
         </S.Svg >
     );

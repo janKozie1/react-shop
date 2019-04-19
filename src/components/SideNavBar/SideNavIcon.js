@@ -1,15 +1,15 @@
 import React from 'react';
-import * as S from './styledComponents'
 import Logo from '../Logo/Logo'
+import * as S from './styledComponents'
 
-const NavIcon = ({path,text,iconSize}) => {
+const SideNavIcon = ({path,text,iconSize}) => {
     return (
         <S.Li>
             <S.StyledNavLink exact to={path}><Logo name={text} size={iconSize} />
-                {text}
+                <p>{text}</p>
             </S.StyledNavLink>
         </S.Li>
     );
 };
 
-export default NavIcon;
+export default SideNavIcon;

@@ -2,25 +2,8 @@ import React from 'react';
 import * as S from './styledComponents'
 import NavIcon from './NavIcon'
 import ToggleButton from './ToggleButton/ToggleButon'
-const NavBar = () => {
-    let links = [
-        {
-            path:'/',
-            text:'home'       
-        },
-        {
-            path:'/user',
-            text:'user'       
-        },
-        {
-            path:'/cart',
-            text:'cart'       
-        },
-        {
-            path:'/about',
-            text:'about'       
-        },
-    ]
+const NavBar = ({links}) => {
+    
     return (
         <S.Nav>
             <S.Container>
@@ -28,7 +11,7 @@ const NavBar = () => {
                 <S.Logo>PLANT <span>IT</span></S.Logo>
                 <S.Ul> 
                     {links.map((e,index)=>{
-                        return <NavIcon key={index} path={e.path} text={e.text}/>
+                        return <NavIcon key={index} path={e.path} text={e.text} iconSize={'medium'}/>
                     
                     })}
                 </S.Ul>
