@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 
 import * as S from './styledComponents'
 
-import NavContext from "../../nav-context";
+import NavContext from "../../context/nav-context";
 const ToggleButon = () => {
     return (
         <NavContext.Consumer>

@@ -2,17 +2,13 @@ import React from 'react';
 
 import * as S from './styledComponents'
 
-const Categories = () => {
+const Categories = ({categories}) => {
     return (
         <S.CategoryList>
                 <ul>
-                    <li>Indoors</li>
-                    <li>Outdoors</li>
-                    <li>Herbs</li>
-                    <li>Aquarium</li>
-                    <li>Fruits</li>
-                    <li>Vegetables</li>
-                    <li>Accesories</li>
+                    {categories.map((e,index)=>{
+                        return <li key={index}>{e}</li>
+                    })}
                 </ul>
         </S.CategoryList>
     );

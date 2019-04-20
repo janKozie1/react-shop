@@ -16,6 +16,9 @@ export let Nav = styled.nav`
     ${props => props.isToggled && css`
         transform:translateX(0%);
     `}
+    @media (min-width:${sizes.firstBreakpoint.lower}){
+        display:none;
+    }
 
 `
 

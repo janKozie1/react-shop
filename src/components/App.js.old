@@ -1,0 +1,43 @@
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import * as S from './styledComponents'
+
+import About from './About/About';
+import Home from './Home/Home';
+import NavBar from './NavBar/NavBar'
+import Categories from './Categories/Categories'
+import SideNavBar from './SideNavBar/SideNavBar'
+
+import NavContext from './nav-context'
+
+class App extends Component {
+    setToggle = isToggled =>{
+        this.setState({isToggled})
+    }
+    state = {
+        isToggled :false,
+        setToggle:this.setToggle
+    }
+    render() {
+        return (
+            <Router>
+                
+                <S.GlobalStyle />
+                <NavContext.Provider value ={this.state}>
+                    <S.Header>
+                        <NavBar />
+                        <Categories />
+                    </S.Header>
+                    <SideNavBar />
+                </NavContext.Provider>
+                <S.Main>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/about/' exact component={About} />
+                </S.Main>
+
+            </Router>
+        );
+    }
+}
+
+export default App; 

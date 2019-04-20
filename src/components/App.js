@@ -7,11 +7,9 @@ import Home from './Home/Home';
 import NavBar from './NavBar/NavBar'
 import Categories from './Categories/Categories'
 import SideNavBar from './SideNavBar/SideNavBar'
-
-import NavContext from './nav-context'
-
+import GlobalContext from './context/GlobalContext'
 const App = () => {
-    let [isToggled,setToggle] = useState(false);
+    
     let links = [
         {
             path:'/',
@@ -30,21 +28,30 @@ const App = () => {
             text:'about'       
         },
     ]
+    let categories = [
+        'Indoors',
+        'Outdoors',
+        'Herbs',
+        'Aquarium',
+        'Fruits',
+        'Vegetables',
+        'Accesories'
+    ]
     return (
-        <Router>
-            <S.GlobalStyle />
-            <NavContext.Provider value={{isToggled,setToggle}}>
+        <GlobalContext>
+            <Router>
+                <S.GlobalStyle />
                 <S.Header>
                     <NavBar links={links}/>
-                    <Categories />
+                    <Categories categories={categories} />
                 </S.Header>
                 <SideNavBar links={links}/>
-            </NavContext.Provider>
-            <S.Main>
-                <Route path='/' exact component={Home} />
-                <Route path='/about/' exact component={About} />
-            </S.Main>
-        </Router>
+                <S.Main>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/about/' exact component={About} />
+                </S.Main>
+            </Router>
+        </GlobalContext>
     );
     
 }
