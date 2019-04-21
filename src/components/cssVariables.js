@@ -10,7 +10,10 @@ export let colorVar = {
 }
 
 export let sizes = {
-    sideMargin:'10%',
+    sideMargin:{
+        small:'2rem',
+        big:'10%' //10rem?
+    },
     headerHeight:'105px',
     navHeight:'65px',
     categoryHeight:'40px',

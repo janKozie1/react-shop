@@ -4,7 +4,7 @@ import { sizes } from '../cssVariables'
 export let CategoryList = styled.menu`
     width:100%;
     display:grid;
-    grid-template-columns:${sizes.sideMargin} 1fr ${sizes.sideMargin};
+    grid-template-columns:${sizes.sideMargin.big} 1fr ${sizes.sideMargin.big};
     margin:0;
     padding:0;
     height:${sizes.categoryHeight};

@@ -6,6 +6,8 @@ export let Nav = styled.nav`
     height:100%;
     width:40%;
     position:absolute;
+    z-index:300;
+    background:white;
     left:0%;
     top:${sizes.navHeight};
     position:fixed;
@@ -28,7 +30,8 @@ export let Li = styled.li`
         width:100%;
         margin: 0;
         display:flex;
-        padding:12.5px 20px;
+        padding:12.5px 0px;
+        padding-left:${sizes.sideMargin.small};
         align-items:center;
         justify-content:flex-start;
         >svg{

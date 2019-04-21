@@ -4,10 +4,12 @@ import * as S from './styledComponents'
 
 import About from './About/About';
 import Home from './Home/Home';
+import SignUp from './SignUp/SignUp'
 import NavBar from './NavBar/NavBar'
 import Categories from './Categories/Categories'
 import SideNavBar from './SideNavBar/SideNavBar'
 import GlobalContext from './context/GlobalContext'
+
 const App = () => {
     
     let links = [
@@ -37,6 +39,7 @@ const App = () => {
         'Vegetables',
         'Accesories'
     ]
+    console.group(process.env)
     return (
         <GlobalContext>
             <Router>
@@ -49,6 +52,7 @@ const App = () => {
                 <S.Main>
                     <Route path='/' exact component={Home} />
                     <Route path='/about/' exact component={About} />
+                    <Route path='/user/' exact component={SignUp} />
                 </S.Main>
             </Router>
         </GlobalContext>

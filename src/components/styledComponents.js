@@ -22,7 +22,7 @@ export let GlobalStyle = createGlobalStyle`
                 height:100%;
             }
         }   
-        *{
+        *,*::after,*::before{
             box-sizing:border-box;
         } 
     }
@@ -34,16 +34,21 @@ export let Main = styled.main`
     margin:0;
     padding:0;
     margin-top:${sizes.headerHeight};
+    @media (max-width:${sizes.firstBreakpoint.upper}){
+        margin-top:${sizes.navHeight};
+    }
     height:100%;
     display:grid;
-    grid-template-columns:${sizes.sideMargin} 1fr ${sizes.sideMargin};
+    grid-template-columns:${sizes.sideMargin.big} 1fr ${sizes.sideMargin.big};
+    @media(max-width:${sizes.firstBreakpoint.upper}){
+        grid-template-columns:${sizes.sideMargin.small} 1fr ${sizes.sideMargin.small};
+    }
 `
 export let Header = styled.header`
     position:fixed;
     left:0;
     top:0;
     width:100%;
-  
     padding:0;
     margin:0;
     background:white;

@@ -9,7 +9,10 @@ export let Nav = styled.nav`
     width:100%;
     height:${sizes.navHeight};
     display:grid;
-    grid-template-columns: ${sizes.sideMargin} 1fr  ${sizes.sideMargin};
+    grid-template-columns: ${sizes.sideMargin.big} 1fr  ${sizes.sideMargin.big};
+    @media(max-width:${sizes.firstBreakpoint.upper}){
+        grid-template-columns: ${sizes.sideMargin.small} 1fr  ${sizes.sideMargin.small}; 
+    }
     padding:0;
     margin:0;
     background:white;
