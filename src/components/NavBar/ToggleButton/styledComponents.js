@@ -1,7 +1,6 @@
 import styled, {css, keyframes} from 'styled-components'
-import {colorVar} from '../../cssVariables'
+import {colors} from '../../cssVariables'
 import {sizes} from '../../cssVariables'
-const animDurat = 0.8;
 const closeTop = keyframes`
     0%{
         transform:translateY(-400%);
@@ -109,11 +108,11 @@ export let Bar = styled.div`
     width:100%;
     height:2px;
     padding:0;
-    background:${colorVar.text};  
+    background:${colors.text};  
     position:relative; 
-    animation:${openMiddle} ${animDurat}s ease;
+    animation:${openMiddle} ${sizes.toggleAnimDur} ease;
     ${props => props.isToggled && css`
-        animation:${closeMiddle} ${animDurat}s ease;
+        animation:${closeMiddle} ${sizes.toggleAnimDur} ease;
         visibility:hidden;
     `}
     &:after,&:before{
@@ -123,23 +122,23 @@ export let Bar = styled.div`
         height:2px;
         position:absolute;
         visibility: visible;
-        background: ${colorVar.text};
+        background: ${colors.text};
     }
     &:before{
-        animation:${openTop} ${animDurat}s ease;
+        animation:${openTop} ${sizes.toggleAnimDur} ease;
         transform:translateY(-400%);
         ${props => props.isToggled && css`
-            animation:${closeTop} ${animDurat}s ease;
+            animation:${closeTop} ${sizes.toggleAnimDur} ease;
             transform:translateY(0);
             transform:rotate(45deg);
         `}
        
     }
     &:after{
-        animation:${openBottom} ${animDurat}s ease;
+        animation:${openBottom} ${sizes.toggleAnimDur} ease;
         transform:translateY(400%);
         ${props => props.isToggled && css`
-            animation:${closeBottom} ${animDurat}s ease;
+            animation:${closeBottom} ${sizes.toggleAnimDur} ease;
             transform:translateY(0);
             transform:rotate(-45deg);
         `}

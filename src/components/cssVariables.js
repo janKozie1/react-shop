@@ -1,4 +1,4 @@
-export let colorVar = {
+export let colors = {
     primaryColor:'#4CAF50',
     darkPrimaryColor:'#388E3C',
     lightPrimaryColor:'#C8E6C9',
@@ -20,5 +20,6 @@ export let sizes = {
     firstBreakpoint:{
         upper:'760px',
         lower:'761px'
-    }
+    },
+    toggleAnimDur:'0.4s'
 }

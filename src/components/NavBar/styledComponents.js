@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {colorVar} from '../cssVariables'
+import {colors} from '../cssVariables'
 import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
 
@@ -18,7 +18,7 @@ export let Nav = styled.nav`
     background:white;
     z-index:300;
     box-sizing:border-box;
-    border-bottom: 1px solid ${colorVar.dividerColor};
+    border-bottom: 1px solid ${colors.dividerColor};
 `
 
 export let Container = styled.div`
@@ -45,7 +45,7 @@ export let Ul = styled.ul`
 `
 
 export let Li = styled.li`
-    border-right:1px solid ${colorVar.dividerColor};
+    border-right:1px solid ${colors.dividerColor};
     display:flex;
     >a{
         width:100%;
@@ -62,7 +62,7 @@ export let StyledNavLink = styled(NavLink)`
     font-size:0.7rem;
     font-weight:bolder;  
     text-decoration:none;
-    color:${colorVar.text};
+    color:${colors.text};
     margin:0 2rem;
     position:relative;
     overflow:hidden;
@@ -86,7 +86,7 @@ export let Logo = styled.div`
     text-align:center;
     >span{
         padding-left:1rem;
-        color:${colorVar.primaryColor}
+        color:${colors.primaryColor}
     }
     @media(max-width:${sizes.firstBreakpoint.upper}){
         margin-right:auto;

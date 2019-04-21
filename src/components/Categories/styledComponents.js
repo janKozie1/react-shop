@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colorVar } from '../cssVariables'
+import { colors } from '../cssVariables'
 import { sizes } from '../cssVariables'
 export let CategoryList = styled.menu`
     width:100%;
@@ -9,7 +9,7 @@ export let CategoryList = styled.menu`
     padding:0;
     height:${sizes.categoryHeight};
     box-sizing:border-box;
-    border-bottom:1px solid ${colorVar.dividerColor};
+    border-bottom:1px solid ${colors.dividerColor};
     background-color:rgba(0,0,0,0.11);
     @media (max-width:${sizes.firstBreakpoint.upper}){
         display:none;
@@ -46,14 +46,12 @@ export let CategoryList = styled.menu`
                 bottom:0;
                 transform:translateY(100%);
                 position:absolute;
-                background:${colorVar.primaryColor};
+                background:${colors.primaryColor};
                 transition:transform 0.3s ease;
             }
             &:hover::before{
                 transform:translateY(0);
-            }
-            
-
+            }      
         }
     }
 `

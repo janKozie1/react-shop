@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../Logo/Logo'
 import * as S from './styledComponents'
 
-const SideNavIcon = ({path,text,iconSize}) => {
+const SideNavLink = ({path,text,iconSize}) => {
     return (
         <S.Li>
             <S.StyledNavLink exact to={path}><Logo name={text} size={iconSize} />
@@ -12,4 +12,4 @@ const SideNavIcon = ({path,text,iconSize}) => {
     );
 };
 
-export default SideNavIcon;
+export default SideNavLink;

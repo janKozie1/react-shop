@@ -1,7 +1,8 @@
 import styled,{css} from 'styled-components'
 import {sizes} from '../cssVariables'
-import {colorVar} from '../cssVariables'
+import {colors} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
+
 export let Nav = styled.nav`
     height:100%;
     width:40%;
@@ -13,8 +14,8 @@ export let Nav = styled.nav`
     position:fixed;
     box-sizing:border-box;
     transform:translateX(-100%);
-    transition:transform 0.8s ease;
-    border-right:1px solid ${colorVar.dividerColor};
+    transition:transform ${sizes.toggleAnimDur} ease;
+    border-right:1px solid ${colors.dividerColor};
     ${props => props.isToggled && css`
         transform:translateX(0%);
     `}
@@ -52,7 +53,7 @@ export let StyledNavLink = styled(NavLink)`
     font-size:0.7rem;
     font-weight:bolder;  
     text-decoration:none;
-    color:${colorVar.text};
+    color:${colors.text};
     margin:0 2rem;
     position:relative;
     overflow:hidden;
@@ -61,7 +62,7 @@ export let StyledNavLink = styled(NavLink)`
     display:flex;   
     width:100%;
     &:hover{
-        transform:scale(1.1);
+        transform:scale(1.05);
         transition:transform 0.3s;
     }  
 `
