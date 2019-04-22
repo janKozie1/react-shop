@@ -8,17 +8,31 @@ export let SignUp = styled.section`
     display:flex;
     flex-direction:row;
     justify-content:center;
+    width:100%;
+
 `
 
 export let FormContainer = styled.div`
     width:80%;
     display:grid;
     grid-template-columns: 4fr 6fr;
-    margin-top:250px;
+    margin-top:10%;
     height:300px;
     justify-items:center;
     align-content:center;
     grid-column-gap:2em;
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+        grid-template-columns:1fr;
+        grid-column-gap:0;
+        margin-top:20px;
+        height:auto;
+        align-content:start;
+    }
+`
+export let Spacer = styled.div`
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+            display:none;
+    }
 `
 export let ImageContainer = styled.div`
     height:300px;
@@ -61,7 +75,9 @@ export let Form = styled.form`
     width:100%;
     height:300px;
     @media(max-width:${sizes.firstBreakpoint.lower}){
-        grid-column:1/3;
+        grid-template-columns:1fr;
+        grid-column-end:0;
+        height:auto;
     }
     
 `
@@ -82,7 +98,7 @@ export let Input = styled.input`
     border-bottom:1px solid ${colors.dividerColor};
     padding:9px 0px;
     &::placeholder{
-        color:rgba(0,0,0,0.3);
+        color:rgba(0,0,0,0.4);
     }
     &[type='password']{
         grid-column:1/2;
@@ -103,7 +119,7 @@ export let SubmitButton = styled.button`
     justify-content:center;
     align-items:center;
     
-    width:40%;
+    width:50%;
     height:min-content;
     padding:10px 5px;
     border-radius:5px;
@@ -117,6 +133,9 @@ export let SubmitButton = styled.button`
         color:white;
         background:${colors.primaryColor};
     }
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+        width:100%;
+    }
 
 `
 export let LinkContainer = styled(NavLink)`
@@ -124,8 +143,9 @@ export let LinkContainer = styled(NavLink)`
     display:flex;
     align-items:center;
     color:rgba(0,0,0,0.7);
+    font-size:0.8rem;
     text-decoration:none;
-    width:40%;
+    width:100%;
     &::before{
             content:'>>';
             position:absolute;
@@ -135,6 +155,7 @@ export let LinkContainer = styled(NavLink)`
             display:flex;
             align-items:center;
             opacity:0;
+            width:15px;
             transition:opacity 1s ease;
     }
     &:hover{
@@ -142,17 +163,22 @@ export let LinkContainer = styled(NavLink)`
            opacity:1;
        }
         >p{
-            transform:translateX(15%);
+            transform:translateX(20px);
             
         }
     }
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+        margin-top:-40px;
+       grid-row:7/8;
+    }
+    
 `
 export let Paragraph = styled.p`
     width:100%;
     margin:0;
     padding:10px 5px;
     padding-left:0px;
-    font-size:0.9rem;
+    font-size:0.8rem;
     text-decoration:none;
     display:flex;
     align-items:flex-end;

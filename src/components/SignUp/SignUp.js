@@ -30,7 +30,7 @@ const SignUp = () => {
                     <span>E-mail</span>
                     <S.Input type="email" id="emailInput" placeholder='E-mail...' value={userEmail} onChange={e=>changeUserEmail(e.target.value)} />
                 </S.Label>
-                <div></div>
+                <S.Spacer></S.Spacer>
                 <S.Label password htmlFor="passwordInput">
                     <span>Password</span>
                     <S.Input type="password" id="passwordInput" placeholder='Password...' value={userPassword} onChange={e=>changeUserPassword(e.target.value)} />
@@ -41,15 +41,11 @@ const SignUp = () => {
                     <S.Input type="password" id="confirmPassword" placeholder='Confirm password...' value={userPassword} onChange={e=>changeUserPassword(e.target.value)} />
                 </S.Label>
                 <S.LinkContainer exact to='/login'>
-                    <S.Paragraph>Log-in instead</S.Paragraph>
+                    <S.Paragraph>Got an account? Login</S.Paragraph>
                 </S.LinkContainer>
-                
                 <S.SubmitButton type="submit">Sign up</S.SubmitButton>
-                
             </S.Form>
             </S.FormContainer>
-           
-          
         </S.SignUp>
     );
 };
