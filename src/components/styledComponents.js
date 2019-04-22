@@ -4,7 +4,7 @@ import {sizes} from './cssVariables'
 
 export let GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto');  
-    @import url('https://fonts.googleapis.com/css?family=Raleway');
+    @import url('https://fonts.googleapis.com/css?family=Raleway:400,600');
     html{
         
         height:100%;

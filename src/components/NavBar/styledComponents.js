@@ -78,7 +78,7 @@ export let StyledNavLink = styled(NavLink)`
 `
 
 export let Logo = styled.div`
-    font-size:1.5rem;
+    font-size:2rem;
     height:100%;
     display:flex;
     justify-content:center;

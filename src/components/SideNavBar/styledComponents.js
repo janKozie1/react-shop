@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom'
 
 export let Nav = styled.nav`
     height:100%;
-    width:40%;
+    width:50%;
     position:absolute;
     z-index:300;
     background:white;
