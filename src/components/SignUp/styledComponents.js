@@ -93,15 +93,21 @@ export let Label = styled.label`
     justify-content:space-between;
     height:100%;
     flex-direction:column;
-    ${props => props.email && css`
-        
-        
-    `}
+
 `
 export let Input = styled.input`
     border:none;
     border-bottom:1px solid ${colors.dividerColor};
     padding:9px 0px;
+    position:relative;
+    &:after{
+            width:100%;
+            height:10px;
+            position:absolute;
+            left:0;
+            bottom:0;
+            color:red;
+    }
     &::placeholder{
         color:rgba(0,0,0,0.4);
     }
@@ -113,8 +119,10 @@ export let Input = styled.input`
     }
     &:focus{
         outline:none;
+       
         border-bottom: 1px solid ${colors.lightPrimaryColor};
         transition: border 0.5s;
+        
     }
 `
 
