@@ -8,7 +8,11 @@ export let SignUp = styled.section`
     display:flex;
     flex-direction:row;
     justify-content:center;
+    align-items:center;
     width:100%;
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+        align-items:flex-start;
+    }
 
 `
 
@@ -16,7 +20,6 @@ export let FormContainer = styled.div`
     width:80%;
     display:grid;
     grid-template-columns: 4fr 6fr;
-    margin-top:10%;
     height:300px;
     justify-items:center;
     align-content:center;
@@ -30,6 +33,8 @@ export let FormContainer = styled.div`
     }
 `
 export let Spacer = styled.div`
+    grid-row:2/3;
+    grid-column:2/3;
     @media(max-width:${sizes.firstBreakpoint.lower}){
             display:none;
     }

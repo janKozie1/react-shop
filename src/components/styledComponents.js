@@ -33,7 +33,8 @@ export let Main = styled.main`
     width:100%;
     margin:0;
     padding:0;
-    margin-top:${sizes.headerHeight};
+    /* margin-top:${sizes.headerHeight};
+    because it was stretching the page */
     @media (max-width:${sizes.firstBreakpoint.upper}){
         margin-top:${sizes.navHeight};
     }

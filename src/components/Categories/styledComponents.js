@@ -44,7 +44,7 @@ export let CategoryList = styled.menu`
                 width:100%;
                 height:3px;
                 bottom:0;
-                transform:translateY(100%);
+                transform:translateY(105%);
                 position:absolute;
                 background:${colors.primaryColor};
                 transition:transform 0.3s ease;
