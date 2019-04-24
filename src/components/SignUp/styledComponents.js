@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components'
 import {colors} from '../cssVariables'
 import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
+import {ReactComponent as icon} from '../../images/errorIcon.svg'
 
 export let SignUp = styled.section`
     grid-column:2/3;
@@ -91,10 +92,73 @@ export let Label = styled.label`
     display:flex;
     align-items:space-between;
     justify-content:space-between;
+    position:relative;
     height:100%;
     flex-direction:column;
+    &::after{
+            position:absolute;
+            bottom:0;
+            width:0%;
+            height:1px;
+            transition:0.5s width ease ;
+            z-index:100;
+            content:'';
+    }
+    ${props => props.isFocused && css`  
+       &::after{
+           width:100%;
+           background:${props => props.isValid ? colors.primaryColor : colors.error}
+          
+       }
+    `}
+`
+export let InputHeader = styled.span`
+    display:flex;
+    align-items:center;
+    >p{
+        margin:0;
+        &::first-letter{
+            text-transform:capitalize;
+        }
+    }
+`
+export let ErrorContainer = styled.div`
+    margin-left:15px;
+    height:20px;
+    width:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    &::after{
+            transform:translateY(100%);
+            opacity:0;
+            transition:transform 0.5s ease,opacity 0.5s ease;
+            position:absolute;
+            top:-20px;
+            width:max-content;
+            height:20px;
+            content:attr(data-errorMsg);
+    }
+    &:hover{
+        &::after{
+            transform:translateY(0);
+            opacity:1;
+        }
+    }
 
 `
+export let ErrorIcon = styled(icon)`
+    fill:${colors.error};
+    height:100%;
+  
+    position:relative;
+    
+    &:hover{
+        
+    }
+
+`
+
 export let Input = styled.input`
     border:none;
     border-bottom:1px solid ${colors.dividerColor};
@@ -119,10 +183,6 @@ export let Input = styled.input`
     }
     &:focus{
         outline:none;
-       
-        border-bottom: 1px solid ${colors.lightPrimaryColor};
-        transition: border 0.5s;
-        
     }
 `
 

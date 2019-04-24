@@ -6,7 +6,8 @@ export let colors = {
     icons:'#212121',
     accentColor:'#8BC34A',
     secondaryText:'#757575',
-    dividerColor:'#BDBDBD'
+    dividerColor:'#BDBDBD',
+    error:'#F44336'
 }
 
 export let sizes = {

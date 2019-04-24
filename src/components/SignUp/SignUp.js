@@ -19,24 +19,39 @@ const SignUp = () => {
     const fields = [
         {
             text:'name',
-            type:'text'
+            type:'text',
+            validation:(input)=>{
+                let regex = /^[a-zA-Z]+$/;
+                return  (regex.test(input) && input.length>=3);
+            }
         },
         {
             text:'surname',
-            type:'text'
+            type:'text',
+            validation:(input)=>{
+                let regex =  /^[a-zA-Z]+$/
+                return (regex.test(input) && input.length>=3);
+            }
         },
         {
             text:'email',
-            type:'email'
+            type:'email',
+            validation:(input)=>{
+                let regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+                return (regex.test(input))
+            }
         },
         {
             text:'password',
-            type:'password'
+            type:'password',
+            validation:(input)=>{
+                return input.length>=6
+            }
         },
         {
             text:'confirm password',
             id:'cPassword',
-            type:'password'
+            type:'password',
         },
     ]
     let onFormSubmit = e => {
