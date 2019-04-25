@@ -1,7 +1,7 @@
 import React, {useContext,useReducer, useState} from 'react';
 import img from '../../images/plant.png'
 import * as S from './styledComponents'
-import Input from './Input' 
+import Input from './Input/Input' 
 import {userDataReducer} from '../reducers/reducers'
 import firebaseContext from '../Firebase/context'
 
@@ -95,7 +95,7 @@ const SignUp = () => {
                 <S.ImageContainer>
                     <h3>Join us at PLANT <span>IT</span></h3>
                     <p>We provide our clients with the highest quality of saplings, herbs and many other plants.</p>
-                    <S.Img src={img} alt='sapling'/>
+                    <S.Image />
                 </S.ImageContainer>
                 <S.Form onSubmit={e => onFormSubmit(e)}>
                     {fields.map((e,index)=>{

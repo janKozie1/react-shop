@@ -19,8 +19,8 @@ export let sizes = {
     navHeight:'65px',
     categoryHeight:'40px',
     firstBreakpoint:{
-        upper:'760px',
-        lower:'761px'
+        upper:'820px',
+        lower:'821px'
     },
     toggleAnimDur:'0.4s'
 }

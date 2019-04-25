@@ -2,7 +2,7 @@ import styled, {css, keyframes} from 'styled-components'
 import {colors} from '../cssVariables'
 import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
-import {ReactComponent as icon} from '../../images/errorIcon.svg'
+import plant from '../../images/plant2.png'
 
 let appear = keyframes`
     from{
@@ -52,15 +52,14 @@ export let Spacer = styled.div`
 export let ImageContainer = styled.div`
     height:300px;
     width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    display:grid;
+    grid-template-rows:1fr 1fr 3fr;
     border-bottom-left-radius:30px;
     border-top-left-radius:30px;
-    flex-direction:column;
     text-align:center;
     padding:0px 20px;
     border-right:2px solid ${colors.dividerColor};
+
     >h3{
         margin-top:0;
         >span{
@@ -72,11 +71,13 @@ export let ImageContainer = styled.div`
     }
     
 `
-
-export let Img = styled.img`
-    width:150px;
-    height:150px;
-    margin-bottom:-16.11px;
+export let Image = styled.div`
+    width:100%;
+    height:100%;
+    background-image:url(${plant});
+    background-size:contain;
+    background-position:center bottom;
+    background-repeat:no-repeat;
 `
 
 export let Form = styled.form` 
@@ -95,108 +96,6 @@ export let Form = styled.form`
         height:auto;
     }
     
-`
-export let Label = styled.label`
-    font-size:0.9rem;
-    display:flex;
-    align-items:space-between;
-    justify-content:space-between;
-    position:relative;
-    height:100%;
-    flex-direction:column;
-    &::after{
-            position:absolute;
-            bottom:0;
-            width:0%;
-            height:1px;
-            transition:0.5s width ease ;
-            z-index:100;
-            content:'';
-    }
-    ${props => props.isFocused && css`  
-       &::after{
-           width:100%;
-           background:${props => props.isValid ? colors.primaryColor : colors.error}
-          
-       }
-    `}
-`
-export let InputHeader = styled.span`
-    display:flex;
-    align-items:center;
-    >p{
-        margin:0;
-        &::first-letter{
-            text-transform:capitalize;
-        }
-    }
-`
-export let ErrorContainer = styled.div`
-    margin-left:10px;
-    height:18px;
-    width:18px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    transition:opacity 0.5s;
-    ${props => !props.isValid && css`
-        opacity:1;
-    `}
-    &::after{
-            transform:translateX(60%);
-            opacity:0;
-            transition:transform 0.5s ease,opacity 0.5s ease;
-            position:absolute;
-            width:max-content;
-            display:flex;
-            align-items:center;
-            height:20px;
-            content:attr(data-errormsg);
-            margin-left:10px;
-            font-size:0.7rem;
-    }
-    &:hover{
-        &::after{
-            transform:translateX(50%);
-            opacity:1;
-        }
-    }
-
-`
-
-
-export let ErrorIcon = styled(icon)`
-    fill:${colors.error};
-    height:100%;
-    position:relative;
-`
-
-export let Input = styled.input`
-    border:none;
-    border-bottom:1px solid ${colors.dividerColor};
-    padding:9px 0px;
-    position:relative;
-    &:after{
-            width:100%;
-            height:10px;
-            position:absolute;
-            left:0;
-            bottom:0;
-            color:red;
-    }
-    &::placeholder{
-        color:rgba(0,0,0,0.4);
-    }
-    &[type='password']{
-        grid-column:1/2;
-        &:last-child{
-            grid-column:2/3;
-        }
-    }
-    &:focus{
-        outline:none;
-    }
 `
 
 export let SubmitButton = styled.button`
@@ -223,17 +122,9 @@ export let SubmitButton = styled.button`
         width:100%;
     }
     ${props => props.isLoading && css`
-            transform:scale(0.3,1);
             
-            >span{
-                display:none;
-            }   
     `}
 `
-const intoLoader = keyframes`
-
-`
-
 export let LinkContainer = styled(NavLink)`
     position:relative;
     display:flex;
