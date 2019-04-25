@@ -1,8 +1,17 @@
-import styled, {css} from 'styled-components'
+import styled, {css, keyframes} from 'styled-components'
 import {colors} from '../cssVariables'
 import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
 import {ReactComponent as icon} from '../../images/errorIcon.svg'
+
+let appear = keyframes`
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1;
+    }
+`
 
 export let SignUp = styled.section`
     grid-column:2/3;
@@ -123,40 +132,44 @@ export let InputHeader = styled.span`
     }
 `
 export let ErrorContainer = styled.div`
-    margin-left:15px;
-    height:20px;
-    width:20px;
+    margin-left:10px;
+    height:18px;
+    width:18px;
     display:flex;
     align-items:center;
     justify-content:center;
+    opacity:0;
+    transition:opacity 0.5s;
+    ${props => !props.isValid && css`
+        opacity:1;
+    `}
     &::after{
-            transform:translateY(100%);
+            transform:translateX(60%);
             opacity:0;
             transition:transform 0.5s ease,opacity 0.5s ease;
             position:absolute;
-            top:-20px;
             width:max-content;
+            display:flex;
+            align-items:center;
             height:20px;
-            content:attr(data-errorMsg);
+            content:attr(data-errormsg);
+            margin-left:10px;
+            font-size:0.7rem;
     }
     &:hover{
         &::after{
-            transform:translateY(0);
+            transform:translateX(50%);
             opacity:1;
         }
     }
 
 `
+
+
 export let ErrorIcon = styled(icon)`
     fill:${colors.error};
     height:100%;
-  
     position:relative;
-    
-    &:hover{
-        
-    }
-
 `
 
 export let Input = styled.input`
@@ -187,20 +200,20 @@ export let Input = styled.input`
 `
 
 export let SubmitButton = styled.button`
-    
     display:flex;
     justify-content:center;
     align-items:center;
-    
     width:50%;
-    height:min-content;
-    padding:10px 5px;
+    cursor: pointer;
     border-radius:5px;
+    height:35px;
     align-self:center;
     border:none;
     color:${colors.primaryColor};
     background:white;
     box-shadow:0px 0px 2px rgba(0,0,0,0.3);
+    transform-origin:center center;
+    transition:transform 0.5s ease;
     &:last-child{
         justify-self:end;  
         color:white;
@@ -209,8 +222,18 @@ export let SubmitButton = styled.button`
     @media(max-width:${sizes.firstBreakpoint.lower}){
         width:100%;
     }
+    ${props => props.isLoading && css`
+            transform:scale(0.3,1);
+            
+            >span{
+                display:none;
+            }   
+    `}
+`
+const intoLoader = keyframes`
 
 `
+
 export let LinkContainer = styled(NavLink)`
     position:relative;
     display:flex;
@@ -218,7 +241,7 @@ export let LinkContainer = styled(NavLink)`
     color:rgba(0,0,0,0.7);
     font-size:0.8rem;
     text-decoration:none;
-    width:100%;
+    width:max-content;
     &::before{
             content:'>>';
             position:absolute;

@@ -1,9 +1,8 @@
 import React from 'react';
-import {ReactComponent as ErrorIcon} from '../../images/errorIcon.svg'
 import * as S from './styledComponents'
-const errorIcon = ({errorMsg}) => {
+const errorIcon = ({errorMsg, isValid}) => {
     return (
-        <S.ErrorContainer data-errorMsg={errorMsg}>
+        <S.ErrorContainer data-errormsg={errorMsg} isValid={isValid}>
             <S.ErrorIcon />
         </S.ErrorContainer>
     );

@@ -14,6 +14,7 @@ const SignUp = () => {
         password:'',
         cPassword:''
     }
+    const [isLoading,setLoading] = useState(false);
     const [user,setUser] = useState({})
     const [userState,dispatch] = useReducer(userDataReducer,emptyFields)
     const fields = [
@@ -22,7 +23,12 @@ const SignUp = () => {
             type:'text',
             validation:(input)=>{
                 let regex = /^[a-zA-Z]+$/;
-                return  (regex.test(input) && input.length>=3);
+                if(input.length<3){
+                    return {err:`Name is too short`}
+                }else if(!regex.test(input)){
+                    return {err:'Name is invalid'}
+                }
+                return true;
             }
         },
         {
@@ -30,7 +36,12 @@ const SignUp = () => {
             type:'text',
             validation:(input)=>{
                 let regex =  /^[a-zA-Z]+$/
-                return (regex.test(input) && input.length>=3);
+                if(input.length<3){
+                    return {err:`Surname is too short`}
+                }else if(!regex.test(input)){
+                    return {err:'Surname is invalid'}
+                }
+                return true;
             }
         },
         {
@@ -38,25 +49,44 @@ const SignUp = () => {
             type:'email',
             validation:(input)=>{
                 let regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-                return (regex.test(input))
+                if(!input.length){
+                  return {err:`E-mail is required`}  
+                }else if(!regex.test(input)){
+                    return {err:`This e-mail is invalid`}
+                }
+                return true;
             }
         },
         {
             text:'password',
             type:'password',
             validation:(input)=>{
-                return input.length>=6
+                if(input.length<6){
+                    return {err:'Password is too short'}
+                }
+                return true;
             }
         },
         {
             text:'confirm password',
             id:'cPassword',
             type:'password',
+            validation:(input,state)=>{
+                if(input.length<6){
+                    return {err:'Password too short'}
+                }else if(input!==state.password){
+                    return {err:`Passwords are different`}
+                }
+                return true;
+            }
         },
     ]
     let onFormSubmit = e => {
+        
+        setLoading(!isLoading);
         e.preventDefault();
-        firebase.auth.createUserWithEmailAndPassword(userState.email,userState.password)
+        console.log("?")
+        // firebase.auth.createUserWithEmailAndPassword(userState.email,userState.password)
     }
     return (
 
@@ -67,7 +97,7 @@ const SignUp = () => {
                     <p>We provide our clients with the highest quality of saplings, herbs and many other plants.</p>
                     <S.Img src={img} alt='sapling'/>
                 </S.ImageContainer>
-                <S.Form onSubmit={onFormSubmit}>
+                <S.Form onSubmit={e => onFormSubmit(e)}>
                     {fields.map((e,index)=>{
                         return <Input key={index} data={e} state={userState} dispatch={dispatch} />
                     })}
@@ -75,7 +105,7 @@ const SignUp = () => {
                     <S.LinkContainer exact to='/login'>
                         <S.Paragraph>Got an account? Login</S.Paragraph>
                     </S.LinkContainer>
-                    <S.SubmitButton type="submit">Sign up</S.SubmitButton>
+                    <S.SubmitButton isLoading={isLoading} type="submit"><span>Sign up</span></S.SubmitButton>
                 </S.Form>
             </S.FormContainer>
         </S.SignUp>
