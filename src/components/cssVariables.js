@@ -22,5 +22,11 @@ export let sizes = {
         upper:'820px',
         lower:'821px'
     },
-    toggleAnimDur:'0.4s'
+    toggleAnimDur:'0.4s',
+    signUp:{
+        formContainer:{
+            big:'300px',
+            small:'250px'
+        }
+    }
 }

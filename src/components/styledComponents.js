@@ -19,7 +19,7 @@ export let GlobalStyle = createGlobalStyle`
             padding:0;
             margin:0;
             #root{
-                height:100%;
+                height:calc(100% - ${sizes.headerHeight});
             }
         }   
         *,*::after,*::before{
@@ -33,12 +33,12 @@ export let Main = styled.main`
     width:100%;
     margin:0;
     padding:0;
-    /* margin-top:${sizes.headerHeight};
-    because it was stretching the page */
+    margin-top:${sizes.headerHeight};
+   
     @media (max-width:${sizes.firstBreakpoint.upper}){
         margin-top:${sizes.navHeight};
     }
-    min-height:100%;
+    min-height:calc(100% - ${sizes.headerHeight});
     display:grid;
     grid-template-columns:${sizes.sideMargin.big} 1fr ${sizes.sideMargin.big};
     @media(max-width:${sizes.firstBreakpoint.upper}){

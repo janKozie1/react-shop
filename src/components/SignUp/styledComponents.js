@@ -30,7 +30,7 @@ export let FormContainer = styled.div`
     width:80%;
     display:grid;
     grid-template-columns: 4fr 6fr;
-    height:300px;
+    height:${sizes.signUp.formContainer.big};
     justify-items:center;
     align-content:center;
     grid-column-gap:2em;
@@ -49,26 +49,38 @@ export let Spacer = styled.div`
             display:none;
     }
 `
+
+export let Leaflet = styled.div`
+    height:${sizes.signUp.formContainer.big};
+    width:100%;
+    display:grid;
+    grid-template-rows:${sizes.signUp.formContainer.big} ${sizes.signUp.formContainer.big};
+    transition:transform 1s ease;
+    overflow:hidden;
+    
+`
 export let ImageContainer = styled.div`
-    height:300px;
+    height:${sizes.signUp.formContainer.big};
     width:100%;
     display:grid;
     grid-template-rows:1fr 1fr 3fr;
-    border-bottom-left-radius:30px;
-    border-top-left-radius:30px;
     text-align:center;
     padding:0px 20px;
+    transition:transform 1s ease;
     border-right:2px solid ${colors.dividerColor};
-
     >h3{
         margin-top:0;
         >span{
             color:${colors.primaryColor}
         }
     }
+    ${props => props.isLoading && css`
+        transform:translateY(-100%);
+    `}
     @media(max-width:${sizes.firstBreakpoint.lower}){
         display:none;
     }
+   
     
 `
 export let Image = styled.div`
@@ -78,6 +90,59 @@ export let Image = styled.div`
     background-size:contain;
     background-position:center bottom;
     background-repeat:no-repeat;
+`
+export let Loader = styled.div`
+    height:100%;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition:transform 1s ease;
+    border-right:2px solid ${colors.dividerColor};
+    ${props => props.isLoading && css`
+        transform:translateY(-100%);
+    `}
+`
+const bubble = keyframes`
+    0%{
+        transform:scale(0);
+    }
+    40%{
+        transform:scale(1);
+    }
+    80%{
+        transform:scale(0);
+    }
+    100%{
+        transform:scale(0);
+    }
+
+    
+`
+export let DotContainer = styled.div`
+    display:flex;
+`
+
+export let Dot = styled.div`
+    height:15px;
+    width:15px;
+
+    margin:5px;
+    background:white;
+    border:2px solid ${colors.primaryColor};
+    border-radius:50%;  
+    animation: 1.5s ${bubble} infinite ease-in-out both;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    
+    &:first-child{
+        animation-delay:-0.3s
+    }
+    &:last-child{
+        animation-delay:0.3s;
+    }
 `
 
 export let Form = styled.form` 
@@ -89,7 +154,7 @@ export let Form = styled.form`
     grid-row-gap:1.5em;
     grid-column-gap:3em;
     width:100%;
-    height:300px;
+    height:${sizes.signUp.formContainer.big};
     @media(max-width:${sizes.firstBreakpoint.lower}){
         grid-template-columns:1fr;
         grid-column-end:0;

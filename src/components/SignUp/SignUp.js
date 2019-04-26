@@ -14,7 +14,7 @@ const SignUp = () => {
         password:'',
         cPassword:''
     }
-    const [isLoading,setLoading] = useState(false);
+    const [isLoading,setLoading] = useState(true);
     const [user,setUser] = useState({})
     const [userState,dispatch] = useReducer(userDataReducer,emptyFields)
     const fields = [
@@ -92,11 +92,23 @@ const SignUp = () => {
 
         <S.SignUp>
             <S.FormContainer>
-                <S.ImageContainer>
-                    <h3>Join us at PLANT <span>IT</span></h3>
-                    <p>We provide our clients with the highest quality of saplings, herbs and many other plants.</p>
-                    <S.Image />
-                </S.ImageContainer>
+                <S.Leaflet>
+                    <S.ImageContainer isLoading={isLoading}>
+                        <h3>Join us at PLANT <span>IT</span></h3>
+                        <p>We provide our clients with the highest quality of saplings, herbs and many other plants.</p>
+                        <S.Image />
+                    </S.ImageContainer>
+                    <S.Loader isLoading={isLoading}>
+                        <p>Loading</p>
+                        <S.DotContainer>
+                            <S.Dot />
+                            <S.Dot />
+                            <S.Dot />
+                        </S.DotContainer>
+                        
+                        </S.Loader>
+                </S.Leaflet>
+                
                 <S.Form onSubmit={e => onFormSubmit(e)}>
                     {fields.map((e,index)=>{
                         return <Input key={index} data={e} state={userState} dispatch={dispatch} />
@@ -108,6 +120,7 @@ const SignUp = () => {
                     <S.SubmitButton isLoading={isLoading} type="submit"><span>Sign up</span></S.SubmitButton>
                 </S.Form>
             </S.FormContainer>
+            
         </S.SignUp>
     );
 };
