@@ -1,7 +1,7 @@
-import styled, {css, keyframes} from 'styled-components'
-import {colors} from '../../cssVariables'
-import {sizes} from '../../cssVariables'
-import {ReactComponent as icon} from '../../../images/errorIcon.svg'
+import styled, { css, keyframes } from 'styled-components'
+import { colors } from '../../cssVariables'
+import { sizes } from '../../cssVariables'
+import { ReactComponent as icon } from '../../../images/errorIcon.svg'
 
 export let ErrorContainer = styled.div`
     margin-left:10px;
@@ -61,19 +61,26 @@ export let Label = styled.label`
             z-index:100;
             content:'';
     }
-    ${props => props.isFocused && css`  
+    ${props => props.wasClicked && css`  
        &::after{
            width:100%;
            background:${props => props.isValid ? colors.primaryColor : colors.error}
           
        }
     `}
+    ${props => props.isLoading && css`
+       &::after{
+           display:none;
+       }
+    `}
+
 `
 
 
 export let InputHeader = styled.span`
     display:flex;
     align-items:center;
+   
     >p{
         margin:0;
         &::first-letter{
@@ -87,6 +94,10 @@ export let Input = styled.input`
     border-bottom:1px solid ${colors.dividerColor};
     padding:9px 0px;
     position:relative;
+   
+    &:disabled{
+        background:rgba(0,0,0,0.1);
+    }
     &:after{
             width:100%;
             height:10px;
@@ -107,4 +118,5 @@ export let Input = styled.input`
     &:focus{
         outline:none;
     }
+
 `

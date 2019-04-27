@@ -4,15 +4,6 @@ import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
 import plant from '../../images/plant2.png'
 
-let appear = keyframes`
-    from{
-        opacity:0
-    }
-    to{
-        opacity:1;
-    }
-`
-
 export let SignUp = styled.section`
     grid-column:2/3;
     display:flex;
@@ -58,6 +49,10 @@ export let Leaflet = styled.div`
     transition:transform 1s ease;
     overflow:hidden;
     
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+        display:none;
+    }
+    
 `
 export let ImageContainer = styled.div`
     height:${sizes.signUp.formContainer.big};
@@ -69,17 +64,24 @@ export let ImageContainer = styled.div`
     transition:transform 1s ease;
     border-right:2px solid ${colors.dividerColor};
     >h3{
-        margin-top:0;
-        >span{
-            color:${colors.primaryColor}
-        }
+            margin-top:0;
+            
+            >span{
+                color:${colors.primaryColor}
+            }
     }
+    >p{
+        margin:0;
+        
+    
+    }
+    
     ${props => props.isLoading && css`
         transform:translateY(-100%);
     `}
-    @media(max-width:${sizes.firstBreakpoint.lower}){
-        display:none;
-    }
+   
+`
+export let ImageHeader = styled.div`
    
     
 `
@@ -127,16 +129,14 @@ export let DotContainer = styled.div`
 export let Dot = styled.div`
     height:15px;
     width:15px;
-
     margin:5px;
-    background:white;
+    background:${colors.primaryColor};
     border:2px solid ${colors.primaryColor};
     border-radius:50%;  
     animation: 1.5s ${bubble} infinite ease-in-out both;
     display:flex;
     align-items:center;
     justify-content:center;
-    
     &:first-child{
         animation-delay:-0.3s
     }
@@ -177,7 +177,7 @@ export let SubmitButton = styled.button`
     background:white;
     box-shadow:0px 0px 2px rgba(0,0,0,0.3);
     transform-origin:center center;
-    transition:transform 0.5s ease;
+    transition:transform 0.3s ease;
     &:last-child{
         justify-self:end;  
         color:white;
@@ -186,9 +186,9 @@ export let SubmitButton = styled.button`
     @media(max-width:${sizes.firstBreakpoint.lower}){
         width:100%;
     }
-    ${props => props.isLoading && css`
-            
-    `}
+    &:hover{
+        transform:scale(1.05);
+    }
 `
 export let LinkContainer = styled(NavLink)`
     position:relative;

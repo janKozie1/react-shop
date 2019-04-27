@@ -1,5 +1,4 @@
 import React, {useContext,useReducer, useState} from 'react';
-import img from '../../images/plant.png'
 import * as S from './styledComponents'
 import Input from './Input/Input' 
 import {userDataReducer} from '../reducers/reducers'
@@ -8,85 +7,112 @@ import firebaseContext from '../Firebase/context'
 const SignUp = () => {
     const firebase = useContext(firebaseContext);
     let emptyFields = {
-        name:'',
-        surname:'',
-        email:'',
-        password:'',
-        cPassword:''
+        name:{
+            value:'',
+            valid:false
+        },
+        surname:{
+            value:'',
+            valid:false
+        },
+        email:{
+            value:'',
+            valid:false
+        },
+        password:{
+            value:'',
+            valid:false
+        },
+        cPassword:{
+            value:'',
+            valid:false
+        },
     }
-    const [isLoading,setLoading] = useState(true);
-    const [user,setUser] = useState({})
+    const [isLoading,setLoading] = useState(false);
     const [userState,dispatch] = useReducer(userDataReducer,emptyFields)
     const fields = [
         {
             text:'name',
             type:'text',
+            required:true,
             validation:(input)=>{
                 let regex = /^[a-zA-Z]+$/;
                 if(input.length<3){
-                    return {err:`Name is too short`}
+                    return {err:`Name is too short`,value:false}
                 }else if(!regex.test(input)){
-                    return {err:'Name is invalid'}
+                    return {err:'Name is invalid',value:false}
                 }
-                return true;
+                return {err:'',value:true};
             }
         },
         {
             text:'surname',
             type:'text',
+            required:false,
             validation:(input)=>{
                 let regex =  /^[a-zA-Z]+$/
                 if(input.length<3){
-                    return {err:`Surname is too short`}
+                    return {err:`Surname is too short`,value:false}
                 }else if(!regex.test(input)){
-                    return {err:'Surname is invalid'}
+                    return {err:'Surname is invalid',value:false}
                 }
-                return true;
+                return {err:'',value:true};
             }
         },
         {
             text:'email',
             type:'email',
+            required:true,
             validation:(input)=>{
                 let regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
                 if(!input.length){
-                  return {err:`E-mail is required`}  
+                  return {err:`E-mail is required`,value:false}  
                 }else if(!regex.test(input)){
-                    return {err:`This e-mail is invalid`}
+                    return {err:`This e-mail is invalid`,value:false}
                 }
-                return true;
+                return {err:'',value:true};
             }
         },
         {
             text:'password',
             type:'password',
+            required:true,
             validation:(input)=>{
                 if(input.length<6){
-                    return {err:'Password is too short'}
+                    return {err:'Password is too short',value:false}
                 }
-                return true;
+                return {err:'',value:true};
             }
         },
         {
             text:'confirm password',
             id:'cPassword',
             type:'password',
+            required:true,
             validation:(input,state)=>{
                 if(input.length<6){
-                    return {err:'Password too short'}
+                    return {err:'Password too short',value:false}
                 }else if(input!==state.password){
-                    return {err:`Passwords are different`}
+                    return {err:`Passwords are different`,value:false}
                 }
-                return true;
+                return {err:'',value:true};
             }
         },
     ]
-    let onFormSubmit = e => {
+    let onFormSubmit = async(e) => {
         
-        setLoading(!isLoading);
+        setLoading(true);
         e.preventDefault();
-        console.log("?")
-        // firebase.auth.createUserWithEmailAndPassword(userState.email,userState.password)
+        console.log(userState);
+        let validated = Object.keys(userState).reduce((prev,current)=>{
+            return !userState[current].valid?prev=userState[current].valid:prev;
+        },true)
+        console.log(validated)
+        //let userRegistered  = await firebase.auth.createUserWithEmailAndPassword(userState.email,userState.password)
+        setLoading(true)
+        //if(userRegistered){
+          //  console.log(userRegistered)
+       // }
     }
     return (
 
@@ -105,13 +131,12 @@ const SignUp = () => {
                             <S.Dot />
                             <S.Dot />
                         </S.DotContainer>
-                        
                         </S.Loader>
                 </S.Leaflet>
                 
                 <S.Form onSubmit={e => onFormSubmit(e)}>
                     {fields.map((e,index)=>{
-                        return <Input key={index} data={e} state={userState} dispatch={dispatch} />
+                        return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} />
                     })}
                     <S.Spacer />
                     <S.LinkContainer exact to='/login'>
