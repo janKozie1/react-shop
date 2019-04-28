@@ -29,10 +29,12 @@ const SignUp = () => {
         },
     }
     const [isLoading,setLoading] = useState(false);
+    const [wasSubmited, setSubmited] = useState(false);
     const [userState,dispatch] = useReducer(userDataReducer,emptyFields)
     const fields = [
         {
-            text:'name',
+            text:'First name',
+            id:'name',
             type:'text',
             required:true,
             validation:(input)=>{
@@ -100,21 +102,24 @@ const SignUp = () => {
         },
     ]
     let onFormSubmit = async(e) => {
-        
-        
+        setSubmited(true)
         e.preventDefault();
-        console.log(userState);
         let validated = Object.keys(userState).reduce((prev,current)=>{
             return !userState[current].valid?prev=userState[current].valid:prev;
         },true)
-        console.log(validated)
         if(validated){
             setLoading(true);
-            await firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value)
-            setLoading(false)
+            
+                firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
+                    console.log(e,'owo')
+                    setLoading(false)
+                }).catch(err => {
+                    console.log(err)
+                })
+           
+           
+            
         }
-      
-       
     }
     return (
 
@@ -138,7 +143,7 @@ const SignUp = () => {
                 
                 <S.Form onSubmit={e => onFormSubmit(e)}>
                     {fields.map((e,index)=>{
-                        return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} />
+                        return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} />
                     })}
                     <S.Spacer />
                     <S.LinkContainer exact to='/login'>

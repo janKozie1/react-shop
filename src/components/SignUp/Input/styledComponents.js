@@ -1,7 +1,8 @@
 import styled, { css, keyframes } from 'styled-components'
 import { colors } from '../../cssVariables'
 import { sizes } from '../../cssVariables'
-import { ReactComponent as icon } from '../../../images/errorIcon.svg'
+import { ReactComponent as errIcon } from '../../../images/errorIcon.svg'
+import { ReactComponent as lockIcon } from '../../../images/lockIcon.svg'
 
 export let ErrorContainer = styled.div`
     margin-left:10px;
@@ -12,7 +13,7 @@ export let ErrorContainer = styled.div`
     justify-content:center;
     opacity:0;
     transition:opacity 0.5s;
-    ${props => (props.wasUnfocused && !props.isValid) && css`
+    ${props => ((props.wasUnfocused && !props.isValid) || props.isLoading) && css`
         opacity:1;
     `}
     &::after{
@@ -37,8 +38,12 @@ export let ErrorContainer = styled.div`
 
 `
 
-
-export let ErrorIcon = styled(icon)`
+export let LockIcon = styled(lockIcon)`
+    fill:${colors.primaryColor};
+    height:100%;
+    position:relative;
+`
+export let ErrorIcon = styled(errIcon)`
     fill:${colors.error};
     height:100%;
     position:relative;
@@ -94,9 +99,8 @@ export let Input = styled.input`
     border-bottom:1px solid ${colors.dividerColor};
     padding:9px 0px;
     position:relative;
-   
     &:disabled{
-        background:rgba(0,0,0,0.1);
+        background:transparent;
     }
     &:after{
             width:100%;
