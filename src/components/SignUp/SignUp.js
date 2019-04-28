@@ -1,10 +1,9 @@
-import React, {useContext,useReducer, useState} from 'react';
+import React, {useContext,useReducer, useState, useEffect} from 'react';
 import * as S from './styledComponents'
 import Input from './Input/Input' 
 import {userDataReducer} from '../reducers/reducers'
 import firebaseContext from '../Firebase/context'
 import Leaflet from './Leaflet/Leaflet'
-
 import {fields} from './data/fields'
 import {emptyFields} from './data/fields'
 
@@ -12,6 +11,7 @@ const SignUp = () => {
     let defaultResult = {text:'Loading',secText:'',type:'loading'}
     const firebase = useContext(firebaseContext);
     const [result,setResult] = useState(defaultResult)
+    const [confirmed,setConfirmed] = useState(false)
     const [isLoading,setLoading] = useState(false);
     const [wasSubmited, setSubmited] = useState(false);
     const [userState,dispatch] = useReducer(userDataReducer,emptyFields)
@@ -24,26 +24,26 @@ const SignUp = () => {
         if(validated){
             setLoading(true);
             firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
-                setResult({text:'Success!',secText:'You will be redirected',type:'success'})
-                setTimeout(()=>{
-                    setLoading(false)
-                    setResult(defaultResult)
-                },3500)
-                
+                setResult({text:'Success!',secText:'Press the button to be redirected',type:'success'})
             }).catch(err => {
                 setResult({text:'Something went wrong',secText:err.message,type:'error'})
-                setTimeout(()=>{
-                    setLoading(false)
-                    setResult(defaultResult)
-                },3500)
             })
         }
     }
+    useEffect(()=>{
+        if(confirmed){
+            setLoading(false)
+            setTimeout(()=>{
+                setResult(defaultResult)
+                setConfirmed(false);
+            },800)
+        } 
+    },[confirmed])
     return (
 
         <S.SignUp>
             <S.FormContainer>
-                <Leaflet isLoading={isLoading} result={result} />
+                <Leaflet isLoading={isLoading} result={result} setConfirmed={setConfirmed}/>
                 
                 <S.Form onSubmit={e => onFormSubmit(e)}>
                     {fields.map((e,index)=>{

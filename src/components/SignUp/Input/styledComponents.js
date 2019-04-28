@@ -17,8 +17,8 @@ export let ErrorContainer = styled.div`
     `}
     
     &::after{
-            transform:translateX(60%);
-            opacity:0;
+            transform:translateX(50%);
+            opacity:1;
             transition:transform 0.5s ease,opacity 0.5s ease;
             position:absolute;
             width:max-content;
@@ -99,6 +99,14 @@ export let Input = styled.input`
     border-bottom:1px solid ${colors.dividerColor};
     padding:9px 0px;
     position:relative;
+    background:transparent;
+    &:-internal-autofill-selected,
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus{
+        background:white  !important;
+    }
+    
     &:disabled{
         background:transparent;
     }

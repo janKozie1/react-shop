@@ -117,3 +117,35 @@ export let Success = styled(succIcon)`
     width:30px;
     fill:${colors.primaryColor};
 `
+export let ConfirmContainer = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+`
+export let Confirm = styled.button`
+    margin-top:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor: pointer;
+    border-radius:5px;
+    height:35px;
+    align-self:center;
+    border:none;
+    background:white;
+    box-shadow:0px 0px 2px rgba(0,0,0,0.4);
+    transform-origin:center center;
+    transition:transform 0.3s ease;
+    border:2px solid ${props => props.type === 'success' ? colors.primaryColor: colors.error};
+    color: ${props => props.type === 'success' ? colors.primaryColor: colors.error};
+        
+    
+
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+        width:100%;
+    }
+    &:hover{
+        transform:scale(1.05);
+    }
+`

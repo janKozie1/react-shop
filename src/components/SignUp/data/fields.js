@@ -1,6 +1,6 @@
 export let fields = [
     {
-        text:'First name',
+        text:'first name',
         id:'name',
         type:'text',
         required:true,

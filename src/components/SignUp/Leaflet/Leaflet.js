@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from './styledComponents'
-const Leaflet = ({ isLoading, result }) => {
+const Leaflet = ({ isLoading, result,setConfirmed }) => {
     let { text, secText, type } = result;
     return (
         <S.Leaflet>
@@ -19,10 +19,18 @@ const Leaflet = ({ isLoading, result }) => {
                             <S.Dot />
                             <S.Dot />
                         </S.DotContainer>
-                        : type === 'success' ?
-                            <S.Success />
-                            :
-                            <S.Failure />
+                        : 
+                        <S.ConfirmContainer>
+                            {
+                                type === 'success' ?
+                                    <S.Success />
+                                    :
+                                    <S.Failure />
+                            }  
+                            <S.Confirm type={type} onClick={()=>setConfirmed(true)}>{type==='success'?'Continue':'Try again'}</S.Confirm> 
+                        </S.ConfirmContainer>
+
+                        
                 }
             </S.Loader>
         </S.Leaflet>
