@@ -1,6 +1,5 @@
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { colors } from '../../cssVariables'
-import { sizes } from '../../cssVariables'
 import { ReactComponent as errIcon } from '../../../images/errorIcon.svg'
 import { ReactComponent as lockIcon } from '../../../images/lockIcon.svg'
 
@@ -16,6 +15,7 @@ export let ErrorContainer = styled.div`
     ${props => ((props.wasUnfocused && !props.isValid) || props.isLoading) && css`
         opacity:1;
     `}
+    
     &::after{
             transform:translateX(60%);
             opacity:0;

@@ -3,7 +3,7 @@ import ErrorIcon from './ErrorIcon'
 import * as S from './styledComponents'
 
 const Input = ({data,state,dispatch, isLoading, wasSubmited}) => {
-    let {text,type} = data;
+    let {text,type, autoId} = data;
     let id =`${data.id || text}`;
     let [wasClicked, setClicked] = useState(false);
     let [wasUnfocused, setUnfocused] = useState(false);
@@ -32,6 +32,7 @@ const Input = ({data,state,dispatch, isLoading, wasSubmited}) => {
                 type={type} 
                 id={`${id}Input`} 
                 novalidate
+                autoComplete={autoId}
                 placeholder={`${text}...`} 
                 value={state[data.id || text].value}  
                 onFocus={()=>setClicked(true)} 

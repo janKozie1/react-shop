@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import {colorVar} from './cssVariables'
 import {sizes} from './cssVariables'
 
 export let GlobalStyle = createGlobalStyle`

@@ -3,104 +3,18 @@ import * as S from './styledComponents'
 import Input from './Input/Input' 
 import {userDataReducer} from '../reducers/reducers'
 import firebaseContext from '../Firebase/context'
+import Leaflet from './Leaflet/Leaflet'
+
+import {fields} from './data/fields'
+import {emptyFields} from './data/fields'
 
 const SignUp = () => {
+    let defaultResult = {text:'Loading',secText:'',type:'loading'}
     const firebase = useContext(firebaseContext);
-    let emptyFields = {
-        name:{
-            value:'',
-            valid:false
-        },
-        surname:{
-            value:'',
-            valid:false
-        },
-        email:{
-            value:'',
-            valid:false
-        },
-        password:{
-            value:'',
-            valid:false
-        },
-        cPassword:{
-            value:'',
-            valid:false
-        },
-    }
+    const [result,setResult] = useState(defaultResult)
     const [isLoading,setLoading] = useState(false);
     const [wasSubmited, setSubmited] = useState(false);
     const [userState,dispatch] = useReducer(userDataReducer,emptyFields)
-    const fields = [
-        {
-            text:'First name',
-            id:'name',
-            type:'text',
-            required:true,
-            validation:(input)=>{
-                let regex = /^[a-zA-Z]+$/;
-                if(input.length<3){
-                    return {err:`Name is too short`,value:false}
-                }else if(!regex.test(input)){
-                    return {err:'Name is invalid',value:false}
-                }
-                return {err:'',value:true};
-            }
-        },
-        {
-            text:'surname',
-            type:'text',
-            required:false,
-            validation:(input)=>{
-                let regex =  /^[a-zA-Z]+$/
-                if(input.length<3){
-                    return {err:`Surname is too short`,value:false}
-                }else if(!regex.test(input)){
-                    return {err:'Surname is invalid',value:false}
-                }
-                return {err:'',value:true};
-            }
-        },
-        {
-            text:'email',
-            type:'email',
-            required:true,
-            validation:(input)=>{
-                let regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-                if(!input.length){
-                  return {err:`E-mail is required`,value:false}  
-                }else if(!regex.test(input)){
-                    return {err:`This e-mail is invalid`,value:false}
-                }
-                return {err:'',value:true};
-            }
-        },
-        {
-            text:'password',
-            type:'password',
-            required:true,
-            validation:(input)=>{
-                if(input.length<6){
-                    return {err:'Password is too short',value:false}
-                }
-                return {err:'',value:true};
-            }
-        },
-        {
-            text:'confirm password',
-            id:'cPassword',
-            type:'password',
-            required:true,
-            validation:(input,state)=>{
-                if(input!==state.password.value){
-                    return {err:`Passwords are different`,value:false}
-                }else if(input.length<6){
-                    return {err:'Password too short',value:false}
-                }
-                return {err:'',value:true};
-            }
-        },
-    ]
     let onFormSubmit = async(e) => {
         setSubmited(true)
         e.preventDefault();
@@ -109,37 +23,27 @@ const SignUp = () => {
         },true)
         if(validated){
             setLoading(true);
-            
-                firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
-                    console.log(e,'owo')
+            firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
+                setResult({text:'Success!',secText:'You will be redirected',type:'success'})
+                setTimeout(()=>{
                     setLoading(false)
-                }).catch(err => {
-                    console.log(err)
-                })
-           
-           
-            
+                    setResult(defaultResult)
+                },3500)
+                
+            }).catch(err => {
+                setResult({text:'Something went wrong',secText:err.message,type:'error'})
+                setTimeout(()=>{
+                    setLoading(false)
+                    setResult(defaultResult)
+                },3500)
+            })
         }
     }
     return (
 
         <S.SignUp>
             <S.FormContainer>
-                <S.Leaflet>
-                    <S.ImageContainer isLoading={isLoading}>
-                        <h3>Join us at PLANT <span>IT</span></h3>
-                        <p>We provide our clients with the highest quality of saplings, herbs and many other plants.</p>
-                        <S.Image />
-                    </S.ImageContainer>
-                    <S.Loader isLoading={isLoading}>
-                        <p>Loading</p>
-                        <S.DotContainer>
-                            <S.Dot />
-                            <S.Dot />
-                            <S.Dot />
-                        </S.DotContainer>
-                        </S.Loader>
-                </S.Leaflet>
+                <Leaflet isLoading={isLoading} result={result} />
                 
                 <S.Form onSubmit={e => onFormSubmit(e)}>
                     {fields.map((e,index)=>{
@@ -149,7 +53,7 @@ const SignUp = () => {
                     <S.LinkContainer exact to='/login'>
                         <S.Paragraph>Got an account? Login</S.Paragraph>
                     </S.LinkContainer>
-                    <S.SubmitButton isLoading={isLoading} type="submit"><span>Sign up</span></S.SubmitButton>
+                    <S.SubmitButton disabled={isLoading} type="submit"><span>Sign up</span></S.SubmitButton>
                 </S.Form>
             </S.FormContainer>
             

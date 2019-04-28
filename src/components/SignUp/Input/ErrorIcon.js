@@ -4,10 +4,11 @@ const errorIcon = ({errorMsg, isValid, wasUnfocused, isLoading}) => {
     return (
         <S.ErrorContainer data-errormsg={errorMsg} isValid={isValid} wasUnfocused={wasUnfocused} isLoading={isLoading}>
         {
-            isLoading?
+            isLoading ?
                 <S.LockIcon />
                 :
-                <S.ErrorIcon />
+            (!isValid && <S.ErrorIcon />)
+                
         }
             
         </S.ErrorContainer>

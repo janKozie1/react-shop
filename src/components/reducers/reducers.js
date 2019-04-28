@@ -10,6 +10,9 @@ export const userDataReducer = (state, action) => {
             temp[action.field].valid = action.data;
             return {...temp}
         }
+        default:{
+            return state;
+        }
     }
 }
 
