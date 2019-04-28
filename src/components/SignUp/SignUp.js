@@ -90,10 +90,10 @@ const SignUp = () => {
             type:'password',
             required:true,
             validation:(input,state)=>{
-                if(input.length<6){
-                    return {err:'Password too short',value:false}
-                }else if(input!==state.password){
+                if(input!==state.password.value){
                     return {err:`Passwords are different`,value:false}
+                }else if(input.length<6){
+                    return {err:'Password too short',value:false}
                 }
                 return {err:'',value:true};
             }
@@ -101,18 +101,20 @@ const SignUp = () => {
     ]
     let onFormSubmit = async(e) => {
         
-        setLoading(true);
+        
         e.preventDefault();
         console.log(userState);
         let validated = Object.keys(userState).reduce((prev,current)=>{
             return !userState[current].valid?prev=userState[current].valid:prev;
         },true)
         console.log(validated)
-        //let userRegistered  = await firebase.auth.createUserWithEmailAndPassword(userState.email,userState.password)
-        setLoading(true)
-        //if(userRegistered){
-          //  console.log(userRegistered)
-       // }
+        if(validated){
+            setLoading(true);
+            await firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value)
+            setLoading(false)
+        }
+      
+       
     }
     return (
 

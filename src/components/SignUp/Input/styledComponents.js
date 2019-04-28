@@ -12,7 +12,7 @@ export let ErrorContainer = styled.div`
     justify-content:center;
     opacity:0;
     transition:opacity 0.5s;
-    ${props => !props.isValid && css`
+    ${props => (props.wasUnfocused && !props.isValid) && css`
         opacity:1;
     `}
     &::after{
@@ -64,7 +64,7 @@ export let Label = styled.label`
     ${props => props.wasClicked && css`  
        &::after{
            width:100%;
-           background:${props => props.isValid ? colors.primaryColor : colors.error}
+           background:${props => !props.wasUnfocused ? colors.primaryColor : props.isValid ? colors.primaryColor : colors.error}
           
        }
     `}

@@ -1,24 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import ErrorIcon from './ErrorIcon'
 import * as S from './styledComponents'
 
 const Input = ({data,state,dispatch, isLoading}) => {
     let {text,type} = data;
-    let [wasClicked, setClicked] = useState(false);
-    let [isValid, setValid] = useState({})
-    let [errorMsg,setErrorMsg] = useState('');
     let id =`${data.id || text}`;
-    let validate = () =>{
-        let result = data.validation(state[data.id || data.text].value,state);
-        setErrorMsg(result.err)
-        setValid(result.value)
+    
+    let [wasClicked, setClicked] = useState(false);
+    let [wasUnfocused, setUnfocused] = useState(false);
+    let [valid,setValid] = useState({value:false,err:`Can't be empty`})
+
+    let validate = input =>{
+        dispatch({type:`edit`,field:id,data:input})
+        let result = data.validation(input,state);
+        setValid({value:result.value,err:result.err})
         dispatch({type:'validate',field:id,data:result.value})
     }
     return (
-        <S.Label htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={isValid}>
+        <S.Label htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
             <S.InputHeader >
                     <p>{text}</p>
-                    <ErrorIcon errorMsg={errorMsg} isValid={isValid} />
+                    <ErrorIcon errorMsg={valid.err} isValid={valid.value} wasUnfocused={wasUnfocused} />
             </S.InputHeader>
             <S.Input 
                 disabled={isLoading}
@@ -26,11 +28,10 @@ const Input = ({data,state,dispatch, isLoading}) => {
                 id={`${id}Input`} 
                 novalidate
                 placeholder={`${text}...`} 
-
                 value={state[data.id || text].value}  
                 onFocus={()=>setClicked(true)} 
-                onBlur={()=>validate()} 
-                onChange={e=>dispatch({type:`edit`,field:id,data:e.target.value})} />
+                onBlur={()=>setUnfocused(true)} 
+                onChange={e=>validate(e.target.value)} />
         </S.Label>
     );
 };
