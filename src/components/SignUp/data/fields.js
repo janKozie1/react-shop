@@ -50,7 +50,8 @@ export let fields = [
         type:'password',
         autoId:'off',
         required:true,
-        validation:(input)=>{
+        validation:(input,state)=>{
+            console.log(state.password,state.cPassword,'pw')
             if(input.length<6){
                 return {err:'Password is too short',value:false}
             }
@@ -64,11 +65,13 @@ export let fields = [
         autoId:'off',
         required:true,
         validation:(input,state)=>{
+            console.log(state.password,state.cPassword,'cpw')
             if(input!==state.password.value){
                 return {err:`Passwords are different`,value:false}
             }else if(input.length<6){
                 return {err:'Password too short',value:false}
             }
+            
             return {err:'',value:true};
         }
     },
@@ -77,22 +80,37 @@ export let fields = [
 export let emptyFields = {
     name:{
         value:'',
-        valid:false
+        valid:{
+            value:false,
+            err:"Can't be empty"
+        }
     },
     surname:{
         value:'',
-        valid:false
+        valid:{
+            value:false,
+            err:"Can't be empty"
+        }
     },
     email:{
         value:'',
-        valid:false
+        valid:{
+            value:false,
+            err:"Can't be empty"
+        }
     },
     password:{
         value:'',
-        valid:false
+        valid:{
+            value:false,
+            err:"Can't be empty"
+        }
     },
     cPassword:{
         value:'',
-        valid:false
+        valid:{
+            value:false,
+            err:"Can't be empty"
+        }
     },
 }

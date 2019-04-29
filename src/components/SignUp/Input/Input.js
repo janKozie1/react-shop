@@ -3,24 +3,20 @@ import ErrorIcon from './ErrorIcon'
 import * as S from './styledComponents'
 
 const Input = ({data,state,dispatch, isLoading, wasSubmited}) => {
-    let {text,type, autoId} = data;
+    let {text,type, autoId,validation} = data;
     let id =`${data.id || text}`;
+    let {value,valid} = state[id];
     let [wasClicked, setClicked] = useState(false);
     let [wasUnfocused, setUnfocused] = useState(false);
-    let [valid,setValid] = useState({value:false,err:`Can't be empty`})
-
-    let validate = input =>{
-        dispatch({type:`edit`,field:id,data:input})
-        let result = data.validation(input,state);
-        setValid({value:result.value,err:result.err})
-        dispatch({type:'validate',field:id,data:result.value})
-    }
     useEffect(()=>{
         if(wasSubmited){
             setClicked(true)
             setUnfocused(true)
         }
     },[wasSubmited])
+    useEffect(()=>{
+        dispatch({type:'edit',field:'cPassword',data:state.cPassword.value,validation})
+    },[state.password.value])
     return (
         <S.Label htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
             <S.InputHeader >
@@ -34,10 +30,10 @@ const Input = ({data,state,dispatch, isLoading, wasSubmited}) => {
                 novalidate
                 autoComplete={autoId}
                 placeholder={`${text}...`} 
-                value={state[data.id || text].value}  
+                value={value}  
                 onFocus={()=>setClicked(true)} 
                 onBlur={()=>setUnfocused(true)} 
-                onChange={e=>validate(e.target.value)} />
+                onChange={e=>dispatch({type:'edit',field:id,data:e.target.value,validation})} />
         </S.Label>
     );
 };

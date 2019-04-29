@@ -139,9 +139,6 @@ export let Confirm = styled.button`
     transition:transform 0.3s ease;
     border:2px solid ${props => props.type === 'success' ? colors.primaryColor: colors.error};
     color: ${props => props.type === 'success' ? colors.primaryColor: colors.error};
-        
-    
-
     @media(max-width:${sizes.firstBreakpoint.lower}){
         width:100%;
     }

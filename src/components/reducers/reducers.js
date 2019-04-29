@@ -3,12 +3,9 @@ export const userDataReducer = (state, action) => {
         case 'edit':{
             let temp = {...state};
             temp[action.field].value = action.data;
+            temp[action.field].valid = action.validation(action.data,state);
+            
             return {...temp};
-        }
-        case 'validate':{
-            let temp = {...state};
-            temp[action.field].valid = action.data;
-            return {...temp}
         }
         default:{
             return state;
