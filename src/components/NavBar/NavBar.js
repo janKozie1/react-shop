@@ -11,7 +11,6 @@ const NavBar = ({links}) => {
                     <S.Ul> 
                         {links.map((e,index)=>{
                             return <NavIcon key={index} path={e.path} text={e.text} iconSize={'medium'}/>
-                        
                         })}
                     </S.Ul>
                 </S.Container>

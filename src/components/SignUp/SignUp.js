@@ -1,6 +1,7 @@
 import React, {useContext,useReducer, useState, useEffect} from 'react';
 import * as S from './styledComponents'
 import Input from './Input/Input' 
+import BackgroundFade from '../BackgroundFade/BackgroundFade'
 import {userDataReducer} from '../reducers/reducers'
 import firebaseContext from '../Firebase/context'
 import Leaflet from './Leaflet/Leaflet'
@@ -19,7 +20,7 @@ const SignUp = () => {
         setSubmited(true)
         e.preventDefault();
         let validated = Object.keys(userState).reduce((prev,current)=>{
-            return !userState[current].valid?prev=userState[current].valid:prev;
+            return !userState[current].valid.value?prev=userState[current].valid.value:prev;
         },true)
         if(validated){
             setLoading(true);
@@ -39,24 +40,27 @@ const SignUp = () => {
             },800)
         } 
     },[confirmed])
+    let handleLoaderClick = () =>{
+        console.log("?")
+        setLoading(false)
+        setResult(defaultResult)
+    }
     return (
-
         <S.SignUp>
             <S.FormContainer>
                 <Leaflet isLoading={isLoading} result={result} setConfirmed={setConfirmed}/>
-                
                 <S.Form onSubmit={e => onFormSubmit(e)}>
                     {fields.map((e,index)=>{
                         return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} />
                     })}
                     <S.Spacer />
+                    <BackgroundFade isLoading={isLoading} handleClick={handleLoaderClick}/>
                     <S.LinkContainer exact to='/login'>
                         <S.Paragraph>Got an account? Login</S.Paragraph>
                     </S.LinkContainer>
                     <S.SubmitButton disabled={isLoading} type="submit"><span>Sign up</span></S.SubmitButton>
                 </S.Form>
             </S.FormContainer>
-            
         </S.SignUp>
     );
 };

@@ -33,7 +33,7 @@ export let Main = styled.main`
     margin:0;
     padding:0;
     margin-top:${sizes.headerHeight};
-   
+    position:relative;
     @media (max-width:${sizes.firstBreakpoint.upper}){
         margin-top:${sizes.navHeight};
     }

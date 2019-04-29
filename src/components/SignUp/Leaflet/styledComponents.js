@@ -11,9 +11,20 @@ export let Leaflet = styled.div`
     width:100%;
     display:grid;
     grid-template-rows:${sizes.signUp.formContainer.big} ${sizes.signUp.formContainer.big};
+    border-right:2px solid ${colors.dividerColor};
     overflow:hidden;
     @media(max-width:${sizes.firstBreakpoint.lower}){
+        position:absolute;
+        border:none;
+        z-index:250;
+        background:white;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        width:90%;
+        border-radius:10px;
         display:none;
+        display:${props => props.isLoading ? 'block':'none'};
     }
     
 `
@@ -25,7 +36,10 @@ export let ImageContainer = styled.div`
     text-align:center;
     padding:0px 20px;
     transition:transform 0.8s ease;
-    border-right:2px solid ${colors.dividerColor};
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+       display:none;
+    }
+    
     >h3{
         margin-top:0;
         
@@ -60,12 +74,22 @@ export let Loader = styled.div`
     >h3{
         font-size:1.4rem;
         margin-bottom:0;
+        @media(max-width:${sizes.firstBreakpoint.lower}){
+            margin:0;
+        }
     }
     align-items:center;
     justify-content:center;
     flex-direction:column;
     transition:transform 0.8s ease;
-    border-right:2px solid ${colors.dividerColor};
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+       display:none;
+       padding:10px 20px;
+       ${props => props.isLoading && css`
+            transform:translateY(0);
+            display:flex;
+        `}
+    }
     ${props => props.isLoading && css`
         transform:translateY(-100%);
     `}

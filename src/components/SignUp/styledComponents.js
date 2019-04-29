@@ -10,7 +10,7 @@ export let SignUp = styled.section`
     justify-content:center;
     align-items:center;
     width:100%;
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
         align-items:flex-start;
     }
 
@@ -24,18 +24,19 @@ export let FormContainer = styled.div`
     justify-items:center;
     align-content:center;
     grid-column-gap:2em;
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
         grid-template-columns:1fr;
         grid-column-gap:0;
         margin-top:20px;
         height:auto;
         align-content:start;
     }
+    position:relative;
 `
 export let Spacer = styled.div`
     grid-row:2/3;
     grid-column:2/3;
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
             display:none;
     }
 `
@@ -51,7 +52,7 @@ export let Form = styled.form`
     grid-column-gap:3em;
     width:100%;
     height:${sizes.signUp.formContainer.big};
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
         grid-template-columns:1fr;
         grid-column-end:0;
         height:auto;
@@ -79,7 +80,7 @@ export let SubmitButton = styled.button`
         color:white;
         background:${colors.primaryColor};
     }
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
         width:100%;
     }
     &:hover{
@@ -115,7 +116,7 @@ export let LinkContainer = styled(NavLink)`
             
         }
     }
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
         margin-top:-40px;
        grid-row:7/8;
     }

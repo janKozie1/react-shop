@@ -14,9 +14,11 @@ const Input = ({data,state,dispatch, isLoading, wasSubmited}) => {
             setUnfocused(true)
         }
     },[wasSubmited])
+
     useEffect(()=>{
         dispatch({type:'edit',field:'cPassword',data:state.cPassword.value,validation})
     },[state.password.value])
+    
     return (
         <S.Label htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
             <S.InputHeader >

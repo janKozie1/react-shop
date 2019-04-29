@@ -51,7 +51,6 @@ export let fields = [
         autoId:'off',
         required:true,
         validation:(input,state)=>{
-            console.log(state.password,state.cPassword,'pw')
             if(input.length<6){
                 return {err:'Password is too short',value:false}
             }
@@ -65,7 +64,6 @@ export let fields = [
         autoId:'off',
         required:true,
         validation:(input,state)=>{
-            console.log(state.password,state.cPassword,'cpw')
             if(input!==state.password.value){
                 return {err:`Passwords are different`,value:false}
             }else if(input.length<6){
