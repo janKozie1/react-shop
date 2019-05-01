@@ -34,7 +34,7 @@ export let ImageContainer = styled.div`
     display:grid;
     grid-template-rows:1fr 1fr 3fr;
     text-align:center;
-    padding:0px 20px 0 0;
+    padding:0px 20px;
     transition:transform 0.8s ease;
     @media(max-width:${sizes.firstBreakpoint.lower}){
        display:none;

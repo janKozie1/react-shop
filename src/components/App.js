@@ -4,6 +4,7 @@ import * as S from './styledComponents'
 
 import About from './About/About';
 import Home from './Home/Home';
+import LogIn from './LogIn/LogIn';
 import SignUp from './SignUp/SignUp'
 import NavBar from './NavBar/NavBar'
 import Categories from './Categories/Categories'
@@ -51,6 +52,7 @@ const App = () => {
                 <S.Main>
                     <Route path='/' exact component={Home} />
                     <Route path='/about/' exact component={About} />
+                    <Route path='/login/' exact component={LogIn} />
                     <Route path='/user/' exact component={SignUp} />
                 </S.Main>
             </Router>

@@ -33,13 +33,6 @@ export let FormContainer = styled.div`
     }
     position:relative;
 `
-export let Spacer = styled.div`
-    grid-row:2/3;
-    grid-column:2/3;
-    @media(max-width:${sizes.firstBreakpoint.upper}){
-            display:none;
-    }
-`
 
 
 export let Form = styled.form` 

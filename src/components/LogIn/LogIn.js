@@ -62,10 +62,9 @@ const SignUp = props => {
                     {fields.map((e,index)=>{
                         return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} />
                     })}
-                    <S.Spacer />
                     <BackgroundFade isLoading={isLoading} handleClick={handleLoaderClick}/>
-                    <S.LinkContainer exact to='/login'>
-                        <S.Paragraph>Got an account? Login</S.Paragraph>
+                    <S.LinkContainer exact to='/user'>
+                        <S.Paragraph>No account? Sign up</S.Paragraph>
                     </S.LinkContainer>
                     <S.SubmitButton disabled={isLoading} type="submit"><span>Sign up</span></S.SubmitButton>
                 </S.Form>
