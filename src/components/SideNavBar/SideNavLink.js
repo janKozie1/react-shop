@@ -1,22 +1,15 @@
 import React from 'react';
 
 import Logo from '../Logo/Logo'
-import NavContext from '../context/nav-context'
 import * as S from './styledComponents'
 
-const SideNavLink = ({path,text,iconSize}) => {
+const SideNavLink = ({path,text,iconSize,dispatch}) => {
     return (
-        <NavContext.Consumer>
-            {({setToggle})=>(
-                <S.Li onClick={()=>setToggle(false)}>
-                    <S.StyledNavLink exact to={path}><Logo name={text} size={iconSize} />
-                        <p>{text}</p>
-                    </S.StyledNavLink>
-                </S.Li>
-            )}
-            
-        </NavContext.Consumer>
-        
+        <S.Li onClick={()=>dispatch({type:'toggleSideNav',value:false})}>
+            <S.StyledNavLink exact to={path}><Logo name={text} size={iconSize} />
+                <p>{text}</p>
+            </S.StyledNavLink>
+        </S.Li>
     );
 };
 

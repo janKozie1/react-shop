@@ -26,14 +26,8 @@ const SignUp = props => {
         },true)
         if(validated){
             setLoading(true);
-            firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
-                firebase.auth.currentUser.updateProfile({
-                    displayName:`${userState.name.value} ${userState.surname.value}`
-                }).then(()=>{
-                    setResult({text:'Success!',secText:'Press the button to be redirected',type:'success'})
-                }).catch((err)=>{
-                    setResult({text:'Something went wrong',secText:err.message,type:'error'})
-                })
+            firebase.auth.signInWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
+                setResult({text:'Success!',secText:'Press the button to be redirected',type:'success'})
             }).catch(err => {
                 setResult({text:'Something went wrong',secText:err.message,type:'error'})
             })

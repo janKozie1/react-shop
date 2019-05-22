@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom'
 
 export let Nav = styled.nav`
     height:100%;
-    width:50%;
+    
     position:absolute;
     z-index:300;
     background:white;
@@ -16,7 +16,7 @@ export let Nav = styled.nav`
     transform:translateX(-100%);
     transition:transform ${sizes.toggleAnimDur} ease;
     border-right:1px solid ${colors.dividerColor};
-    ${props => props.isToggled && css`
+    ${props => props.sideNavVisible && css`
         transform:translateX(0%);
     `}
     @media (min-width:${sizes.firstBreakpoint.lower}){
@@ -31,8 +31,8 @@ export let Li = styled.li`
         width:100%;
         margin: 0;
         display:flex;
-        padding:12.5px 0px;
-        padding-left:${sizes.sideMargin.small};
+        padding:12.5px ${sizes.sideMargin.small};
+        
         align-items:center;
         justify-content:flex-start;
         >svg{

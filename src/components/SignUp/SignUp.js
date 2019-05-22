@@ -1,13 +1,14 @@
 import React, {useContext,useReducer, useState, useEffect} from 'react';
 import {withRouter} from 'react-router'
-import * as S from './styledComponents'
-import Input from './Input/Input' 
-import BackgroundFade from '../BackgroundFade/BackgroundFade'
-import {userDataReducer} from '../reducers/reducers'
 import firebaseContext from '../Firebase/context'
+
+import Input from './Input/Input' 
 import Leaflet from './Leaflet/Leaflet'
+import {userDataReducer} from '../reducers/reducers'
 import {fields} from './data/fields'
 import {emptyFields} from './data/fields'
+
+import * as S from './styledComponents'
 
 
 const SignUp = props => {
@@ -63,7 +64,6 @@ const SignUp = props => {
                         return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} />
                     })}
                     <S.Spacer />
-                    <BackgroundFade isLoading={isLoading} handleClick={handleLoaderClick}/>
                     <S.LinkContainer exact to='/login'>
                         <S.Paragraph>Got an account? Login</S.Paragraph>
                     </S.LinkContainer>

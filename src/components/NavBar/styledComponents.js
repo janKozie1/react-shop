@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {colors} from '../cssVariables'
 import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
@@ -32,16 +32,22 @@ export let Container = styled.div`
         justify-content:center;
     }
 `
-
+export let Links = styled.div`
+    display:flex;
+    height:100%;
+    align-items:center;
+    justify-content:center;
+    @media (max-width:${sizes.firstBreakpoint.upper}){
+        display:none;
+    }
+`
 export let Ul = styled.ul`
     margin:0;
     padding:0;
     display:flex;
     
     list-style-type:none;
-    @media (max-width:${sizes.firstBreakpoint.upper}){
-        display:none;
-    }
+    
 `
 
 export let Li = styled.li`
@@ -57,6 +63,28 @@ export let Li = styled.li`
     }
     
 `
+export let PrimaryNavLink = styled(NavLink)`
+    background:${colors.primaryColor};
+    border:2px solid ${colors.primaryColor};
+    padding:5px 10px;
+    font-size:0.8rem;
+    color:white;
+    border-radius:5px;
+    margin-right:15px;
+    text-decoration:none;
+    transition:transform 0.5s ease;
+    &:first-child{
+        border:none;    
+        border-radius:0;
+        
+        color:black;
+        background:white;
+        font-weight:bolder;
+    }
+    &:hover{
+        transform:scale(1.1);
+    }
+`
 export let StyledNavLink = styled(NavLink)`
     text-transform:uppercase;
     font-size:0.7rem;
@@ -71,9 +99,10 @@ export let StyledNavLink = styled(NavLink)`
     display:flex;
     flex-direction:column;   
     width:100%;
+    transition:transform 0.3s;
     &:hover{
         transform:scale(1.1);
-        transition:transform 0.3s;
+       
     }  
 `
 

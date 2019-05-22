@@ -8,11 +8,16 @@ const NavBar = ({links}) => {
             <S.Container>
                 <ToggleButton />
                 <S.Logo>PLANT <span>IT</span></S.Logo>
-                    <S.Ul> 
-                        {links.map((e,index)=>{
-                            return <NavIcon key={index} path={e.path} text={e.text} iconSize={'medium'}/>
-                        })}
-                    </S.Ul>
+                    <S.Links>
+                        <S.PrimaryNavLink exact to='/account/'>Log in</S.PrimaryNavLink>
+                        <S.PrimaryNavLink exact to='/account/'>Sign up</S.PrimaryNavLink>
+                        <S.Ul> 
+                            {links.map((e,index)=>{
+                                return <NavIcon key={index} path={e.path} text={e.text} iconSize={'medium'} desc={e.desc}/>
+                            })}
+                        </S.Ul>
+                    </S.Links>
+                    
                 </S.Container>
         </S.Nav>
     );

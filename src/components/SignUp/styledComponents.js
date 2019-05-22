@@ -30,6 +30,7 @@ export let FormContainer = styled.div`
         margin-top:20px;
         height:auto;
         align-content:start;
+        width:calc(100% - 42px);
     }
     position:relative;
 `

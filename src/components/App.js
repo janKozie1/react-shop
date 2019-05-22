@@ -9,26 +9,22 @@ import SignUp from './SignUp/SignUp'
 import NavBar from './NavBar/NavBar'
 import Categories from './Categories/Categories'
 import SideNavBar from './SideNavBar/SideNavBar'
+import BackgroundFade from './BackgroundFade/BackgroundFade'
 import GlobalContext from './context/GlobalContext'
-
 const App = () => {
-    
     let links = [
         {
             path:'/',
             text:'home'       
         },
         {
-            path:'/user',
-            text:'user'       
+            path:'/account',
+            text:'user',
+            desc:'you'       
         },
         {
             path:'/cart',
             text:'cart'       
-        },
-        {
-            path:'/about',
-            text:'about'       
         },
     ]
     let categories = [
@@ -49,11 +45,11 @@ const App = () => {
                     <Categories categories={categories} />
                 </S.Header>
                 <SideNavBar links={links}/>
+                <BackgroundFade />
                 <S.Main>
                     <Route path='/' exact component={Home} />
                     <Route path='/about/' exact component={About} />
-                    <Route path='/login/' exact component={LogIn} />
-                    <Route path='/user/' exact component={SignUp} />
+                    <Route path='/account/' exact component={SignUp} />
                 </S.Main>
             </Router>
         </GlobalContext>

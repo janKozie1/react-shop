@@ -111,7 +111,7 @@ export let Bar = styled.div`
     background:${colors.text};  
     position:relative; 
     animation:${openMiddle} ${sizes.toggleAnimDur} ease;
-    ${props => props.isToggled && css`
+    ${props => props.sideNavVisible && css`
         animation:${closeMiddle} ${sizes.toggleAnimDur} ease;
         visibility:hidden;
     `}
@@ -127,7 +127,7 @@ export let Bar = styled.div`
     &:before{
         animation:${openTop} ${sizes.toggleAnimDur} ease;
         transform:translateY(-400%);
-        ${props => props.isToggled && css`
+        ${props => props.sideNavVisible && css`
             animation:${closeTop} ${sizes.toggleAnimDur} ease;
             transform:translateY(0);
             transform:rotate(45deg);
@@ -137,7 +137,7 @@ export let Bar = styled.div`
     &:after{
         animation:${openBottom} ${sizes.toggleAnimDur} ease;
         transform:translateY(400%);
-        ${props => props.isToggled && css`
+        ${props => props.sideNavVisible && css`
             animation:${closeBottom} ${sizes.toggleAnimDur} ease;
             transform:translateY(0);
             transform:rotate(-45deg);

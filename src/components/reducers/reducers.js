@@ -4,11 +4,26 @@ export const userDataReducer = (state, action) => {
             let temp = {...state};
             temp[action.field].value = action.data;
             temp[action.field].valid = action.validation(action.data,state);
-            
             return {...temp};
         }
         default:{
             return state;
+        }
+    }
+}
+
+export const uxReducer = (state,action) => {
+    switch (action.type) {
+        case 'toggleSideNav':{
+            let temp = {...state};
+            temp.sideNavVisible = action.value;
+            temp.bgFadeVisible = action.value;
+            return {...temp}
+        }
+        case 'toggleBgFade': {
+            let temp = {...state};
+            temp.bgFadeVisible = action.value;
+            return {...temp}
         }
     }
 }

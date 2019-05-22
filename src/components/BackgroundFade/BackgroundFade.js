@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import * as S from './styledComponents'
-const BackgroundFade = ({isLoading,handleClick}) => {
+import UxContext from '../context/ux-context'
+const BackgroundFade = () => {
+    let {bgFadeVisible} = useContext(UxContext)
     return (
-        <S.BackgroundFade isLoading={isLoading} onClick={()=>handleClick()}>
+        <S.BackgroundFade bgFadeVisible={bgFadeVisible}>
             
         </S.BackgroundFade>
     );

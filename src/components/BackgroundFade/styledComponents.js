@@ -4,16 +4,19 @@ export let BackgroundFade = styled.div`
     width:100vw;
     height:100vh;
     position:fixed;
-    display:none;
     left:0;
     top:0;
     z-index:200;
-    background:rgba(0,0,0,0.2);
-    @media(max-width:${sizes.firstBreakpoint.upper}){
-        display:none;
-        ${props => props.isLoading && css`
-            display:block;
-        `}
+    background:black;
+    opacity:0;
+    transition:opacity 0.3s ease;
+    @media(min-width:${sizes.firstBreakpoint.lower}){
+       display:none;
+        
     }
+    ${props => props.bgFadeVisible && css`
+
+            opacity:0.2;
+        `}
     
 `

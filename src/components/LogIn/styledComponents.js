@@ -17,7 +17,7 @@ export let SignUp = styled.section`
 `
 
 export let FormContainer = styled.div`
-    width:70%;
+    width:60%;
     display:grid;
     grid-template-columns: 4fr 6fr;
     height:${sizes.signUp.formContainer.big};
@@ -28,6 +28,7 @@ export let FormContainer = styled.div`
         grid-template-columns:1fr;
         grid-column-gap:0;
         margin-top:20px;
+        width:calc(100% - 42px);
         height:auto;
         align-content:start;
     }
@@ -57,7 +58,7 @@ export let SubmitButton = styled.button`
     display:flex;
     justify-content:center;
     align-items:center;
-    width:50%;
+    width:100%;
     cursor: pointer;
     border-radius:5px;
     height:35px;
@@ -111,7 +112,7 @@ export let LinkContainer = styled(NavLink)`
     }
     @media(max-width:${sizes.firstBreakpoint.upper}){
         margin-top:-40px;
-       grid-row:7/8;
+       grid-row:4/5;
     }
     
 `

@@ -1,14 +1,17 @@
-import React,{useState} from 'react';
-import NavContext from './nav-context'
+import React,{useReducer} from 'react';
+import {uxReducer} from '../reducers/reducers'
+import UxContext from './ux-context'
 const GlobalContext = props => {
-    let [isToggled,setToggle] = useState(false);
+    let [uxState,dispatch] = useReducer(uxReducer,{
+        sideNavVisible:false,
+        bgFadeVisible:false
+    });
     return (
-        <NavContext.Provider value={{
-            isToggled,
-            setToggle
+        <UxContext.Provider value={{
+            ...uxState,dispatch
         }}>
             {props.children}
-        </NavContext.Provider>
+        </UxContext.Provider>
     );
 };
 
