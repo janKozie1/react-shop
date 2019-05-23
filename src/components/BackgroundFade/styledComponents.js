@@ -1,8 +1,8 @@
 import styled ,{css} from 'styled-components'
 import {sizes} from '../cssVariables'
 export let BackgroundFade = styled.div`
-    width:100vw;
-    height:100vh;
+    width:0;
+    height:0;
     position:fixed;
     left:0;
     top:0;
@@ -15,8 +15,9 @@ export let BackgroundFade = styled.div`
         
     }
     ${props => props.bgFadeVisible && css`
-
-            opacity:0.2;
-        `}
+    width:100vw;
+    height:100vh;
+        opacity:0.2;
+    `}
     
 `

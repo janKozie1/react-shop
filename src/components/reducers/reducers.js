@@ -6,6 +6,18 @@ export const userDataReducer = (state, action) => {
             temp[action.field].valid = action.validation(action.data,state);
             return {...temp};
         }
+        case 'empty':{
+            let temp = {...state}
+            for(let field in temp){
+                
+                temp[field].value='';
+                temp[field].valid={
+                    value:false,
+                    err:"Can't be empty"
+                }
+            }
+            return {...temp}
+        }
         default:{
             return state;
         }

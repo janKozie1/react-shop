@@ -28,18 +28,20 @@ export let FormContainer = styled.div`
         grid-template-columns:1fr;
         grid-column-gap:0;
         margin-top:20px;
+        width:calc(100% - 42px);
         height:auto;
         align-content:start;
-        width:calc(100% - 42px);
     }
     position:relative;
 `
 export let Spacer = styled.div`
     grid-row:2/3;
     grid-column:2/3;
+    display: ${props => props.type === 'login' ? 'none': 'block'};
     @media(max-width:${sizes.firstBreakpoint.upper}){
-            display:none;
+        display:none;
     }
+    
 `
 
 

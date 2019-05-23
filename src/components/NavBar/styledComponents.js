@@ -106,7 +106,9 @@ export let StyledNavLink = styled(NavLink)`
     }  
 `
 
-export let Logo = styled.div`
+export let Logo = styled(NavLink)`
+    text-decoration:none;
+    color:black;
     font-size:2rem;
     height:100%;
     display:flex;
