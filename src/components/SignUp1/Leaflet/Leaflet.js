@@ -5,8 +5,8 @@ const Leaflet = ({ isLoading, result,setConfirmed }) => {
     return (
         <S.Leaflet isLoading={isLoading}>
             <S.ImageContainer isLoading={isLoading}>
-                <h3>Welcome back in PLANT <span>IT</span></h3>
-                <p>We are happy to give you the best new offerts and deals.</p>
+                <h3>Join us at PLANT <span>IT</span></h3>
+                <p>We provide our clients with the highest quality of saplings, herbs and many other plants.</p>
                 <S.Image />
             </S.ImageContainer>
             <S.Loader isLoading={isLoading}>

@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import { colors } from '../../cssVariables'
+import { sizes } from '../../cssVariables'
 import { ReactComponent as errIcon } from '../../../images/errorIcon.svg'
 import { ReactComponent as lockIcon } from '../../../images/lockIcon.svg'
 
@@ -52,9 +53,13 @@ export let ErrorIcon = styled(errIcon)`
 export let Label = styled.label`
     font-size:0.9rem;
     display:flex;
+    grid-column:1/3;
     align-items:space-between;
     justify-content:space-between;
     position:relative;
+    @media(max-width:${sizes.firstBreakpoint.upper}){
+       grid-column:1/2;
+    }
     height:100%;
     flex-direction:column;
     &::after{

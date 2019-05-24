@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import * as S from './styledComponents'
 
 import About from './About/About';
 import Home from './Home/Home';
-import LogIn from './LogIn/LogIn';
-import SignUp from './SignUp/SignUp'
+import LogIn from './LogIn1/LogIn';
+import SignUp from './SignUp1/SignUp'
 import NavBar from './NavBar/NavBar'
 import Categories from './Categories/Categories'
 import SideNavBar from './SideNavBar/SideNavBar'
@@ -49,9 +49,8 @@ const App = () => {
                 <S.Main>
                     <Route path='/' exact component={Home} />
                     <Route path='/about/' exact component={About} />
-                    <Route path='/account/:type' exact render={(props)=>{
-                        return <SignUp key={props.match.params.type} {...props} />
-                    }} />
+                    <Route path='/account/login' exact render={LogIn}/>
+                    <Route path='/account/signup'  exact render={SignUp} />
                 </S.Main>
             </Router>
         </GlobalContext>

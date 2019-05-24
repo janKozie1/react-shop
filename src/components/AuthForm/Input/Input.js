@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react';
 import ErrorIcon from './ErrorIcon'
 import * as S from './styledComponents'
 
-const Input = ({data,state,dispatch, isLoading, wasSubmited}) => {
+const Input = ({data,state,dispatch, isLoading, wasSubmited,mode}) => {
     let {text,type, autoId,validation} = data;
     let id =`${data.id || text}`;
     let {value,valid} = state[id];
@@ -15,11 +15,12 @@ const Input = ({data,state,dispatch, isLoading, wasSubmited}) => {
         }
     },[wasSubmited])
     useEffect(()=>{
-        dispatch({type:'edit',field:'cPassword',data:state.cPassword.value,validation})
+        if(mode==='signup')
+            dispatch({type:'edit',field:'cPassword',data:state.cPassword.value,validation})
     },[state.password.value])
     
     return (
-        <S.Label htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
+        <S.Label type={mode} htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
             <S.InputHeader >
                     <p>{text}</p>
                     <ErrorIcon errorMsg={valid.err} isValid={valid.value} wasUnfocused={wasUnfocused} isLoading={isLoading} />

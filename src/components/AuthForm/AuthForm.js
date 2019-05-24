@@ -5,19 +5,15 @@ import UxContext from '../context/ux-context'
 import Leaflet from './Leaflet/Leaflet'
 import Input from './Input/Input'
 import {userDataReducer} from '../reducers/reducers'
-import * as fields from './data/fields'
 
 import * as S from './styledComponents'
 const SignUp = props => {
-    let defaultResult = {text:'Loading',secText:'',type:'loading'}
-    const firebase = useContext(firebaseContext)
-    const uxContext = useContext(UxContext)
-    const [result,setResult] = useState(defaultResult)
+    let {defaultValue,fields, buttonText, altText,altPath,result, onFormValidated, mode} = props
     const [confirmed,setConfirmed] = useState(false)
     const [isLoading,setLoading] = useState(false)
     const [wasSubmited, setSubmited] = useState(false)
-    let [userState,dispatch] = useReducer(userDataReducer,fields[`empty_signup`])
-    
+    const uxContext = useContext(UxContext)
+    let [userState,dispatch] = useReducer(userDataReducer,defaultValue)
     let onFormSubmit = async(e) => {
         setSubmited(true)
         e.preventDefault()
@@ -28,20 +24,9 @@ const SignUp = props => {
         if(validated){
             uxContext.dispatch({type:'toggleBgFade',value:true})
             setLoading(true);
-            firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
-                firebase.auth.currentUser.updateProfile({
-                    displayName:`${userState.name.value} ${userState.surname.value}`
-                }).then(()=>{
-                    setResult({text:'Success!',secText:'Press the button to be redirected',type:'success'})
-                }).catch((err)=>{
-                    setResult({text:'Something went wrong',secText:err.message,type:'error'})
-                })
-            }).catch(err => {
-                setResult({text:'Something went wrong',secText:err.message,type:'error'})
-            })
+            onFormValidated(userState)
         }
     }
-
     useEffect(()=>{
         if(confirmed && result.type==='success'){
             props.history.push("/")
@@ -50,18 +35,18 @@ const SignUp = props => {
             setLoading(false)
             uxContext.dispatch({type:'toggleBgFade',value:false})
             setTimeout(()=>{
-                setResult(defaultResult)
+                //setResult(defaultResult)
                 setConfirmed(false)
             },800)
         } 
     },[confirmed])
 
-    useEffect(()=>{
-        if(!uxContext.bgFadeVisible && isLoading){
-            setLoading(false)
-            setResult(defaultResult)
-        }
-    },[uxContext.bgFadeVisible])
+    // useEffect(()=>{
+    //     if(!uxContext.bgFadeVisible && isLoading){
+    //         setLoading(false)
+    //         setResult(defaultResult)
+    //     }
+    // },[uxContext.bgFadeVisible])
     
     return (
         <S.SignUp> 
@@ -69,15 +54,15 @@ const SignUp = props => {
                 <Leaflet isLoading={isLoading} result={result} setConfirmed={setConfirmed}/>
                 <S.Form onSubmit={e => onFormSubmit(e)}>
                     {
-                        fields.signup.map((e,index)=>{
-                            return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} />
+                        fields.map((e,index)=>{
+                            return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} mode={mode}/>
                         })
                     }
-                    <S.Spacer/>
-                    <S.LinkContainer exact  to={`/account/login`}>
-                        <S.Paragraph>Got an account? Login</S.Paragraph>
+                    <S.Spacer mode={mode}/>
+                    <S.LinkContainer exact  to={altPath}>
+                        <S.Paragraph>{altText}</S.Paragraph>
                     </S.LinkContainer>
-                    <S.SubmitButton disabled={isLoading} type="submit"><span>Sign Up</span></S.SubmitButton>
+                    <S.SubmitButton disabled={isLoading} type="submit"><span>{buttonText}</span></S.SubmitButton>
                 </S.Form>
             </S.FormContainer>
         </S.SignUp>

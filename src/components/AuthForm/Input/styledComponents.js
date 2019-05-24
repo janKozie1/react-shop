@@ -57,6 +57,7 @@ export let Label = styled.label`
     position:relative;
     height:100%;
     flex-direction:column;
+    grid-column:${props => props.type==='login'?'1/3':''};
     &::after{
             position:absolute;
             bottom:0;

@@ -37,6 +37,7 @@ export let FormContainer = styled.div`
 export let Spacer = styled.div`
     grid-row:2/3;
     grid-column:2/3;
+    display: ${props => props.mode==='login'?"none":"block"};
     @media(max-width:${sizes.firstBreakpoint.upper}){
         display:none;
     }
