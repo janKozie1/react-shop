@@ -75,7 +75,7 @@ export let signup = [
     },
 ]
 
-export let emptySignup = {
+export let empty_signup = {
     name:{
         value:'',
         valid:{
@@ -142,7 +142,7 @@ export let login = [
     },
 ]
 
-export let emptyLogin = {
+export let empty_login = {
     email:{
         value:'',
         valid:{

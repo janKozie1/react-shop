@@ -58,7 +58,7 @@ export let Label = styled.label`
     height:100%;
     flex-direction:column;
     ${props => props.type === 'login' && css`
-        grid-column:1/3;
+        grid-column:1/3;rr
     `}
     &::after{
             position:absolute;

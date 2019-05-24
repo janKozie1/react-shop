@@ -10,12 +10,12 @@ const NavBar = ({links}) => {
                 <S.Logo exact to='/'>PLANT <span>IT</span></S.Logo>
                     <S.Links>
                         <S.PrimaryNavLink exact to={{
-                            pathname:'/account/',
-                            state:{type:'login'}
+                            pathname:'/account/login',
+                            state:{key:1}
                             }}>Log in</S.PrimaryNavLink>
                         <S.PrimaryNavLink exact to={{
-                            pathname:'/account/',
-                            state:{type:'signup'}
+                            pathname:'/account/signup',
+                            state:{key:2}
                             }}>Sign up</S.PrimaryNavLink>
                         <S.Ul> 
                             {links.map((e,index)=>{

@@ -9,7 +9,6 @@ export const userDataReducer = (state, action) => {
         case 'empty':{
             let temp = {...state}
             for(let field in temp){
-                
                 temp[field].value='';
                 temp[field].valid={
                     value:false,
@@ -17,6 +16,10 @@ export const userDataReducer = (state, action) => {
                 }
             }
             return {...temp}
+        }
+        case 'changeType':{
+            return {...action.fields}
+
         }
         default:{
             return state;

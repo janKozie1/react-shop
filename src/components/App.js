@@ -49,7 +49,9 @@ const App = () => {
                 <S.Main>
                     <Route path='/' exact component={Home} />
                     <Route path='/about/' exact component={About} />
-                    <Route path='/account/' exact component={SignUp} />
+                    <Route path='/account/:type' exact render={(props)=>{
+                        return <SignUp key={props.match.params.type} {...props} />
+                    }} />
                 </S.Main>
             </Router>
         </GlobalContext>
