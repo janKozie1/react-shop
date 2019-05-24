@@ -1,85 +1,43 @@
 import React, {useContext,useReducer, useState, useEffect, useRef} from 'react';
 import {withRouter} from 'react-router'
 import firebaseContext from '../Firebase/context'
-import UxContext from '../context/ux-context'
-import Leaflet from './Leaflet/Leaflet'
-import Input from './Input/Input'
+import AuthForm from '../AuthForm/AuthForm'
 import {userDataReducer} from '../reducers/reducers'
-import * as fields from './data/fields'
-
+import {fields} from './data/fields'
+import {emptyFields} from './data/fields'
+import {resultReducer} from '../reducers/reducers'
 import * as S from './styledComponents'
+
 const SignUp = props => {
     let defaultResult = {text:'Loading',secText:'',type:'loading'}
+    const [result,dispatch] = useReducer(resultReducer, defaultResult)
     const firebase = useContext(firebaseContext)
-    const uxContext = useContext(UxContext)
-    const [result,setResult] = useState(defaultResult)
-    const [confirmed,setConfirmed] = useState(false)
-    const [isLoading,setLoading] = useState(false)
-    const [wasSubmited, setSubmited] = useState(false)
-    let [userState,dispatch] = useReducer(userDataReducer,fields[`empty_signup`])
-    
-    let onFormSubmit = async(e) => {
-        setSubmited(true)
-        e.preventDefault()
-        let validated = Object.keys(userState).reduce((prev,current)=>{
-            return !userState[current].valid.value?prev=userState[current].valid.value:prev;
-        },true)
-       
-        if(validated){
-            uxContext.dispatch({type:'toggleBgFade',value:true})
-            setLoading(true);
-            firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
-                firebase.auth.currentUser.updateProfile({
-                    displayName:`${userState.name.value} ${userState.surname.value}`
-                }).then(()=>{
-                    setResult({text:'Success!',secText:'Press the button to be redirected',type:'success'})
-                }).catch((err)=>{
-                    setResult({text:'Something went wrong',secText:err.message,type:'error'})
-                })
-            }).catch(err => {
-                setResult({text:'Something went wrong',secText:err.message,type:'error'})
+    let onFormValidated = (userState) =>{
+        firebase.auth.createUserWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
+            firebase.auth.currentUser.updateProfile({
+                displayName:`${userState.name.value} ${userState.surname.value}`
+            }).then(()=>{
+                dispatch({type:'updateResult',payload:{text:'Success!',secText:'Press the button to be redirected',type:'success'}})
+            }).catch((err)=>{
+                dispatch({type:'updateResult',payload:{text:'Something went wrong',secText:err.message,type:'error'}})
             })
-        }
+        }).catch(err => {
+            dispatch({type:'updateResult',payload:{text:'Something went wrong',secText:err.message,type:'error'}})
+        })
     }
-
-    useEffect(()=>{
-        if(confirmed && result.type==='success'){
-            props.history.push("/")
-            uxContext.dispatch({type:'toggleBgFade',value:false})
-        }else if(confirmed){
-            setLoading(false)
-            uxContext.dispatch({type:'toggleBgFade',value:false})
-            setTimeout(()=>{
-                setResult(defaultResult)
-                setConfirmed(false)
-            },800)
-        } 
-    },[confirmed])
-
-    useEffect(()=>{
-        if(!uxContext.bgFadeVisible && isLoading){
-            setLoading(false)
-            setResult(defaultResult)
-        }
-    },[uxContext.bgFadeVisible])
-    
     return (
         <S.SignUp> 
-            <S.FormContainer >
-                <Leaflet isLoading={isLoading} result={result} setConfirmed={setConfirmed}/>
-                <S.Form onSubmit={e => onFormSubmit(e)}>
-                    {
-                        fields.signup.map((e,index)=>{
-                            return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} />
-                        })
-                    }
-                    <S.Spacer/>
-                    <S.LinkContainer exact  to={`/account/login`}>
-                        <S.Paragraph>Got an account? Login</S.Paragraph>
-                    </S.LinkContainer>
-                    <S.SubmitButton disabled={isLoading} type="submit"><span>Sign Up</span></S.SubmitButton>
-                </S.Form>
-            </S.FormContainer>
+            <AuthForm 
+                defaultValue={emptyFields}
+                fields={fields}
+                buttonText={'Sign up'} 
+                altText={'Got an account? Log in'}
+                altPath={'/account/login'}
+                result={result}
+                onFormValidated={onFormValidated}
+                mode={'signup'}
+                dispatchResult={dispatch}
+            />
         </S.SignUp>
     );
 };

@@ -26,7 +26,17 @@ export const userDataReducer = (state, action) => {
         }
     }
 }
-
+export const resultReducer = (state,action) =>{
+    switch(action.type){
+        case 'updateResult':{
+            return {...action.payload}
+        }
+        case 'restoreDefault':{
+            console.log("?")
+            return {text:'Loading',secText:'',type:'loading'}
+        }
+    }
+}
 export const uxReducer = (state,action) => {
     switch (action.type) {
         case 'toggleSideNav':{

@@ -4,8 +4,8 @@ import * as S from './styledComponents'
 
 import About from './About/About';
 import Home from './Home/Home';
-import LogIn from './LogIn1/LogIn';
-import SignUp from './SignUp1/SignUp'
+import LogIn from './LogIn/LogIn';
+import SignUp from './SignUp/SignUp'
 import NavBar from './NavBar/NavBar'
 import Categories from './Categories/Categories'
 import SideNavBar from './SideNavBar/SideNavBar'

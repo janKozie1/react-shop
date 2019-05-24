@@ -8,7 +8,7 @@ import {userDataReducer} from '../reducers/reducers'
 
 import * as S from './styledComponents'
 const SignUp = props => {
-    let {defaultValue,fields, buttonText, altText,altPath,result, onFormValidated, mode} = props
+    let {defaultValue,fields, buttonText, altText,altPath,result, onFormValidated, mode, dispatchResult} = props
     const [confirmed,setConfirmed] = useState(false)
     const [isLoading,setLoading] = useState(false)
     const [wasSubmited, setSubmited] = useState(false)
@@ -35,18 +35,18 @@ const SignUp = props => {
             setLoading(false)
             uxContext.dispatch({type:'toggleBgFade',value:false})
             setTimeout(()=>{
-                //setResult(defaultResult)
+                dispatchResult({type:'restoreDefault'})
                 setConfirmed(false)
             },800)
         } 
     },[confirmed])
 
-    // useEffect(()=>{
-    //     if(!uxContext.bgFadeVisible && isLoading){
-    //         setLoading(false)
-    //         setResult(defaultResult)
-    //     }
-    // },[uxContext.bgFadeVisible])
+    useEffect(()=>{
+        if(!uxContext.bgFadeVisible && isLoading){
+            setLoading(false)
+            dispatchResult({type:'restoreDefault'})
+        }
+    },[uxContext.bgFadeVisible])
     
     return (
         <S.SignUp> 

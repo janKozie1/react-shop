@@ -1,70 +1,40 @@
-import React, {useContext,useReducer, useState, useEffect} from 'react';
+import React, {useContext,useReducer, useState} from 'react';
 import {withRouter} from 'react-router'
 import * as S from './styledComponents'
-import Input from './Input/Input' 
-import BackgroundFade from '../BackgroundFade/BackgroundFade'
-import {userDataReducer} from '../reducers/reducers'
 import firebaseContext from '../Firebase/context'
-import Leaflet from './Leaflet/Leaflet'
 import {fields} from './data/fields'
 import {emptyFields} from './data/fields'
+import AuthForm from '../AuthForm/AuthForm'
+import {resultReducer} from '../reducers/reducers'
 
-
-const SignUp = props => {
+const LogIn = props => {
     let defaultResult = {text:'Loading',secText:'',type:'loading'}
+    const [result,dispatch] = useReducer(resultReducer, defaultResult)
+    
     const firebase = useContext(firebaseContext);
-    const [result,setResult] = useState(defaultResult)
-    const [confirmed,setConfirmed] = useState(false)
-    const [isLoading,setLoading] = useState(false);
-    const [wasSubmited, setSubmited] = useState(false);
-    const [userState,dispatch] = useReducer(userDataReducer,emptyFields)
-    let onFormSubmit = async(e) => {
-        setSubmited(true)
-        e.preventDefault();
-        let validated = Object.keys(userState).reduce((prev,current)=>{
-            return !userState[current].valid.value?prev=userState[current].valid.value:prev;
-        },true)
-        if(validated){
-            setLoading(true);
-            firebase.auth.signInWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
-                setResult({text:'Success!',secText:'Press the button to be redirected',type:'success'})
-            }).catch(err => {
-                setResult({text:'Something went wrong',secText:err.message,type:'error'})
-            })
-        }
-    }
-    useEffect(()=>{
-        if(confirmed && result.type==='success'){
-            props.history.push("/");
-        }else if(confirmed){
-            setLoading(false)
-            setTimeout(()=>{
-                setResult(defaultResult)
-                setConfirmed(false);
-            },800)
-        } 
-    },[confirmed])
-    let handleLoaderClick = () =>{
-        setLoading(false)
-        setResult(defaultResult)
+
+    let onFormValidated = (userState) =>{
+        firebase.auth.signInWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
+            dispatch({type:'updateResult',payload:{text:'Success!',secText:'Press the button to be redirected',type:'success'}})
+        }).catch(err => {
+            dispatch({type:'updateResult',payload:{text:'Something went wrong',secText:err.message,type:'error'}})
+        })
     }
     return (
         <S.SignUp>
-            <S.FormContainer>
-                <Leaflet isLoading={isLoading} result={result} setConfirmed={setConfirmed}/>
-                <S.Form onSubmit={e => onFormSubmit(e)}>
-                    {fields.map((e,index)=>{
-                        return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} />
-                    })}
-                    <BackgroundFade isLoading={isLoading} handleClick={handleLoaderClick}/>
-                    <S.LinkContainer exact to='/user'>
-                        <S.Paragraph>No account? Sign up</S.Paragraph>
-                    </S.LinkContainer>
-                    <S.SubmitButton disabled={isLoading} type="submit"><span>Sign up</span></S.SubmitButton>
-                </S.Form>
-            </S.FormContainer>
+            <AuthForm 
+                defaultValue={emptyFields}
+                fields={fields}
+                buttonText={'Log In'} 
+                altText={'No account? Sign up'}
+                altPath={'/account/signup'}
+                result={result}
+                onFormValidated={onFormValidated}
+                mode={'login'}
+                dispatchResult={dispatch}
+            />
         </S.SignUp>
     );
 };
-const SignUpRouter = withRouter(SignUp)
-export default SignUpRouter;
+const LogInRouter = withRouter(LogIn)
+export default LogInRouter;
