@@ -27,6 +27,7 @@ export let FormContainer = styled.div`
     @media(max-width:${sizes.firstBreakpoint.upper}){
         grid-template-columns:1fr;
         grid-column-gap:0;
+
         margin-top:20px;
         width:calc(100% - 42px);
         height:auto;
@@ -85,6 +86,7 @@ export let SubmitButton = styled.button`
     }
     @media(max-width:${sizes.firstBreakpoint.upper}){
         width:100%;
+    
     }
     &:hover{
         transform:scale(1.05);
@@ -121,7 +123,7 @@ export let LinkContainer = styled(NavLink)`
     }
     @media(max-width:${sizes.firstBreakpoint.upper}){
         margin-top:-40px;
-       grid-row:7/8;
+        grid-row:${props => props.mode==='signup'?'7/8':'4/5'};
     }
     
 `

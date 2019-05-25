@@ -9,14 +9,8 @@ const NavBar = ({links}) => {
                 <ToggleButton />
                 <S.Logo exact to='/'>PLANT <span>IT</span></S.Logo>
                     <S.Links>
-                        <S.PrimaryNavLink exact to={{
-                            pathname:'/account/login',
-                            state:{key:1}
-                            }}>Log in</S.PrimaryNavLink>
-                        <S.PrimaryNavLink exact to={{
-                            pathname:'/account/signup',
-                            state:{key:2}
-                            }}>Sign up</S.PrimaryNavLink>
+                    <S.PrimaryNavLink exact to='/account/login'>Log in</S.PrimaryNavLink>
+                    <S.PrimaryNavLink exact to='/account/signup'>Sign up</S.PrimaryNavLink>
                         <S.Ul> 
                             {links.map((e,index)=>{
                                 return <NavIcon key={index} path={e.path} text={e.text} iconSize={'medium'} desc={e.desc}/>

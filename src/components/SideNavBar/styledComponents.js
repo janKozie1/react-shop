@@ -4,8 +4,7 @@ import {colors} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
 
 export let Nav = styled.nav`
-    height:100%;
-    
+    width:130%;
     position:absolute;
     z-index:300;
     background:white;
@@ -13,11 +12,11 @@ export let Nav = styled.nav`
     top:${sizes.navHeight};
     position:fixed;
     box-sizing:border-box;
-    transform:translateX(-100%);
-    transition:transform ${sizes.toggleAnimDur} ease;
-    border-right:1px solid ${colors.dividerColor};
+    transform:translateY(-200%);
+    transition:transform ${sizes.toggleAnimDur} ease-in-out;
     ${props => props.sideNavVisible && css`
-        transform:translateX(0%);
+        transform:translateY(0%);
+      
     `}
     @media (min-width:${sizes.firstBreakpoint.lower}){
         display:none;
@@ -48,9 +47,12 @@ export let Li = styled.li`
     }
     
 `
+export let PrimaryNavLink = styled(NavLink)`
+
+`
 export let StyledNavLink = styled(NavLink)`
     text-transform:uppercase;
-    font-size:0.7rem;
+    font-size:1rem;
     font-weight:bolder;  
     text-decoration:none;
     color:${colors.text};

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { colors } from '../../cssVariables'
+import { colors, sizes } from '../../cssVariables'
 import { ReactComponent as errIcon } from '../../../images/errorIcon.svg'
 import { ReactComponent as lockIcon } from '../../../images/lockIcon.svg'
 
@@ -57,7 +57,11 @@ export let Label = styled.label`
     position:relative;
     height:100%;
     flex-direction:column;
-    grid-column:${props => props.type==='login'?'1/3':''};
+    
+    @media(min-width:${sizes.firstBreakpoint.lower}){
+        grid-column:${props => props.mode==='login'?'1/3':''};
+    
+    }
     &::after{
             position:absolute;
             bottom:0;

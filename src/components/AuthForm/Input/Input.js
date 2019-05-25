@@ -20,7 +20,7 @@ const Input = ({data,state,dispatch, isLoading, wasSubmited,mode}) => {
     },[state.password.value])
     
     return (
-        <S.Label type={mode} htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
+        <S.Label mode={mode} htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
             <S.InputHeader >
                     <p>{text}</p>
                     <ErrorIcon errorMsg={valid.err} isValid={valid.value} wasUnfocused={wasUnfocused} isLoading={isLoading} />

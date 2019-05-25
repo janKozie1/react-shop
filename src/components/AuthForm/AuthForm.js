@@ -59,7 +59,7 @@ const SignUp = props => {
                         })
                     }
                     <S.Spacer mode={mode}/>
-                    <S.LinkContainer exact  to={altPath}>
+                    <S.LinkContainer exact  to={altPath} mode={mode}>
                         <S.Paragraph>{altText}</S.Paragraph>
                     </S.LinkContainer>
                     <S.SubmitButton disabled={isLoading} type="submit"><span>{buttonText}</span></S.SubmitButton>
