@@ -10,9 +10,7 @@ import {resultReducer} from '../reducers/reducers'
 const LogIn = props => {
     let defaultResult = {text:'Loading',secText:'',type:'loading'}
     const [result,dispatch] = useReducer(resultReducer, defaultResult)
-    
     const firebase = useContext(firebaseContext);
-
     let onFormValidated = (userState) =>{
         firebase.auth.signInWithEmailAndPassword(userState.email.value,userState.password.value).then(e=>{
             dispatch({type:'updateResult',payload:{text:'Success!',secText:'Press the button to be redirected',type:'success'}})

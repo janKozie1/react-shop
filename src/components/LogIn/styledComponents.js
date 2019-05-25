@@ -113,7 +113,6 @@ export let LinkContainer = styled(NavLink)`
     @media(max-width:${sizes.firstBreakpoint.upper}){
         margin-top:-40px;
         grid-row:4/5;
-        color:red;
     }
     
 `

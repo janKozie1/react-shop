@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styledComponents'
-const Logo = ({name, size}) => {
-
+const Logo = ({name, size, expanded}) => {
+    
     let paths = {
         about:{
             path:"M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm2 34h-4v-4h4v4zm4.13-15.49l-1.79 1.84C26.9 25.79 26 27 26 30h-4v-1c0-2.21.9-4.21 2.34-5.66l2.49-2.52C27.55 20.1 28 19.1 28 18c0-2.21-1.79-4-4-4s-4 1.79-4 4h-4c0-4.42 3.58-8 8-8s8 3.58 8 8c0 1.76-.71 3.35-1.87 4.51z"
@@ -14,10 +14,19 @@ const Logo = ({name, size}) => {
         },
         user:{
             path:"M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm0 6c3.31 0 6 2.69 6 6 0 3.32-2.69 6-6 6s-6-2.68-6-6c0-3.31 2.69-6 6-6zm0 28.4c-5.01 0-9.41-2.56-12-6.44.05-3.97 8.01-6.16 12-6.16s11.94 2.19 12 6.16c-2.59 3.88-6.99 6.44-12 6.44z"
+        },
+        categories:{
+            path:"M38 6h-8.37c-.82-2.32-3.02-4-5.63-4s-4.81 1.68-5.63 4H10c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4V10c0-2.21-1.79-4-4-4zM24 6c1.1 0 2 .89 2 2s-.9 2-2 2-2-.89-2-2 .9-2 2-2zm4 28H14v-4h14v4zm6-8H14v-4h20v4zm0-8H14v-4h20v4z"
+        },
+        expand:{
+            path:"M14 20l10 10 10-10z"
+        },
+        hide:{
+            path:"M14 28l10-10 10 10z"
         }
     }
     return (
-        <S.Svg xmlns="http://www.w3.org/2000/svg" size={size} viewBox="0 0 48 48">
+        <S.Svg xmlns="http://www.w3.org/2000/svg" size={size} expanded={expanded} viewBox="0 0 48 48">
             <path d={paths[name].path}/>
         </S.Svg >
     );

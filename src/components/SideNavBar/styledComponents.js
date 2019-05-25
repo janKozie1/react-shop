@@ -6,7 +6,7 @@ import {NavLink} from 'react-router-dom'
 export let Nav = styled.nav`
     width:130%;
     position:absolute;
-    z-index:300;
+    z-index:250;
     background:white;
     left:0%;
     top:${sizes.navHeight};
@@ -31,7 +31,7 @@ export let Li = styled.li`
         margin: 0;
         display:flex;
         padding:12.5px ${sizes.sideMargin.small};
-        
+        border-bottom:0.5px solid rgba(0,0,0,0.3);
         align-items:center;
         justify-content:flex-start;
         >svg{
@@ -42,13 +42,41 @@ export let Li = styled.li`
             height:100%;
             align-items:center;
             margin:0;
-            margin-left:12px;
+            margin:0 12px;
         }
     }
     
 `
 export let PrimaryNavLink = styled(NavLink)`
-
+    text-decoration:none;
+    color:white;
+    background:${colors.primaryColor};
+   
+    >p{
+        transform:translateX(-10px);
+        transition:transform 0.3s ease;
+    }
+    position:relative;
+    &::before{
+            content:'>>';
+            position:absolute;
+            left:${sizes.sideMargin.small};
+            z-index:0;
+            height:100%;
+            display:flex;
+            align-items:center;
+            opacity:0;
+            width:15px;
+            transition:opacity 0.3s ease;
+    }
+    &:hover{
+       &::before{
+           opacity:1;
+       }
+        >p{
+            transform:translateX(20px); 
+        }
+    }
 `
 export let StyledNavLink = styled(NavLink)`
     text-transform:uppercase;
@@ -63,8 +91,19 @@ export let StyledNavLink = styled(NavLink)`
     justify-content:center;
     display:flex;   
     width:100%;
+    transition:transform 0.3s;
     &:hover{
         transform:scale(1.05);
-        transition:transform 0.3s;
+        
     }  
+`
+export let SubCategories = styled.ul`
+    display:flex;
+    flex-direction:column;
+    list-style-type:none;
+    margin:0px;
+    padding:0px;
+`
+export let SubItem = styled.li`
+
 `
