@@ -8,9 +8,7 @@ export let GlobalStyle = createGlobalStyle`
         
         height:100%;
         font-family:'Raleway','sans-serif';
-        &::-webkit-scrollbar{
-            display:none;
-        }
+        
         >body{
             position:absolute;
             height:100%;
@@ -52,7 +50,7 @@ export let Header = styled.header`
     padding:0;
     margin:0;
     background:white;
-    z-index:300;
+    z-index:500;
     display:flex;
     flex-direction:column;
 `

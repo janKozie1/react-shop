@@ -16,13 +16,14 @@ export let Leaflet = styled.div`
     @media(max-width:${sizes.firstBreakpoint.upper}){
         position:absolute;
         border:none;
-        z-index:250;
+        z-index:230;
         background:white;
-        top:50%;
-        left:50%;
-        transform:translate(-50%,-50%);
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
         width:90%;
-        border-radius:10px;
+        border-radius:5px;
         display:none;
         display:${props => props.isLoading ? 'block':'none'};
     }

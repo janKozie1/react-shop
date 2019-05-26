@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 
 import * as S from './styledComponents'
-import SideNavLink from './SideNavLink'
+import SideNavLink from './SideNavItem'
 import UxContext from '../context/ux-context'
 
 const SideNavBar = ({links}) => {
