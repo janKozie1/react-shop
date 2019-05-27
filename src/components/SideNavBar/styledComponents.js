@@ -4,13 +4,15 @@ import {colors} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
 
 export let Nav = styled.nav`
-    width:130%;
-    position:absolute;
-    z-index:250;
+    width:100%;
+    z-index:260;
+    min-height:300px;
+    max-height:calc(100% - ${sizes.navHeight});
     background:white;
     left:0%;
     top:${sizes.navHeight};
     position:fixed;
+    overflow-y:auto;
     box-sizing:border-box;
     transform:translateY(-200%);
     transition:transform ${sizes.toggleAnimDur} ease-in-out;
@@ -25,9 +27,11 @@ export let Nav = styled.nav`
 `
 
 export let Li = styled.li`
+    height:50px;
     display:flex;
     background:white;
     user-select:none;
+
     >a{
         width:100%;
         margin: 0;
@@ -36,9 +40,6 @@ export let Li = styled.li`
         border-bottom:0.5px solid rgba(0,0,0,0.3);
         align-items:center;
         justify-content:flex-start;
-        >svg{
-            
-        }
         >p{
             display:flex;
             height:100%;
@@ -48,52 +49,49 @@ export let Li = styled.li`
         }
     }
     transition:transform 0.3s ease-in-out;
-    
+    ${props => props.primary && css`
+        background:${colors.primaryColor};
+        >a{
+            color:white;
+            position:relative;
+            >p{
+                transform:translateX(-10px);
+                transition:transform 0.3s ease;
+            }
+            &::before{
+                    content:'>>';
+                    position:absolute;
+                    left:${sizes.sideMargin.small};
+                    z-index:0;
+                    height:100%;
+                    display:flex;
+                    align-items:center;
+                    opacity:0;
+                    width:15px;
+                    transition:opacity 0.3s ease;
+            }
+            &:hover{
+                &::before{
+                    opacity:1;
+                }
+                >p{
+                    transform:translateX(20px); 
+                }
+            }
+        }
+    `}
     ${props => props.sub && css`
-        
         z-index:-200;
-        transform:translateY(-100%);
+        height:350px;
+        display:none;
+        transition:height 0.3s ease-in-out;
         width:100%;
-        position:absolute;
-        top:100%;
+        position:relative;
         ${props => props.expanded && css`
-            transform:translateY(0%);
-            
+            display:flex;
         `}
-       
     `}
     
-`
-export let PrimaryNavLink = styled(NavLink)`
-    text-decoration:none;
-    color:white;
-    background:${colors.primaryColor};
-   
-    >p{
-        transform:translateX(-10px);
-        transition:transform 0.3s ease;
-    }
-    position:relative;
-    &::before{
-            content:'>>';
-            position:absolute;
-            left:${sizes.sideMargin.small};
-            z-index:0;
-            height:100%;
-            display:flex;
-            align-items:center;
-            opacity:0;
-            width:15px;
-            transition:opacity 0.3s ease;
-    }
-    &:hover{
-       &::before{
-           opacity:1;
-       }
-        >p{
-            transform:translateX(20px); 
-        }
-    }
 `
 export let StyledNavLink = styled(NavLink)`
     text-transform:uppercase;
@@ -103,7 +101,6 @@ export let StyledNavLink = styled(NavLink)`
     color:${colors.text};
     margin:0 2rem;
     position:relative;
-    overflow:hidden;
     align-items:center;
     justify-content:center;
     display:flex;   
@@ -115,11 +112,15 @@ export let SubCategories = styled.ul`
     display:flex;
     flex-direction:column;
     list-style-type:none;
+    overflow-y:scroll;
+	overflow-x:hidden;
+    position:absolute;
     margin:0px;
     padding:0px;
 `
 export let SubItem = styled.li`
     display:flex;
+    height:50px;
     >a{
         width:100%;
         margin: 0;

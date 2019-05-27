@@ -8,7 +8,8 @@ export let GlobalStyle = createGlobalStyle`
         
         height:100%;
         font-family:'Raleway','sans-serif';
-        
+        overflow-y: scroll;
+       
         >body{
             position:absolute;
             height:100%;

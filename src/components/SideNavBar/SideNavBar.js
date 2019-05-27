@@ -9,14 +9,53 @@ const SideNavBar = ({links}) => {
     let onClickDefault = () =>{
         dispatch({type:'toggleSideNav',value:false})
     }
+    let categories = [
+        {
+            path: '/outdoors',
+            text: 'Outdoors',
+
+        },
+        {
+            path: '/indoors',
+            text: 'Indoors',
+        },
+        {
+            path: '/herbs',
+            text: 'Herbs',
+
+        },
+        {
+            path: '/aquarium',
+            text: 'Aquarium',
+
+        },
+        {
+            path: '/fruits',
+            text: 'Fruits',
+
+        },
+        {
+            path: '/vegetables',
+            text: 'Vegetables',
+
+        },
+        {
+            path: '/accesories',
+            text: 'Accesories',
+
+        },
+    ]
     return (
         <S.Nav sideNavVisible={sideNavVisible}>
-            <S.Li onClick={onClickDefault}><S.PrimaryNavLink exact to='/account/login'><p>Log in</p></S.PrimaryNavLink></S.Li>
-            <S.Li onClick={onClickDefault}><S.PrimaryNavLink exact to='/account/signup'><p>Sign up</p></S.PrimaryNavLink></S.Li>
+
+           
+            <SideNavLink path='/account/login' text='Log in' icon={false} iconSize='' onClick={onClickDefault} expandable={false} primary={true}/>
+            <SideNavLink path='/account/signup' text='Sign up' icon={false} iconSize='' onClick={onClickDefault} expandable={false} primary={true}/>
             {links.map((e,index)=>{
-                return <SideNavLink key={index} path={e.path} desc={e.desc} text={e.text} iconSize={'small'} onClick={onClickDefault} expandable={false}/>
+                return <SideNavLink key={index} path={e.path} desc={e.desc} text={e.text} icon={true} iconSize={'small'} onClick={onClickDefault} expandable={false}/>
             })}
-            <SideNavLink path='/categories' text='categories' iconSize={'small'}  expandable={true}/>
+            <SideNavLink path='/categories' text='categories' iconSize={'small'} icon={true} expandable={true} list={categories}/>
+            
         </S.Nav>
     );
 };

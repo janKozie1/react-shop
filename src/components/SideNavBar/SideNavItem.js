@@ -3,54 +3,24 @@ import React, { useState } from 'react';
 import Logo from '../Logo/Logo'
 import * as S from './styledComponents'
 
-const SideNavItem = ({ path, text, iconSize, onClick, desc, expandable }) => {
+const SideNavItem = ({ path, text, iconSize, onClick, desc, expandable ,list,icon,primary}) => {
     let [expanded, setExpanded] = useState(false);
-    let categories = [
-        {
-            path: '/outdoors',
-            text: 'Outdoors',
-
-        },
-        {
-            path: '/indoors',
-            text: 'Indoors',
-        },
-        {
-            path: '/herbs',
-            text: 'Herbs',
-
-        },
-        {
-            path: '/aquarium',
-            text: 'Aquarium',
-
-        },
-        {
-            path: '/fruits',
-            text: 'Fruits',
-
-        },
-        {
-            path: '/vegetables',
-            text: 'Vegetables',
-
-        },
-        {
-            path: '/accesories',
-            text: 'Accesories',
-
-        },
-    ]
-    if (!onClick) {
-        onClick = () => {
+    
+    let handleClick = () =>{
+        if(!onClick){
+            console.log("?")
             setExpanded(!expanded)
+        }else{
+            onClick();
+            setExpanded(false)
         }
+
     }
     return (
         <>
-            <S.Li onClick={() => onClick()} expandable={expandable} >
+            <S.Li onClick={() => handleClick()} expandable={expandable} primary={primary}>
                 <S.StyledNavLink exact to={path} >
-                    <Logo name={text} size={iconSize} />
+                    {icon && <Logo name={text} size={iconSize} />}
                     <p>{(desc || text)}</p>
                     {
                         expandable ?
@@ -60,14 +30,16 @@ const SideNavItem = ({ path, text, iconSize, onClick, desc, expandable }) => {
                     }
 
                 </S.StyledNavLink>
+            
             </S.Li >
+            {expandable ? 
                 <S.Li sub expanded={expanded}>
                     <S.SubCategories>
                         {
-                            categories.map((e, index) => {
+                            list.map((e, index) => {
                                 return (
-                                    <S.SubItem>
-                                        <S.StyledNavLink exact to={`/browse${e.path}`} key={index} >
+                                    <S.SubItem key={index}>
+                                        <S.StyledNavLink exact to={`/browse${e.path}`} key={index} onClick={()=>setExpanded(false)} >
                                             <Logo name='side' size='tiny' />
                                             <p>{e.text}</p>
                                         </S.StyledNavLink>
@@ -75,8 +47,13 @@ const SideNavItem = ({ path, text, iconSize, onClick, desc, expandable }) => {
                                 )
                             })
                         }
-                </S.SubCategories>
-            </S.Li>
+                    </S.SubCategories>
+                </S.Li>
+                :
+                null
+        
+             }
+                
                    
             
 

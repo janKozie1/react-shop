@@ -25,7 +25,8 @@ const App = () => {
         {
             path:'/cart',
             text:'cart'       
-        },
+        }
+        
     ]
     let categories = [
         'Indoors',

@@ -38,6 +38,7 @@ const SignUp = props => {
                 mode={'signup'}
                 dispatchResult={dispatch}
             />
+           
         </S.SignUp>
     );
 };

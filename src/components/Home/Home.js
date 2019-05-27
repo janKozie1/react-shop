@@ -10,6 +10,28 @@ const Home = () => {
     return (
         <S.Home>
             <Slider></Slider>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
+            <div>a</div>
             {firebase.auth.currentUser ? firebase.auth.currentUser.email : null}
         </S.Home>
     );
