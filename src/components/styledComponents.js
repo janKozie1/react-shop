@@ -1,23 +1,39 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import {sizes} from './cssVariables'
+import {sizes,colors} from './cssVariables'
 
 export let GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto');  
     @import url('https://fonts.googleapis.com/css?family=Raleway:400,600');
     html{
         
-        height:100%;
+        min-height:100%;
         font-family:'Raleway','sans-serif';
         overflow-y: scroll;
-       
+        /* &::-webkit-scrollbar-track{
+            box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+        }
+        &::-webkit-scrollbar{
+            width: 6px;
+            background-color: #F5F5F5;
+
+        }
+        &::-webkit-scrollbar-thumb{
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+            background-color: ${colors.darkPrimaryColor};
+        } */
         >body{
             position:absolute;
-            height:100%;
+            height:1px;
+            min-height:100%;
             width:100%;
             padding:0;
             margin:0;
             #root{
-                height:calc(100% - ${sizes.headerHeight});
+                height:1px;
+                min-height:calc(100% - ${sizes.headerHeight});
             }
         }   
         *,*::after,*::before{

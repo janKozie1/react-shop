@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import * as S from './styledComponents'
-
-const Categories = ({categories}) => {
+import UxContext from '../context/ux-context'
+const Categories = () => {
+    let {categories,initialLoading} = useContext(UxContext)
     return (
-        <S.CategoryList>
+        <S.CategoryList initialLoading={initialLoading}> 
                 <ul>
                     {categories.map((e,index)=>{
-                        return <li key={index}>{e}</li>
+                        return <S.StyledNavLink key={index} exact to={`/browse${e.path}`}>{e.text}</S.StyledNavLink>
                     })}
                 </ul>
         </S.CategoryList>

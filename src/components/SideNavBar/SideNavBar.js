@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 
 import * as S from './styledComponents'
-import SideNavLink from './SideNavItem'
+import SideNavItem from './SideNavItem'
 import UxContext from '../context/ux-context'
 
 const SideNavBar = ({links}) => {
@@ -47,14 +47,12 @@ const SideNavBar = ({links}) => {
     ]
     return (
         <S.Nav sideNavVisible={sideNavVisible}>
-
-           
-            <SideNavLink path='/account/login' text='Log in' icon={false} iconSize='' onClick={onClickDefault} expandable={false} primary={true}/>
-            <SideNavLink path='/account/signup' text='Sign up' icon={false} iconSize='' onClick={onClickDefault} expandable={false} primary={true}/>
+            <SideNavItem path='/account/login' text='Log in' icon={false} iconSize='' onClick={onClickDefault} expandable={false} primary={true}/>
+            <SideNavItem path='/account/signup' text='Sign up' icon={false} iconSize='' onClick={onClickDefault} expandable={false} primary={true}/>
             {links.map((e,index)=>{
-                return <SideNavLink key={index} path={e.path} desc={e.desc} text={e.text} icon={true} iconSize={'small'} onClick={onClickDefault} expandable={false}/>
+                return <SideNavItem key={index} path={e.path} desc={e.desc} text={e.text} icon={true} iconSize={'small'} onClick={onClickDefault} expandable={false}/>
             })}
-            <SideNavLink path='/categories' text='categories' iconSize={'small'} icon={true} expandable={true} list={categories}/>
+            <SideNavItem path='/categories' text='categories' iconSize={'small'} icon={true} expandable={true} list={categories}/>
             
         </S.Nav>
     );

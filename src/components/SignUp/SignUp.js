@@ -1,8 +1,7 @@
-import React, {useContext,useReducer, useState, useEffect, useRef} from 'react';
+import React, {useContext,useReducer} from 'react';
 import {withRouter} from 'react-router'
 import firebaseContext from '../Firebase/context'
 import AuthForm from '../AuthForm/AuthForm'
-import {userDataReducer} from '../reducers/reducers'
 import {fields} from './data/fields'
 import {emptyFields} from './data/fields'
 import {resultReducer} from '../reducers/reducers'

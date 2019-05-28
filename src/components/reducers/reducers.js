@@ -32,12 +32,12 @@ export const resultReducer = (state,action) =>{
             return {...action.payload}
         }
         case 'restoreDefault':{
-            console.log("?")
             return {text:'Loading',secText:'',type:'loading'}
         }
     }
 }
 export const uxReducer = (state,action) => {
+    console.log(action)
     switch (action.type) {
         case 'toggleSideNav':{
             let temp = {...state};
@@ -49,6 +49,13 @@ export const uxReducer = (state,action) => {
             let temp = {...state};
             temp.bgFadeVisible = action.value;
             return {...temp}
+        }
+        case 'initialLoadComplete':{
+            return {...state, initialLoading:false}
+        }
+        case 'updateCategories':{
+            console.log(action)
+            return {...state,categories:action.value}
         }
     }
 }

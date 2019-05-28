@@ -82,13 +82,14 @@ export let Li = styled.li`
     `}
     ${props => props.sub && css`
         z-index:-200;
-        height:350px;
-        display:none;
-        transition:height 0.3s ease-in-out;
+        height:0px;
+        transition:height 0.3s ease-in-out, transform 0.3s ease-in-out;
         width:100%;
         position:relative;
+        transform:translateY(-100%);
         ${props => props.expanded && css`
-            display:flex;
+            height:350px;
+            transform:translateY(0%);
         `}
     `}
     
@@ -110,6 +111,7 @@ export let StyledNavLink = styled(NavLink)`
 export let SubCategories = styled.ul`
     width:100%;
     display:flex;
+    height:0;
     flex-direction:column;
     list-style-type:none;
     overflow-y:scroll;
@@ -117,6 +119,9 @@ export let SubCategories = styled.ul`
     position:absolute;
     margin:0px;
     padding:0px;
+    ${props => props.expanded && css`
+        height:100%;
+    `}
 `
 export let SubItem = styled.li`
     display:flex;

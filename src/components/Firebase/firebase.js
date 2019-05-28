@@ -14,10 +14,16 @@ const config = {
 
 class Firebase {
     constructor() {
-        firebase.initializeApp(config)
+        this.app = firebase.initializeApp(config)
+        //experimental
         this.auth = firebase.auth();
         this.databese = firebase.database();
-        
+    }
+    getCategories = async() =>{
+        let categories = await this.databese.ref('/categories').once('value',(snapshot)=>{
+            return snapshot   
+        })
+        return categories;
     }
     createWithEmailAndPassword = (email,password)=>{
         this.auth.createUserWithEmailAndPassword(email,password)

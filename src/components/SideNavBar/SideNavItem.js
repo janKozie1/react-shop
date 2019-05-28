@@ -8,7 +8,6 @@ const SideNavItem = ({ path, text, iconSize, onClick, desc, expandable ,list,ico
     
     let handleClick = () =>{
         if(!onClick){
-            console.log("?")
             setExpanded(!expanded)
         }else{
             onClick();
@@ -34,7 +33,7 @@ const SideNavItem = ({ path, text, iconSize, onClick, desc, expandable ,list,ico
             </S.Li >
             {expandable ? 
                 <S.Li sub expanded={expanded}>
-                    <S.SubCategories>
+                    <S.SubCategories expanded={expanded}>
                         {
                             list.map((e, index) => {
                                 return (
