@@ -37,7 +37,6 @@ export const resultReducer = (state,action) =>{
     }
 }
 export const uxReducer = (state,action) => {
-    console.log(action)
     switch (action.type) {
         case 'toggleSideNav':{
             let temp = {...state};
