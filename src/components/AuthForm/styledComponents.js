@@ -45,7 +45,6 @@ export let Spacer = styled.div`
     
 `
 
-
 export let Form = styled.form` 
     display:grid;
     border-radius:5px;
@@ -92,6 +91,7 @@ export let SubmitButton = styled.button`
         transform:scale(1.05);
     }
 `
+
 export let LinkContainer = styled(NavLink)`
     position:relative;
     display:flex;
@@ -117,16 +117,15 @@ export let LinkContainer = styled(NavLink)`
            opacity:1;
        }
         >p{
-            transform:translateX(20px);
-            
+            transform:translateX(20px); 
         }
     }
     @media(max-width:${sizes.firstBreakpoint.upper}){
         margin-top:-40px;
         grid-row:${props => props.mode==='signup'?'7/8':'4/5'};
     }
-    
 `
+
 export let Paragraph = styled.p`
     width:100%;
     margin:0;
@@ -139,7 +138,5 @@ export let Paragraph = styled.p`
     background:white;
     position:relative;
     z-index:3;
-    transition: transform 0.5s ease;
-    
-    
+    transition: transform 0.5s ease; 
 `

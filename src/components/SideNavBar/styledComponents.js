@@ -31,7 +31,6 @@ export let Li = styled.li`
     display:flex;
     background:white;
     user-select:none;
-
     >a{
         width:100%;
         margin: 0;
@@ -49,50 +48,49 @@ export let Li = styled.li`
         }
     }
     transition:transform 0.3s ease-in-out;
-    ${props => props.primary && css`
-        background:${colors.primaryColor};
-        >a{
-            color:white;
-            position:relative;
-            >p{
-                transform:translateX(-10px);
-                transition:transform 0.3s ease;
-            }
+`
+export let SubLi = styled(Li)`
+    z-index:-200;
+    height:0px;
+    transition:height 0.3s ease-in-out, transform 0.3s ease-in-out;
+    width:100%;
+    position:relative;
+    transform:translateY(-100%);
+    ${props => props.expanded && css`
+        height:350px;
+        transform:translateY(0%);
+    `}
+`
+export let PrimaryLi = styled(Li)`
+    background:${colors.primaryColor};
+    >a{
+        color:white;
+        position:relative;
+        >p{
+            transform:translateX(-10px);
+            transition:transform 0.3s ease;
+        }
+        &::before{
+                content:'>>';
+                position:absolute;
+                left:${sizes.sideMargin.small};
+                z-index:0;
+                height:100%;
+                display:flex;
+                align-items:center;
+                opacity:0;
+                width:15px;
+                transition:opacity 0.3s ease;
+        }
+        &:hover{
             &::before{
-                    content:'>>';
-                    position:absolute;
-                    left:${sizes.sideMargin.small};
-                    z-index:0;
-                    height:100%;
-                    display:flex;
-                    align-items:center;
-                    opacity:0;
-                    width:15px;
-                    transition:opacity 0.3s ease;
+                opacity:1;
             }
-            &:hover{
-                &::before{
-                    opacity:1;
-                }
-                >p{
-                    transform:translateX(20px); 
-                }
+            >p{
+                transform:translateX(20px); 
             }
         }
-    `}
-    ${props => props.sub && css`
-        z-index:-200;
-        height:0px;
-        transition:height 0.3s ease-in-out, transform 0.3s ease-in-out;
-        width:100%;
-        position:relative;
-        transform:translateY(-100%);
-        ${props => props.expanded && css`
-            height:350px;
-            transform:translateY(0%);
-        `}
-    `}
-    
+    }
 `
 export let StyledNavLink = styled(NavLink)`
     text-transform:uppercase;
@@ -106,7 +104,6 @@ export let StyledNavLink = styled(NavLink)`
     justify-content:center;
     display:flex;   
     width:100%;
-   
 `
 export let SubCategories = styled.ul`
     width:100%;
@@ -123,22 +120,8 @@ export let SubCategories = styled.ul`
         height:100%;
     `}
 `
-export let SubItem = styled.li`
-    display:flex;
-    height:50px;
+export let SubItem = styled(Li)`
     >a{
-        width:100%;
-        margin: 0;
-        display:flex;
         padding:12.5px calc(${sizes.sideMargin.small} * 2);
-        align-items:center;
-        justify-content:flex-start;
-        >p{
-            display:flex;
-            height:100%;
-            align-items:center;
-            margin:0;
-            margin:0 12px;
-        }
     }
 `

@@ -1,8 +1,10 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import * as S from './styledComponents'
 import NavIcon from './NavIcon'
 import ToggleButton from './ToggleButton/ToggleButon'
-const NavBar = ({links}) => {
+import UxContext from '../context/ux-context'
+const NavBar = () => {
+    let {links} = useContext(UxContext)
     return (
         <S.Nav>
             <S.Container>

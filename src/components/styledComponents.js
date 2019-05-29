@@ -8,7 +8,7 @@ export let GlobalStyle = createGlobalStyle`
         
         min-height:100%;
         font-family:'Raleway','sans-serif';
-        overflow-y: scroll;
+        overflow-y: auto;
         /* &::-webkit-scrollbar-track{
             box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
             border-radius: 10px;

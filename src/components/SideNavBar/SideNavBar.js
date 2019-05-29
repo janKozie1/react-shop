@@ -5,8 +5,8 @@ import SideNavItem from './SideNavItem'
 import ExpandableNavItem from './ExpandableNavItem'
 import UxContext from '../context/ux-context'
 
-const SideNavBar = ({links}) => {
-    let {sideNavVisible,dispatch,categories} = useContext(UxContext)
+const SideNavBar = () => {
+    let {sideNavVisible,dispatch,categories,links} = useContext(UxContext)
     let onClickDefault = () =>{
         dispatch({type:'toggleSideNav',value:false})
     }
@@ -17,7 +17,7 @@ const SideNavBar = ({links}) => {
             {links.map((e,index)=>{
                 return <SideNavItem key={index} path={e.path} desc={e.desc} text={e.text} icon={true} iconSize={'small'} onClickDefault={onClickDefault} />
             })}
-            <ExpandableNavItem path='/categories' text='categories' iconSize={'small'} icon={true} expandable={true} list={categories} onClickDefault={onClickDefault}/>
+            <ExpandableNavItem path='/categories' text='categories' iconSize={'small'} icon={true} list={categories} onClickDefault={onClickDefault}/>
             
         </S.Nav>
     );

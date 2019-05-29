@@ -5,6 +5,7 @@ const UxContext = React.createContext({
   bgFadeVisible:false,
   initialLoading:true,
   categories:[],
+  links:[]
 });
 
 export default UxContext;

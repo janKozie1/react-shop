@@ -16,6 +16,7 @@ const App = () => {
     let {categories,dispatch} = useContext(UxContext) 
     useEffect(()=>{
         firebase.app.database().ref('/categories').once('value',(snap)=>{
+            //dispatch({type:'updateCategories',value:snap.val()})
             dispatch({type:'updateCategories',value:snap.val()})
             dispatch({type:'initialLoadComplete'})
         })
@@ -24,16 +25,19 @@ const App = () => {
     let links = [
         {
             path:'/',
-            text:'home'       
+            text:'home',
+            list:[]       
         },
         {
             path:'/account',
             text:'user',
-            desc:'you'       
+            desc:'you',
+            list:[]      
         },
         {
             path:'/cart',
-            text:'cart'       
+            text:'cart',
+            list:[] 
         }
         
     ]
@@ -42,10 +46,10 @@ const App = () => {
         <Router>
             <S.GlobalStyle />
             <S.Header>
-                <NavBar links={links}/>
+                <NavBar/>
                 <Categories categories={categories} />
             </S.Header>
-            <SideNavBar links={links}/>
+            <SideNavBar/>
             <BackgroundFade />
             <S.Main>
                 <Route path='/' exact component={Home} />

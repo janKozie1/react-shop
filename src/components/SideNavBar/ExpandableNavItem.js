@@ -1,12 +1,15 @@
 import React,{useState} from 'react';
 import * as S from './styledComponents'
 import Logo from '../Logo/Logo'
-const ExpandableNavItem = ({onClickDefault, path, icon,text,iconSize,desc,list }) => {
+const ExpandableNavItem = ({onClickDefault, path,text,iconSize,desc,list }) => {
     let [expanded,setExpanded] = useState(false);
     let innerClick = () => {
         setExpanded(false)
         onClickDefault();
     }
+    //make a loader if list is empty
+    //pas a calulated height instead of hardcoded
+    //maybe use as for main nav items and for expandable nav items
     return (
         <>
             <S.Li onClick={() => setExpanded(!expanded)}>
@@ -16,7 +19,7 @@ const ExpandableNavItem = ({onClickDefault, path, icon,text,iconSize,desc,list }
                     <Logo name='expand' size='small' expanded={expanded} />   
                 </S.StyledNavLink>
             </S.Li >
-            <S.Li sub expanded={expanded}>
+            <S.SubLi sub expanded={expanded}>
                 <S.SubCategories expanded={expanded}>
                     {
                         list.map((e, index) => {
@@ -31,7 +34,7 @@ const ExpandableNavItem = ({onClickDefault, path, icon,text,iconSize,desc,list }
                         })
                     }
                 </S.SubCategories>
-            </S.Li>
+            </S.SubLi>
         </>
     );
 };
