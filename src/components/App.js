@@ -6,7 +6,7 @@ import Home from './Home/Home';
 import LogIn from './LogIn/LogIn';
 import SignUp from './SignUp/SignUp'
 import NavBar from './NavBar/NavBar'
-import Categories from './Categories/Categories'
+import Categories from './Categories/CategoryList'
 import SideNavBar from './SideNavBar/SideNavBar'
 import BackgroundFade from './BackgroundFade/BackgroundFade'
 import firebaseContext from './Firebase/context'

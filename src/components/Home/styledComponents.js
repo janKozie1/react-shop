@@ -4,6 +4,6 @@ export let Home = styled.section`
     grid-column:2/3;
     display:grid;
     grid-row-gap:1rem;
-    grid-template-rows:250px 1fr;
+ 
     
 `

@@ -4,6 +4,18 @@ import * as S from './styledComponents'
 import UxContext from '../context/ux-context'
 const Categories = () => {
     let {categories,initialLoading} = useContext(UxContext)
+    let sub = [
+        'flowers',
+        'hedges',
+        'shrubs',
+        'trees',
+        'succulents',
+        'fruits',
+        'grass',
+        'ferns',
+        'herbs',
+        'vegetables'
+    ]
     return (
         <S.CategoryList initialLoading={initialLoading}> 
                 <ul>

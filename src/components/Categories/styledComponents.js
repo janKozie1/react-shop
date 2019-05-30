@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { colors } from '../cssVariables'
 import { sizes } from '../cssVariables'
 export let CategoryList = styled.menu`
-
     width:100%;
     display:grid;
     grid-template-columns:${sizes.sideMargin.big} 1fr ${sizes.sideMargin.big};
@@ -25,7 +24,6 @@ export let CategoryList = styled.menu`
         height:100%;
         list-style-type:none;
         flex-direction:row;
-        height:100%;
         display:grid;
         grid-template-columns:repeat(7,1fr);
     }
