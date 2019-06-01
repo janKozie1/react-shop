@@ -47,7 +47,7 @@ const App = () => {
             <S.GlobalStyle />
             <S.Header>
                 <NavBar/>
-                <Categories categories={categories} />
+                {/* <Categories categories={categories} /> */}
             </S.Header>
             <SideNavBar/>
             <BackgroundFade />

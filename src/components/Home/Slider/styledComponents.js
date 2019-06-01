@@ -8,6 +8,8 @@ export let Slider = styled.div`
     background:url(${plants});
     background-repeat:no-repeat;
     background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
     display:flex;
     position:relative;
 `
@@ -19,7 +21,6 @@ export let Button = styled.button`
     color:white;
     font-family:'Raleway';
     height:100%;
-    text-shadow:0px 0px 5px black;
     padding:2%;
     position:absolute;
     top:0;

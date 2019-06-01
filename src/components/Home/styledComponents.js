@@ -1,9 +1,5 @@
 import styled from 'styled-components'
-
 export let Home = styled.section`
-    grid-column:2/3;
+    grid-column:1/4;
     display:grid;
-    grid-row-gap:1rem;
- 
-    
 `

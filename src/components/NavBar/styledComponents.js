@@ -15,7 +15,7 @@ export let Nav = styled.nav`
     }
     padding:0;
     margin:0;
-    background:white;
+    background:transparent;
     z-index:300;
     box-sizing:border-box;
     border-bottom: 1px solid ${colors.dividerColor};

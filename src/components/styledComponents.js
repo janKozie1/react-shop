@@ -52,7 +52,7 @@ export let Main = styled.main`
     @media (max-width:${sizes.firstBreakpoint.upper}){
         margin-top:${sizes.navHeight};
     }
-    min-height:calc(100% - ${sizes.headerHeight});
+    min-height:100%;
     display:grid;
     grid-template-columns:${sizes.sideMargin.big} 1fr ${sizes.sideMargin.big};
     @media(max-width:${sizes.firstBreakpoint.upper}){

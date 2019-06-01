@@ -15,9 +15,9 @@ export let sizes = {
         small:'2rem',
         big:'10%' //10rem?
     },
-    headerHeight:'105px',
+    headerHeight:'65px', //105px
     navHeight:'65px',
-    categoryHeight:'40px',
+    categoryHeight:'0px', //40px
     firstBreakpoint:{
         upper:'820px',
         lower:'821px'
