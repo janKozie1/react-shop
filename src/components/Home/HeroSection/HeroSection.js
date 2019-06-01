@@ -7,10 +7,14 @@ const HeroSection = () => {
             <S.HeroText>
                 <S.HeroHeading>Welcome at PLANT <span>it</span></S.HeroHeading>
                 <S.HeroDesc>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam metus metus, elementum ac purus ut, tempus viverra risus. Integer auctor, nunc vel porttitor pharetra, massa ex venenatis arcu, id vehicula leo odio sodales turpis. Morbi scelerisque felis eget elit cursus sagittis. Nullam laoreet aliquet porta. Suspendisse sit amet massa velit.
+                   Join our quickly growing community and experiance the fruits of our hard work. Years of experiance and our qualified workers Choose from variety of flowers, trees, herbs and anything else that is even remotely resembles a plant. <br /> Sign in to get our special offers and personalized discounts.
                 </S.HeroDesc>
+                <S.PrimaryNavLink exact to='/account/signup'>Sign up</S.PrimaryNavLink>
             </S.HeroText>
-           
+            <S.ScrollIndicator>
+                <p>Explore</p>
+                <S.Scroll />
+            </S.ScrollIndicator>
         </S.HeroWrapper>
     );
 };
