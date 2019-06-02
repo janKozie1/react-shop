@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled,{keyframes} from 'styled-components'
 import {colors,sizes} from '../../cssVariables'
 import bg from '../../../images/plants-hero6.jpg'
 import {NavLink} from 'react-router-dom'
@@ -13,8 +13,9 @@ export let HeroWrapper = styled.section`
     position:relative;
     display:grid;
     grid-template-columns:${sizes.sideMargin.big} 1fr ${sizes.sideMargin.big};
-    
-   
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+       
+    }
 `
 export let HeroText = styled.div`
     grid-column:2/3;
@@ -22,10 +23,20 @@ export let HeroText = styled.div`
     height:100%;
     width:40%;
     display:flex;
+    align-items:center;
     justify-content:center;
     flex-direction:column;
     margin:0;
-    
+    text-align:left;
+    align-items:flex-start;
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+       text-align:center;
+       width:100%;
+       justify-content:space-around;
+       height:70%;
+       align-items:center;
+       
+    }
     
 `
 
@@ -38,16 +49,25 @@ export let HeroHeading = styled.h1`
         color:${colors.primaryColor};
         text-transform:uppercase; 
     }
-    text-align:left;
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+        font-size:2rem;
+       
+    }
+    
 `
 
 
 
 export let HeroDesc = styled.h3`
-    text-align:left;
     font-size:1.3rem;
     margin:0;
-    margin:60px 0px;
+    margin:30px 0px;
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+       margin:0;
+        font-size:1rem;
+        width:80%;
+
+    }
 `
 export let PrimaryNavLink = styled(NavLink)`
     background:${colors.primaryColor};
@@ -63,7 +83,6 @@ export let PrimaryNavLink = styled(NavLink)`
     &:first-child{
         border:none;    
         border-radius:0;
-        
         color:black;
         background:white;
         font-weight:bolder;
@@ -86,7 +105,32 @@ export let ScrollIndicator = styled.div`
     >p{
         font-size:1.2rem;
     }
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+       top:90%;
+       >p{
+           font-size:0.8rem;
+       }
+    }
 `
+const bounce = keyframes`
+    0%{
+        transform:translate(-50%,-50%);
+        opacity:0;
+    }
+    25%{
+        transform:translate(-50%,-50%);
+        opacity:1;
+    }
+    50%{
+        transform:translate(-50%,50%);
+        opacity:0;
+    }
+    100%{
+        transform:translate(-50%,50%);
+        opacity:0;
+    }
+`
+
 export let Scroll = styled.div`
     margin-top:10px;
     height:70px;
@@ -94,7 +138,13 @@ export let Scroll = styled.div`
     border:3px solid white;
     border-radius:15px;
     position:relative;
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+       margin:0;
+       height:40px;
+       width:17px;
+    }
     &::after{
+        animation:${bounce} 3s ease-in-out infinite;
         content:'';
         width:40%;
         height:35%;
