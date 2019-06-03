@@ -21,7 +21,7 @@ export let HeroText = styled.div`
     grid-column:2/3;
     justify-self:flex-start;
     height:100%;
-    width:40%;
+    width:60%;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -32,7 +32,7 @@ export let HeroText = styled.div`
     @media(max-width:${sizes.firstBreakpoint.lower}){
        text-align:center;
        width:100%;
-       justify-content:space-around;
+       justify-content:center;
        height:70%;
        align-items:center;
        
@@ -43,7 +43,7 @@ export let HeroText = styled.div`
 
 export let HeroHeading = styled.h1`
     background:transparent;
-    font-size:2.8rem;
+    font-size:3.0rem;
     margin:0;
     >span{
         color:${colors.primaryColor};
@@ -59,11 +59,11 @@ export let HeroHeading = styled.h1`
 
 
 export let HeroDesc = styled.h3`
-    font-size:1.3rem;
+    font-size:1.7rem;
     margin:0;
     margin:30px 0px;
     @media(max-width:${sizes.firstBreakpoint.lower}){
-       margin:0;
+       margin:20px 0;
         font-size:1rem;
         width:80%;
 
@@ -72,8 +72,8 @@ export let HeroDesc = styled.h3`
 export let PrimaryNavLink = styled(NavLink)`
     background:${colors.primaryColor};
     border:2px solid ${colors.primaryColor};
-    padding:8px 20px;
-    font-size:1rem;
+    padding:10px 30px;
+    font-size:1.2rem;
     width:max-content;
     color:white;
     border-radius:5px;
@@ -89,6 +89,10 @@ export let PrimaryNavLink = styled(NavLink)`
     }
     &:hover{
         transform:scale(1.1);
+    }
+    @media(max-width:${sizes.firstBreakpoint.lower}){
+       padding:9px 18px;
+       font-size:0.8rem;
     }
 `
 
