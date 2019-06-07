@@ -24,6 +24,7 @@ export let FormContainer = styled.div`
     justify-items:center;
     align-content:center;
     grid-column-gap:2em;
+    background:white;
     @media(max-width:${sizes.firstBreakpoint.upper}){
         grid-template-columns:1fr;
         grid-column-gap:0;

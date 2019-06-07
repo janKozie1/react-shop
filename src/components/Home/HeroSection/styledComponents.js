@@ -21,7 +21,7 @@ export let HeroText = styled.div`
     grid-column:2/3;
     justify-self:flex-start;
     height:100%;
-    width:60%;
+    width:100%;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -29,12 +29,15 @@ export let HeroText = styled.div`
     margin:0;
     text-align:left;
     align-items:flex-start;
+    
+    
     @media(max-width:${sizes.firstBreakpoint.lower}){
        text-align:center;
        width:100%;
        justify-content:center;
        height:70%;
        align-items:center;
+      
        
     }
     
@@ -45,35 +48,45 @@ export let HeroHeading = styled.h1`
     background:transparent;
     font-size:3.0rem;
     margin:0;
-    >span{
-        color:${colors.primaryColor};
-        text-transform:uppercase; 
-    }
+    
     @media(max-width:${sizes.firstBreakpoint.lower}){
         font-size:2rem;
        
     }
     
 `
-
+export let FlowBreaker = styled.span`
+    color:white;
+    white-space: pre;
+    >span{
+        color:${colors.primaryColor};
+        text-transform:uppercase; 
+    }
+`
 
 
 export let HeroDesc = styled.h3`
     font-size:1.7rem;
     margin:0;
+    width:60%;
     margin:30px 0px;
+    >p{
+        margin:0;
+    }
     @media(max-width:${sizes.firstBreakpoint.lower}){
        margin:20px 0;
-        font-size:1rem;
+        font-size:1.2rem;
         width:80%;
+      
 
     }
+    
 `
 export let PrimaryNavLink = styled(NavLink)`
     background:${colors.primaryColor};
     border:2px solid ${colors.primaryColor};
     padding:10px 30px;
-    font-size:1.2rem;
+    font-size:1rem;
     width:max-content;
     color:white;
     border-radius:5px;

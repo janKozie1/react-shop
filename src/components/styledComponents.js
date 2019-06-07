@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import {sizes,colors} from './cssVariables'
-
+import bg from '../images/plants.jpg'
 export let GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto');  
     @import url('https://fonts.googleapis.com/css?family=Raleway:400,600');
@@ -47,6 +47,7 @@ export let Main = styled.main`
     width:100%;
     margin:0;
     padding:0;
+   
     margin-top:${sizes.headerHeight};
     position:relative;
     @media (max-width:${sizes.firstBreakpoint.upper}){
