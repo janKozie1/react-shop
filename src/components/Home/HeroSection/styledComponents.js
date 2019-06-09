@@ -13,9 +13,6 @@ export let HeroWrapper = styled.section`
     position:relative;
     display:grid;
     grid-template-columns:${sizes.sideMargin.big} 1fr ${sizes.sideMargin.big};
-    @media(max-width:${sizes.firstBreakpoint.lower}){
-       
-    }
 `
 export let HeroText = styled.div`
     grid-column:2/3;
@@ -31,7 +28,7 @@ export let HeroText = styled.div`
     align-items:flex-start;
     
     
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
        text-align:center;
        width:100%;
        justify-content:center;
@@ -49,7 +46,7 @@ export let HeroHeading = styled.h1`
     font-size:3.0rem;
     margin:0;
     
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
         font-size:2rem;
        
     }
@@ -73,7 +70,7 @@ export let HeroDesc = styled.h3`
     >p{
         margin:0;
     }
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
        margin:20px 0;
         font-size:1.2rem;
         width:80%;
@@ -103,7 +100,7 @@ export let PrimaryNavLink = styled(NavLink)`
     &:hover{
         transform:scale(1.1);
     }
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
        padding:9px 18px;
        font-size:0.8rem;
     }
@@ -122,7 +119,7 @@ export let ScrollIndicator = styled.div`
     >p{
         font-size:1.2rem;
     }
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
        top:90%;
        >p{
            font-size:0.8rem;
@@ -155,7 +152,7 @@ export let Scroll = styled.div`
     border:3px solid white;
     border-radius:15px;
     position:relative;
-    @media(max-width:${sizes.firstBreakpoint.lower}){
+    @media(max-width:${sizes.firstBreakpoint.upper}){
        margin:0;
        height:40px;
        width:17px;
