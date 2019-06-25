@@ -4,7 +4,7 @@ const Leaflet = ({ isLoading, result,setConfirmed }) => {
     let { text, secText, type } = result;
     return (
         <S.Leaflet isLoading={isLoading}>
-            <S.ImageContainer isLoading={isLoading}>
+            {/* <S.ImageContainer isLoading={isLoading}>
                 <h3>Join us at PLANT <span>IT</span></h3>
                 <p>We provide our clients with the highest quality of saplings, herbs and many other plants.</p>
                 <S.Image />
@@ -32,7 +32,7 @@ const Leaflet = ({ isLoading, result,setConfirmed }) => {
 
                         
                 }
-            </S.Loader>
+            </S.Loader> */}
         </S.Leaflet>
     )
 }

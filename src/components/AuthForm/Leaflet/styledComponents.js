@@ -2,17 +2,18 @@ import styled, {css, keyframes} from 'styled-components'
 import {colors} from '../../cssVariables'
 import {sizes} from '../../cssVariables'
 import plant from '../../../images/plant.svg'
-
+import bg from '../../../images/1.jpg'
 import { ReactComponent as failIcon } from '../../../images/failure.svg'
 import { ReactComponent as succIcon } from '../../../images/ok.svg'
 
 export let Leaflet = styled.div`
-    height:${sizes.signUp.formContainer.big};
-    width:100%;
-    display:grid;
-    grid-template-rows:${sizes.signUp.formContainer.big} ${sizes.signUp.formContainer.big};
-    border-right:2px solid ${colors.dividerColor};
-    overflow:hidden;
+    height:100%;
+    flex:1;
+    max-width:50%;
+    background-image: url(${bg});
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
     @media(max-width:${sizes.firstBreakpoint.upper}){
         position:absolute;
         border:none;

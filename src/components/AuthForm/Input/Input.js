@@ -30,8 +30,7 @@ const Input = ({data,state,dispatch, isLoading, wasSubmited,mode}) => {
                 type={type} 
                 id={`${id}Input`} 
                 novalidate
-                autoComplete={autoId}
-                placeholder={`${text}...`} 
+                autoComplete={autoId} 
                 value={value}  
                 onFocus={()=>setClicked(true)} 
                 onBlur={()=>setUnfocused(true)} 

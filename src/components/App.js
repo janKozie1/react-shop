@@ -4,7 +4,7 @@ import * as S from './styledComponents'
 import About from './About/About';
 import Home from './Home/Home';
 import LogIn from './LogIn/LogIn';
-import SignUp from './SignUpTest/SignUp'
+import SignUp from './SignUp/SignUp'
 import NavBar from './NavBar/NavBar'
 import Categories from './Categories/CategoryList'
 import SideNavBar from './SideNavBar/SideNavBar'

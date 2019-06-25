@@ -3,14 +3,12 @@ import * as S from './styledComponents'
 const SignUp = () => {
     return (
        <S.SignUp>
-           <S.Leaflet>
-            
-           </S.Leaflet>
+           <S.Leaflet />
            <S.FormSection>
                <h2>Join us at PLANT <span>IT</span></h2>
                <S.FormContainer>
                     <S.Label>
-                        First name:
+                        <p>First name:</p>
                         <S.Input />
                     </S.Label>
                     <S.Label>
@@ -26,8 +24,8 @@ const SignUp = () => {
                         <S.Input />
                     </S.Label>
                     <S.Label>
-                        Confirm password:
-                        <S.Input />
+                        <S.Input type='checkbox'/>
+                        I've read and agree with all Terms of Service
                     </S.Label>
                     <S.ActionContainer>
                     <S.Link exact to='/account/login'>

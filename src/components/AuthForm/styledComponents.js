@@ -3,27 +3,13 @@ import {colors} from '../cssVariables'
 import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'
 
-export let SignUp = styled.section`
-    grid-column:2/3;
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:center;
+export let Wrapper = styled.div`
     width:100%;
-    @media(max-width:${sizes.firstBreakpoint.upper}){
-        align-items:flex-start;
-    }
+    height:100%;
+    display:flex;
+    align-items:center;
+    
 
-`
-
-export let FormContainer = styled.div`
-    width:70%;
-    display:grid;
-    grid-template-columns: 4fr 6fr;
-    height:${sizes.signUp.formContainer.big};
-    justify-items:center;
-    align-content:center;
-    grid-column-gap:2em;
     background:white;
     @media(max-width:${sizes.firstBreakpoint.upper}){
         grid-template-columns:1fr;
@@ -36,26 +22,30 @@ export let FormContainer = styled.div`
     }
     position:relative;
 `
-export let Spacer = styled.div`
-    grid-row:2/3;
-    grid-column:2/3;
-    display: ${props => props.mode==='login'?"none":"block"};
-    @media(max-width:${sizes.firstBreakpoint.upper}){
-        display:none;
+export let FormSection = styled.section`
+    width:820px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    justify-content:space-between;
+    >h2{
+        margin-top:90px;
+        >span{
+            color:${colors.primaryColor};
+        }
     }
-    
 `
 
 export let Form = styled.form` 
-    display:grid;
-    border-radius:5px;
-    grid-template-columns:1fr 1fr;
-    grid-auto-rows:1fr;
+    margin-bottom:90px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     flex-direction:column;
-    grid-row-gap:1.5em;
-    grid-column-gap:3em;
-    width:100%;
-    height:${sizes.signUp.formContainer.big};
+    width:600px;
+    padding:0 40px;
+    border-radius:10px;
     @media(max-width:${sizes.firstBreakpoint.upper}){
         grid-template-columns:1fr;
         grid-column-end:0;
@@ -63,16 +53,19 @@ export let Form = styled.form`
     }
     
 `
-
+export let ActionContainer = styled.div`
+    width:100%;
+    justify-content:space-between;
+    display:flex;
+`
 export let SubmitButton = styled.button`
     display:flex;
     justify-content:center;
     align-items:center;
-    width:50%;
+    width:40%;
     cursor: pointer;
     border-radius:5px;
     height:35px;
-    align-self:center;
     border:none;
     color:${colors.primaryColor};
     background:white;
@@ -100,7 +93,8 @@ export let LinkContainer = styled(NavLink)`
     color:rgba(0,0,0,0.7);
     font-size:0.8rem;
     text-decoration:none;
-    width:max-content;
+    width:40%;
+    
     &::before{
             content:'>>';
             position:absolute;

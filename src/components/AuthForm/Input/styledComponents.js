@@ -50,14 +50,13 @@ export let ErrorIcon = styled(errIcon)`
 `
 
 export let Label = styled.label`
-    font-size:0.9rem;
+    width:100%;
     display:flex;
+    flex-direction:column;
     align-items:space-between;
     justify-content:space-between;
+    margin:20px 0px;
     position:relative;
-    height:100%;
-    flex-direction:column;
-    
     @media(min-width:${sizes.firstBreakpoint.lower}){
         grid-column:${props => props.mode==='login'?'1/3':''};
     
@@ -102,7 +101,9 @@ export let InputHeader = styled.span`
 export let Input = styled.input`
     border:none;
     border-bottom:1px solid ${colors.dividerColor};
-    padding:9px 0px;
+    flex:1;
+    margin-top:15px;
+    padding:10px 20px;
     position:relative;
     background:transparent;
     &:-internal-autofill-selected,
@@ -123,14 +124,15 @@ export let Input = styled.input`
             bottom:0;
             color:red;
     }
-    &::placeholder{
-        color:rgba(0,0,0,0.4);
-    }
+    
     &[type='password']{
         grid-column:1/2;
         &:last-child{
             grid-column:2/3;
         }
+    }
+    &::placeholder{
+        color:rgba(0,0,0,0.4);
     }
     &:focus{
         outline:none;

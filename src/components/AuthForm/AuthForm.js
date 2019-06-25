@@ -49,23 +49,26 @@ const SignUp = props => {
     },[uxContext.bgFadeVisible])
     
     return (
-        <S.SignUp> 
-            <S.FormContainer >
+            <S.Wrapper >
                 <Leaflet isLoading={isLoading} result={result} setConfirmed={setConfirmed}/>
-                <S.Form onSubmit={e => onFormSubmit(e)}>
-                    {
-                        fields.map((e,index)=>{
-                            return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} mode={mode}/>
-                        })
-                    }
-                    <S.Spacer mode={mode}/>
-                    <S.LinkContainer exact  to={altPath} mode={mode}>
-                        <S.Paragraph>{altText}</S.Paragraph>
-                    </S.LinkContainer>
-                    <S.SubmitButton disabled={isLoading} type="submit"><span>{buttonText}</span></S.SubmitButton>
-                </S.Form>
-            </S.FormContainer>
-        </S.SignUp>
+                <S.FormSection>
+                 <h2>Join us at PLANT <span>IT</span></h2>
+                    <S.Form onSubmit={e => onFormSubmit(e)}>
+                        
+                        {
+                            fields.map((e,index)=>{
+                                return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} mode={mode}/>
+                            })
+                        }
+                        <S.ActionContainer>
+                            <S.LinkContainer exact  to={altPath} mode={mode}>
+                                <S.Paragraph>{altText}</S.Paragraph>
+                            </S.LinkContainer>
+                            <S.SubmitButton disabled={isLoading} type="submit"><span>{buttonText}</span></S.SubmitButton>
+                        </S.ActionContainer>
+                    </S.Form>
+                </S.FormSection> 
+            </S.Wrapper>
     );
 };
 const SignUpRouter = withRouter(SignUp)
