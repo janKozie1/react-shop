@@ -1,16 +1,17 @@
 import styled from 'styled-components'
-import {colors} from '../cssVariables'
-import {sizes} from '../cssVariables'
+import {colors,sizes} from '../../cssVariables'
 import {NavLink} from 'react-router-dom'
-
 export let Wrapper = styled.div`
     width:100%;
     height:100%;
     display:flex;
     align-items:center;
-    background:white;
+    display:grid;
+    
+    grid-template-columns:6fr 3fr;
     @media(max-width:${sizes.firstBreakpoint.upper}){
         margin-top:20px;
+        grid-template-columns:1fr;
         width:calc(100% - 42px);
         height:auto;
         align-content:start;
@@ -18,7 +19,8 @@ export let Wrapper = styled.div`
     position:relative;
 `
 export let FormSection = styled.section`
-    flex:3;
+    background:white;
+    grid-column:2/3;
     min-width:820px;
     height:100%;
     padding:50px 0;
@@ -26,14 +28,20 @@ export let FormSection = styled.section`
     align-items:center;
     flex-direction:column;
     justify-content:space-around;
+    >h2{
+        margin:0;
+
+        >span{
+            color:${colors.primaryColor};
+        }
+    }
     @media(max-width:${sizes.firstBreakpoint.upper}){
         width:100%;
         min-width:100%;
-    }
-    >h2{
-        margin:0;
-        >span{
-            color:${colors.primaryColor};
+        grid-column:1/2;
+        padding:0;
+        >h2{
+            margin:20px 0px;
         }
     }
 `
@@ -48,6 +56,8 @@ export let Form = styled.form`
     border-radius:10px;
     @media(max-width:${sizes.firstBreakpoint.upper}){
         height:auto;
+        width:100%;
+        padding:0;
     }
     
 `
@@ -56,6 +66,11 @@ export let ActionContainer = styled.div`
     justify-content:space-between;
     display:flex;
     padding:5px;
+    @media(max-width:${sizes.firstBreakpoint.upper}){
+        flex-direction:column-reverse;
+        padding:0px;
+        margin-top:10px;
+    }
 `
 export let SubmitButton = styled.button`
     display:flex;
@@ -77,6 +92,8 @@ export let SubmitButton = styled.button`
         background:${colors.primaryColor};
     }
     @media(max-width:${sizes.firstBreakpoint.upper}){  
+        width:100%;
+        margin-bottom:10px;
     }
     &:hover{
         transform:scale(1.05);
@@ -113,8 +130,8 @@ export let LinkContainer = styled(NavLink)`
         }
     }
     @media(max-width:${sizes.firstBreakpoint.upper}){
-        margin-top:-40px;
-        grid-row:${props => props.mode==='signup'?'7/8':'4/5'};
+        width:100%;
+        margin-bottom:10px;
     }
 `
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {sizes} from '../cssVariables'
+import {sizes} from '../../cssVariables'
 
 export let SignUp = styled.section`
     grid-column:1/4;
@@ -10,5 +10,6 @@ export let SignUp = styled.section`
     width:100%;
     @media(max-width:${sizes.firstBreakpoint.upper}){
         align-items:flex-start;
+        grid-column:2/3;
     }
 `

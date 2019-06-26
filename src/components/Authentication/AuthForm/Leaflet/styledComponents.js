@@ -1,10 +1,9 @@
 import styled, {css, keyframes} from 'styled-components'
-import {colors} from '../../cssVariables'
-import {sizes} from '../../cssVariables'
-import plant from '../../../images/plant.svg'
-import bg from '../../../images/1.jpg'
-import { ReactComponent as failIcon } from '../../../images/failure.svg'
-import { ReactComponent as succIcon } from '../../../images/ok.svg'
+import {colors,sizes} from '../../../cssVariables'
+import plant from '../../../../images/plant.svg'
+import bg from '../../../../images/1.jpg'
+import { ReactComponent as failIcon } from '../../../../images/failure.svg'
+import { ReactComponent as succIcon } from '../../../../images/ok.svg'
 
 export let Leaflet = styled.div`
     flex:5;

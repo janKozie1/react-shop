@@ -1,10 +1,9 @@
 import React, {useContext,useReducer, useState, useEffect} from 'react';
 import {withRouter} from 'react-router'
-import UxContext from '../context/ux-context'
+import UxContext from '../../context/ux-context'
 import Leaflet from './Leaflet/Leaflet'
 import Input from './Input/Input'
-import {userDataReducer} from '../reducers/reducers'
-
+import {userDataReducer} from '../../reducers/reducers'
 import * as S from './styledComponents'
 const SignUp = props => {
     let {defaultValue,fields, buttonText, altText,altPath,result, onFormValidated, mode, dispatchResult} = props

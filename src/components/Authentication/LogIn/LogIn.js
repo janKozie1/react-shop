@@ -1,11 +1,11 @@
 import React, {useContext,useReducer, useState} from 'react';
 import {withRouter} from 'react-router'
 import * as S from './styledComponents'
-import firebaseContext from '../Firebase/context'
+import firebaseContext from '../../Firebase/context'
 import {fields} from './data/fields'
 import {emptyFields} from './data/fields'
 import AuthForm from '../AuthForm/AuthForm'
-import {resultReducer} from '../reducers/reducers'
+import {resultReducer} from '../../reducers/reducers'
 
 const LogIn = props => {
     let defaultResult = {text:'Loading',secText:'',type:'loading'}
@@ -19,7 +19,7 @@ const LogIn = props => {
         })
     }
     return (
-        <S.SignUp>
+        <S.LogIn>
             <AuthForm 
                 defaultValue={emptyFields}
                 fields={fields}
@@ -31,7 +31,7 @@ const LogIn = props => {
                 mode={'login'}
                 dispatchResult={dispatch}
             />
-        </S.SignUp>
+        </S.LogIn>
     );
 };
 const LogInRouter = withRouter(LogIn)

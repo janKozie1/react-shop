@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 import * as S from './styledComponents'
 import About from './About/About';
 import Home from './Home/Home';
-import LogIn from './LogIn/LogIn';
-import SignUp from './SignUp/SignUp'
+import LogIn from './Authentication/LogIn/LogIn';
+import SignUp from './Authentication/SignUp/SignUp'
 import NavBar from './NavBar/NavBar'
 // import Categories from './Categories/CategoryList'
 import SideNavBar from './SideNavBar/SideNavBar'

@@ -1,10 +1,10 @@
 import React, {useContext,useReducer} from 'react';
 import {withRouter} from 'react-router'
-import firebaseContext from '../Firebase/context'
+import firebaseContext from '../../Firebase/context'
 import AuthForm from '../AuthForm/AuthForm'
 import {fields} from './data/fields'
 import {emptyFields} from './data/fields'
-import {resultReducer} from '../reducers/reducers'
+import {resultReducer} from '../../reducers/reducers'
 import * as S from './styledComponents'
 
 const SignUp = props => {
