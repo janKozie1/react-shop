@@ -102,7 +102,8 @@ export let Input = styled.input`
     border:none;
     border-bottom:1px solid ${colors.dividerColor};
     flex:1;
-    margin-top:15px;
+    margin-top:20px;
+    font-size:0.8rem;
     padding:10px 20px;
     position:relative;
     background:transparent;
@@ -111,6 +112,7 @@ export let Input = styled.input`
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus{
         background:white  !important;
+        font-size:0.8rem;
     }
     
     &:disabled{

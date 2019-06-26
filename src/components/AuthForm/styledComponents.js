@@ -8,13 +8,8 @@ export let Wrapper = styled.div`
     height:100%;
     display:flex;
     align-items:center;
-    
-
     background:white;
     @media(max-width:${sizes.firstBreakpoint.upper}){
-        grid-template-columns:1fr;
-        grid-column-gap:0;
-
         margin-top:20px;
         width:calc(100% - 42px);
         height:auto;
@@ -23,14 +18,20 @@ export let Wrapper = styled.div`
     position:relative;
 `
 export let FormSection = styled.section`
-    width:820px;
+    flex:3;
+    min-width:820px;
     height:100%;
+    padding:50px 0;
     display:flex;
     align-items:center;
     flex-direction:column;
-    justify-content:space-between;
+    justify-content:space-around;
+    @media(max-width:${sizes.firstBreakpoint.upper}){
+        width:100%;
+        min-width:100%;
+    }
     >h2{
-        margin-top:90px;
+        margin:0;
         >span{
             color:${colors.primaryColor};
         }
@@ -38,17 +39,14 @@ export let FormSection = styled.section`
 `
 
 export let Form = styled.form` 
-    margin-bottom:90px;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-direction:column;
     width:600px;
-    padding:0 40px;
+    padding:0 60px;
     border-radius:10px;
     @media(max-width:${sizes.firstBreakpoint.upper}){
-        grid-template-columns:1fr;
-        grid-column-end:0;
         height:auto;
     }
     
@@ -57,6 +55,7 @@ export let ActionContainer = styled.div`
     width:100%;
     justify-content:space-between;
     display:flex;
+    padding:5px;
 `
 export let SubmitButton = styled.button`
     display:flex;
@@ -77,9 +76,7 @@ export let SubmitButton = styled.button`
         color:white;
         background:${colors.primaryColor};
     }
-    @media(max-width:${sizes.firstBreakpoint.upper}){
-        width:100%;
-    
+    @media(max-width:${sizes.firstBreakpoint.upper}){  
     }
     &:hover{
         transform:scale(1.05);

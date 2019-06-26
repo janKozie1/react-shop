@@ -1,6 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import {sizes,colors} from './cssVariables'
-import bg from '../images/plants.jpg'
 export let GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto');  
     @import url('https://fonts.googleapis.com/css?family=Raleway:400,600');

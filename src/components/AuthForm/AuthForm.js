@@ -1,6 +1,5 @@
-import React, {useContext,useReducer, useState, useEffect, useRef} from 'react';
+import React, {useContext,useReducer, useState, useEffect} from 'react';
 import {withRouter} from 'react-router'
-import firebaseContext from '../Firebase/context'
 import UxContext from '../context/ux-context'
 import Leaflet from './Leaflet/Leaflet'
 import Input from './Input/Input'

@@ -7,9 +7,8 @@ import { ReactComponent as failIcon } from '../../../images/failure.svg'
 import { ReactComponent as succIcon } from '../../../images/ok.svg'
 
 export let Leaflet = styled.div`
+    flex:5;
     height:100%;
-    flex:1;
-    max-width:50%;
     background-image: url(${bg});
     background-repeat:no-repeat;
     background-position:center center;

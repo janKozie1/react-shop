@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styledComponents'
 const Leaflet = ({ isLoading, result,setConfirmed }) => {
-    let { text, secText, type } = result;
+    // let { text, secText, type } = result;
     return (
         <S.Leaflet isLoading={isLoading}>
             {/* <S.ImageContainer isLoading={isLoading}>

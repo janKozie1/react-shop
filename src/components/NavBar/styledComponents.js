@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import {colors} from '../cssVariables'
 import {sizes} from '../cssVariables'
 import {NavLink} from 'react-router-dom'

@@ -31,7 +31,8 @@ export const resultReducer = (state,action) =>{
         case 'updateResult':{
             return {...action.payload}
         }
-        case 'restoreDefault':{
+        case 'restoreDefault':
+        default:{
             return {text:'Loading',secText:'',type:'loading'}
         }
     }
@@ -53,8 +54,10 @@ export const uxReducer = (state,action) => {
             return {...state, initialLoading:false}
         }
         case 'updateCategories':{
-            console.log(action)
             return {...state,categories:action.value}
+        }
+        default:{
+            return {...state}
         }
     }
 }
