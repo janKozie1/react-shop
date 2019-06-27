@@ -50,14 +50,18 @@ const SignUp = props => {
             <S.Wrapper >
                 <Leaflet isLoading={isLoading} result={result} setConfirmed={setConfirmed}/>
                 <S.FormSection>
-                 <h2>Join us at PLANT <span>IT</span></h2>
+                 
                     <S.Form onSubmit={e => onFormSubmit(e)}>
-                        
+                    <h2>Join us at PLANT <span>IT</span></h2>
+                        <S.Fields>
                         {
                             fields.map((e,index)=>{
                                 return <Input key={index} data={e} state={userState} dispatch={dispatch} isLoading={isLoading} wasSubmited={wasSubmited} mode={mode}/>
                             })
                         }
+
+                        </S.Fields>
+                       
                         <S.ActionContainer>
                             <S.LinkContainer exact  to={altPath} mode={mode}>
                                 <S.Paragraph>{altText}</S.Paragraph>

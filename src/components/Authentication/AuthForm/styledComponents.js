@@ -28,13 +28,7 @@ export let FormSection = styled.section`
     align-items:center;
     flex-direction:column;
     justify-content:space-around;
-    >h2{
-        margin:0;
-
-        >span{
-            color:${colors.primaryColor};
-        }
-    }
+    
     @media(max-width:${sizes.firstBreakpoint.upper}){
         width:100%;
         min-width:100%;
@@ -47,19 +41,34 @@ export let FormSection = styled.section`
 `
 
 export let Form = styled.form` 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display:grid;
+    border-top:none;
+    border-bottom:none;
+    justify-items:center;
+    justify-content:space-around;
     flex-direction:column;
+    grid-row-gap:40px;
+    grid-template-columns:1fr;
+
     width:600px;
     padding:0 60px;
-    border-radius:10px;
     @media(max-width:${sizes.firstBreakpoint.upper}){
         height:auto;
         width:100%;
         padding:0;
+        grid-row-gap:20px;
+    }
+    >h2{
+        margin:0;
+        
+        >span{
+            color:${colors.primaryColor};
+        }
     }
     
+`
+export let Fields  = styled.div`
+width:100%;
 `
 export let ActionContainer = styled.div`
     width:100%;
