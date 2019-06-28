@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components'
-
+import {colors} from '../cssVariables'
 export let ModalContainer = styled.div`
     width:100vw;
     height:100vh;
@@ -8,4 +8,7 @@ export let ModalContainer = styled.div`
     z-index:800;
     top:0;
     left:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 `
