@@ -57,17 +57,31 @@ export let fields = [
             return {err:'',value:true};
         }
     },
-    {
-        text:'confirm password',
-        id:'cPassword',
-        type:'password',
+    // {
+    //     text:'confirm password',
+    //     id:'cPassword',
+    //     type:'password',
+    //     autoId:'off',
+    //     required:true,
+    //     validation:(input,state)=>{
+    //         if(input!==state.password.value){
+    //             return {err:`Passwords are different`,value:false}
+    //         }else if(input.length<6){
+    //             return {err:'Password too short',value:false}
+    //         }
+    //         return {err:'',value:true};
+    //     }
+    // },
+     {
+        text:"I've read and accept all Terms of Service",
+        id:'tos',
+        type:'checkbox',
         autoId:'off',
         required:true,
-        validation:(input,state)=>{
-            if(input!==state.password.value){
-                return {err:`Passwords are different`,value:false}
-            }else if(input.length<6){
-                return {err:'Password too short',value:false}
+        validation:(input)=>{
+            console.log(input)
+            if(!input){
+                return {err:'Required',value:false}
             }
             return {err:'',value:true};
         }
@@ -103,11 +117,19 @@ export let emptyFields = {
             err:"Can't be empty"
         }
     },
-    cPassword:{
+    tos:{
         value:'',
         valid:{
             value:false,
-            err:"Can't be empty"
+            err:"Required"
         }
     },
+    // cPassword:{
+    //     value:'',
+    //     valid:{
+    //         value:false,
+    //         err:"Can't be empty"
+    //     }
+    // },
+    
 }

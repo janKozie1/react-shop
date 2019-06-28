@@ -26,6 +26,7 @@ export let fields = [
             return {err:'',value:true};
         }
     },
+   
 ]
 
 export let emptyFields = {

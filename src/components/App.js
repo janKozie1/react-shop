@@ -11,6 +11,9 @@ import SideNavBar from './SideNavBar/SideNavBar'
 import BackgroundFade from './BackgroundFade/BackgroundFade'
 import firebaseContext from './Firebase/context'
 import UxContext from './context/ux-context'
+
+import AuthModal from './AuthModal/AuthModal'
+
 const App = () => {
     let firebase = useContext(firebaseContext)
     let {categories,dispatch} = useContext(UxContext) 
@@ -26,6 +29,7 @@ const App = () => {
     return (
         <Router>
             <S.GlobalStyle />
+            <AuthModal />
             <S.Header>
                 <NavBar/>
                 {/* <Categories categories={categories} /> */}

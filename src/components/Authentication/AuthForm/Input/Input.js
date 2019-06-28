@@ -14,13 +14,13 @@ const Input = ({data,state,dispatch, isLoading, wasSubmited,mode}) => {
             setUnfocused(true)
         }
     },[wasSubmited])
-    useEffect(()=>{
-        if(mode==='signup')
-            dispatch({type:'edit',field:'cPassword',data:state.cPassword.value,validation})
-    },[state.password.value])
+    // useEffect(()=>{
+    //     if(mode==='signup')
+    //         dispatch({type:'edit',field:'cPassword',data:state.cPassword.value,validation})
+    // },[state.password.value])
     
     return (
-        <S.Label mode={mode} htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
+        <S.Label mode={mode} type={type} htmlFor={`${id}Input`} wasClicked={wasClicked} isLoading={isLoading} isValid={valid.value} wasUnfocused={wasUnfocused}>
             <S.InputHeader >
                     <p>{text}</p>
                     <ErrorIcon errorMsg={valid.err} isValid={valid.value} wasUnfocused={wasUnfocused} isLoading={isLoading} />

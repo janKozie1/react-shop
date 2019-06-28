@@ -70,7 +70,7 @@ export let Label = styled.label`
             z-index:100;
             content:'';
     }
-    ${props => props.wasClicked && css`  
+    ${props => props.wasClicked && props.type !== 'checkbox' && css`  
        &::after{
            width:100%;
            background:${props => !props.wasUnfocused ? colors.primaryColor : props.isValid ? colors.primaryColor : colors.error}
@@ -81,6 +81,13 @@ export let Label = styled.label`
        &::after{
            display:none;
        }
+    `}
+    ${props => props.type === 'checkbox' && css`
+       font-size:0.8rem;
+       flex-direction:row-reverse;
+       align-items:center;
+       justify-content:flex-end;
+       width:max-content;
     `}
 
 `
@@ -126,12 +133,11 @@ export let Input = styled.input`
             bottom:0;
             color:red;
     }
-    
-    &[type='password']{
-        grid-column:1/2;
-        &:last-child{
-            grid-column:2/3;
-        }
+    &[type='checkbox']{
+        padding:0;
+        margin:0;
+        flex:0;
+        margin-right:20px;
     }
     &::placeholder{
         color:rgba(0,0,0,0.4);
