@@ -1,5 +1,6 @@
 import styled, {css} from 'styled-components';
 import {colors} from '../../cssVariables'
+import {NavLink} from 'react-router-dom'
 export let FormContainer = styled.div`
     height:600px;
     width:380px;
@@ -30,7 +31,8 @@ export let Form = styled.form`
 export let Label = styled.label`
     position:relative;
     width:100%;
-    height:70px;
+    height:45px;
+    margin-top:25px;
     display:flex;
     flex-direction:column;
     justify-content:flex-end;
@@ -67,10 +69,85 @@ export let Input = styled.input`
     &:hover{
         border-color:rgba(0,0,0,0.3)
     }
-    padding: 15px 20px;
+    padding: 15px 30px;
     border-radius:5px;
     font-size:0.75rem;
     &:focus{
         outline:none;
+    }
+`
+
+export let ActionContainer = styled.div`
+    width:100%;
+    height:45px;
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:0.75rem;
+`
+
+
+export let Spacer = styled.div`
+    height:50%;
+    width:1px;
+    background:${colors.dividerColor};
+`
+export let Link = styled(NavLink)`
+    text-decoration:none;
+    color:black;
+    width:49.5%;
+    height:50%;
+    display:flex;
+    align-items:center;
+
+`
+
+export let SwitchType = styled.p`
+    margin:0;
+    width:49.5%;
+    cursor:pointer;
+    height:50%;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+`
+
+export let SubmitButton = styled.button`
+    width:100%;
+    margin-top:25px;
+    padding:12px;
+    background:${colors.darkPrimaryColor};
+    font-family:inherit;
+    font-weight:600;
+    color:white;
+    font-size:0.9rem;
+    border:0;
+    border-radius:5px;
+`
+
+export let SectionDivider = styled.div`
+    color:${colors.dividerColor};
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:25px;
+    position:relative;
+    >p{
+        margin:0;
+        position:relative;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:0 10px;
+        
+    }
+    &::after,&::before{
+            position: relative;
+            content:'';
+            flex:1;
+            background:${colors.dividerColor};
+            height:1px;
     }
 `
