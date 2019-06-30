@@ -1,15 +1,17 @@
 import styled, {css} from 'styled-components';
 import {colors} from '../../cssVariables'
 import {NavLink} from 'react-router-dom'
+import googleIcon from '../../../images/google_icon.svg'
+
 export let FormContainer = styled.div`
-    height:600px;
+
     width:380px;
     background:white;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:flex-start;
-    padding:30px 15px;
+    padding:30px 30px;
     border-radius:5px;
     >h1{
         margin:0;
@@ -80,7 +82,7 @@ export let Input = styled.input`
 export let ActionContainer = styled.div`
     width:100%;
     height:45px;
-    margin-top:25px;
+    margin-top:12.5px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -100,7 +102,7 @@ export let Link = styled(NavLink)`
     height:50%;
     display:flex;
     align-items:center;
-
+    justify-content:center;
 `
 
 export let SwitchType = styled.p`
@@ -110,12 +112,13 @@ export let SwitchType = styled.p`
     height:50%;
     display:flex;
     align-items:center;
-    justify-content:flex-end;
+    justify-content:center;
+
 `
 
 export let SubmitButton = styled.button`
     width:100%;
-    margin-top:25px;
+    margin-top:12.5px;
     padding:12px;
     background:${colors.darkPrimaryColor};
     font-family:inherit;
@@ -124,6 +127,7 @@ export let SubmitButton = styled.button`
     font-size:0.9rem;
     border:0;
     border-radius:5px;
+    cursor:pointer;
 `
 
 export let SectionDivider = styled.div`
@@ -149,5 +153,40 @@ export let SectionDivider = styled.div`
             flex:1;
             background:${colors.dividerColor};
             height:1px;
+    }
+`
+
+export let SignInGoogle = styled.button`
+    width:100%;
+    cursor:pointer;
+    margin-top:25px;
+    background:white;
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:5px;
+    border:1px solid rgba(0,0,0,0.175);
+    >p{
+        margin:0;
+        font-family:'Roboto';
+        font-size:0.95rem;
+
+    }
+`
+export let GoogleIcon = styled.div`
+    margin:0;
+    width:45px;
+    height:45px;
+    background:url(${googleIcon});
+    background-position:center center;
+    background-size:contain;
+`
+export let Disclaimer = styled.div`
+    margin-top:25px;
+    font-size:0.7rem;
+    >a{
+        text-decoration:underline;
+        cursor:pointer;
     }
 `
