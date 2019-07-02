@@ -1,4 +1,5 @@
 import styled, {css} from 'styled-components'
+import {colors} from '../../../cssVariables'
 
 export let Label = styled.label`
     position:relative;
@@ -8,32 +9,50 @@ export let Label = styled.label`
     display:flex;
     flex-direction:column;
     justify-content:flex-end;
+    &::after{
+        content:'';
+        position:absolute;
+        bottom:0;
+        left:0;
+        height:2px;
+        width:0%;
+        transition:width 0.2s ease-in-out;
+        background:${colors.primaryColor}
+    }
+    ${props => props.isFocused && css`
+        &::after{
+            width:100%;
+        }
+    `}
 `
 
 export let InputHeader = styled.p`
     text-transform:uppercase;
     font-size:0.8rem;
     position:absolute;
-   font-weight:lighter;
+    font-weight:lighter;
     bottom:0;
     padding:0px;
     margin:0;
     bottom:22px;
     transform:translateY(50%);
     z-index:850;
-
-    transition:bottom 0.2s ease-in-out, font-size 0.2s ease-in-out;
-    ${props => props.wasFocused && css`
+    box-sizing:content-box;
+    transition:bottom 0.2s ease-in-out, font-size 0.2s ease-in-out, color 0.2s ease-in-out; 
+    ${props => props.isFocused && css`
+        color:${colors.primaryColor}
+    `}
+    ${props => (props.isFocused || props.hasValue) && css`
         bottom:44px;
         background:white;
         font-size:0.7rem
-        box-sizing:content-box;
+        
     `}
     
 
 `
 export let Input = styled.input`
-    height:45px;
+    height:30px;
     font-family:inherit;
     font-weight:400;
     width:100%;
@@ -43,7 +62,7 @@ export let Input = styled.input`
     &:hover{
         border-color:rgba(0,0,0,0.3)
     }
-    padding:10px 0;
+    padding:5px 0;
   
     font-size:1rem;
     &:focus{

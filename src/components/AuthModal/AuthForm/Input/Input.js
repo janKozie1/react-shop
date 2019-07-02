@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import * as S from './styledComonents'
 const Input = ({id, text}) => {
-    let [wasFocused, setWasFocused] = useState(false);
-    let [value, setValue] = useState('jankoziel@gmail.com');
+    let [isFocused, setIsFocused] = useState(false);
+    let [value, setValue] = useState('');
     return (
-        <S.Label  htmlFor={`user-${id}`} >
-            <S.InputHeader wasFocused={wasFocused || value} >{`${text}`}</S.InputHeader>
-            <S.Input onFocus={()=>setWasFocused(true)} onBlur={()=>setWasFocused(false)} type={id} name={id} id={`user-${id}`} value={value} onChange={({target})=>setValue(target.value)}/>
+        <S.Label   isFocused={isFocused} hasValue={value} htmlFor={`user-${id}`} >
+            <S.InputHeader isFocused={isFocused} hasValue={value}>{`${text}`}</S.InputHeader>
+            <S.Input onFocus={()=>setIsFocused(true)} onBlur={()=>setIsFocused(false)} type={id} name={id} id={`user-${id}`} value={value} onChange={({target})=>setValue(target.value)}/>
         </S.Label>
     );
 };

@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components';
 import {colors} from '../../cssVariables'
 import {NavLink} from 'react-router-dom'
 import googleIcon from '../../../images/google_icon.svg'
+import {ReactComponent as closeIcon} from '../../../images/close.svg'
 
 export let FormContainer = styled.div`
 
@@ -11,6 +12,7 @@ export let FormContainer = styled.div`
     flex-direction:column;
     align-items:center;
     justify-content:flex-start;
+    position:relative;
     padding:30px 30px;
     border-radius:5px;
     >h1{
@@ -28,6 +30,22 @@ export let FormContainer = styled.div`
 export let Form = styled.form`
     width:100%;
     margin-top:10px;
+    
+`
+
+export let Close = styled(closeIcon)`
+    position:absolute;
+    top:0px;
+    right:0px;
+    width:30px;
+    height:30px;
+    padding:5px;
+    fill:rgba(0,0,0,0.25);
+    cursor:pointer;
+    transition:fill 0.3s ease-in-out;
+    &:hover{
+        fill:rgba(0,0,0,0.7);
+    }
 `
 
 export let Label = styled.label`
@@ -97,12 +115,16 @@ export let Spacer = styled.div`
 `
 export let Link = styled(NavLink)`
     text-decoration:none;
-    color:black;
     width:49.5%;
     height:50%;
     display:flex;
     align-items:center;
     justify-content:center;
+    color:rgba(0,0,0,0.6);
+    transition:color 0.3s ease-in-out;
+    &:hover{
+        color:rgba(0,0,0,0.8)
+    }
 `
 
 export let SwitchType = styled.p`
@@ -113,6 +135,11 @@ export let SwitchType = styled.p`
     display:flex;
     align-items:center;
     justify-content:center;
+    color:rgba(0,0,0,0.6);
+    transition:color 0.3s ease-in-out;
+    &:hover{
+        color:rgba(0,0,0,0.8)
+    }
 
 `
 
@@ -128,6 +155,10 @@ export let SubmitButton = styled.button`
     border:0;
     border-radius:5px;
     cursor:pointer;
+    transition:background 0.3s ease-in-out;
+    &:hover{
+        background:${colors.primaryColor}
+    }
 `
 
 export let SectionDivider = styled.div`
@@ -166,11 +197,16 @@ export let SignInGoogle = styled.button`
     align-items:center;
     justify-content:center;
     border-radius:5px;
+    transition:box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.0);
     border:1px solid rgba(0,0,0,0.175);
     >p{
         margin:0;
         font-family:'Roboto';
         font-size:0.95rem;
+    }
+    &:hover{
+        box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
 
     }
 `

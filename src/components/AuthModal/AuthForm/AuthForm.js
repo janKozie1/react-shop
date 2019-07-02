@@ -1,12 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Input from './Input/Input'
+import firebaseContext from '../../Firebase/context'
 import * as S from './styledComponents'
 const AuthForm = () => {
-    
-
+    let firebase = useContext(firebaseContext)
+    let authWithGoogle = () => {
+        console.log(firebase)
+        firebase.app.auth().signInWithPopup(firebase.provider).then((e)=>{
+            console.log(e)
+        }).catch((error)=>{
+            console.log(error)
+        })
+    }
     return (
         <S.FormContainer>
             <h1>Join us at PLANT <span>IT</span></h1>
+            <S.Close />
             <S.Form>
                 <Input id='email' text='email'/>
                 <Input id='password' text='password'/>
@@ -17,10 +26,10 @@ const AuthForm = () => {
                 </S.ActionContainer>
                 <S.SubmitButton type='submit'>Sign in</S.SubmitButton>
             </S.Form>
-            <S.SectionDivider>
+            <S.SectionDivider >
                     <p>or</p>
             </S.SectionDivider>
-            <S.SignInGoogle>
+            <S.SignInGoogle onClick={()=>authWithGoogle()}>
                     <S.GoogleIcon />
                     <p>Sign in with Google</p>
             </S.SignInGoogle>

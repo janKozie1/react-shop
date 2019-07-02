@@ -18,6 +18,7 @@ class Firebase {
         //experimental
         this.auth = firebase.auth();
         this.databese = firebase.database();
+        this.provider = new firebase.auth.GoogleAuthProvider();
     }
     getCategories = async() =>{
         let categories = await this.databese.ref('/categories').once('value',(snapshot)=>{
